@@ -1,0 +1,13 @@
+DEFINED_PHASES=install nofetch setup
+DEPEND=app-arch/unzip
+DESCRIPTION=Nuance - Colour Grading
+EAPI=4
+HOMEPAGE=http://nexi.com/nuance
+KEYWORDS=~x86 ~amd64
+LICENSE=AfterShotPro
+RDEPEND=>=media-gfx/AfterShotPro-1
+RESTRICT=strip mirror
+SLOT=0
+SRC_URI=http://nexi.com/asp/package/Nuance-1.0.10.afzplug -> Nuance-1.0.10.zip
+_eclasses_=asp-plugins	64afd0fbd3ceb3892f124f4beaa153c4	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=e6b0f3e3190dfd2010beb5a5bb3fc712

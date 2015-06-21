@@ -1,0 +1,276 @@
+# ChangeLog for app-office/grisbi
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-office/grisbi/ChangeLog,v 1.41 2010/05/25 20:38:47 remi Exp $
+
+  28 Mar 2014; Guillaume Castagnino <casta@xwing.info> grisbi-1.0.9999.ebuild,
+  -files/grisbi-1.0-nodev.patch:
+  remove nodev patch
+
+*grisbi-1.0.0 (23 Mar 2014)
+
+  23 Mar 2014; Guillaume Castagnino <casta@xwing.info> +grisbi-1.0.0.ebuild:
+  bump
+
+  28 Jul 2013; Guillaume Castagnino <casta@xwing.info> grisbi-1.0.9999.ebuild,
+  grisbi-9999.ebuild, +files/grisbi-fix-ac-aux-dir.patch:
+  fixing ac_aux_dir crap
+
+  30 Jun 2012; Guillaume Castagnino <casta@xwing.info> -grisbi-0.8.9.ebuild,
+  grisbi-0.8.9999.ebuild, grisbi-9999.ebuild:
+  0.8.9 in tree, sync tree modification in live ebuilds
+
+  11 Apr 2012; Guillaume Castagnino <casta@xwing.info> grisbi-0.8.9999.ebuild:
+  fix branch name
+
+*grisbi-0.8.9 (11 Apr 2012)
+
+  11 Apr 2012; Guillaume Castagnino <casta@xwing.info> +grisbi-0.8.9.ebuild,
+  +grisbi-0.8.9999.ebuild, grisbi-9999.ebuild:
+  bump to 0.8.9 for test, then will ask for a bump in bgo
+
+*grisbi-0.8.9999 (11 Apr 2012)
+
+  11 Apr 2012; Guillaume Castagnino <casta@xwing.info> +grisbi-0.8.9999.ebuild,
+  grisbi-9999.ebuild:
+  add a 0.8 branch live ebuild, rise openssl dep to reflect the one in the
+  configure check
+
+  20 Oct 2011; Guillaume Castagnino <casta@xwing.info> grisbi-9999.ebuild:
+  update git ebuild: new goffice depend
+
+  02 Oct 2011; Guillaume Castagnino <casta@xwing.info> -grisbi-0.8.8.ebuild:
+  now in tree
+
+*grisbi-0.8.8 (24 Sep 2011)
+
+  24 Sep 2011; Guillaume Castagnino <casta@xwing.info> -grisbi-0.8.7.ebuild,
+  +grisbi-0.8.8.ebuild:
+  version bump
+
+*grisbi-0.8.7 (16 Aug 2011)
+
+  16 Aug 2011; Guillaume Castagnino <casta@xwing.info> +grisbi-0.8.7.ebuild:
+  add 0.8.7 for test before opening a bug asking for the bump
+
+  12 May 2011; Guillaume Castagnino <casta@xwing.info> grisbi-9999.ebuild:
+  update git live ebuild
+
+  23 Feb 2011; Guillaume Castagnino <casta@xwing.info> -grisbi-0.7.99.ebuild,
+  grisbi-9999.ebuild:
+  remove 0.7.x since 0.8 is now in tree. Clean live git ebuild
+
+*grisbi-0.7.99 (23 Jan 2011)
+
+  23 Jan 2011; Guillaume Castagnino <casta@xwing.info> -grisbi-0.7.98.ebuild,
+  +grisbi-0.7.99.ebuild:
+  version bump
+
+*grisbi-0.7.98 (07 Jan 2011)
+
+  07 Jan 2011; Guillaume Castagnino <casta@xwing.info> -grisbi-0.7.97.ebuild,
+  +grisbi-0.7.98.ebuild:
+  version bump
+
+*grisbi-0.7.97 (19 Dec 2010)
+
+  19 Dec 2010; Guillaume Castagnino <casta@xwing.info> -grisbi-0.7.96.ebuild,
+  +grisbi-0.7.97.ebuild:
+  version bump
+
+*grisbi-0.7.96 (13 Dec 2010)
+
+  13 Dec 2010; Guillaume Castagnino <casta@xwing.info> -grisbi-0.7.95.ebuild,
+  +grisbi-0.7.96.ebuild:
+  version bump
+
+*grisbi-0.7.95 (12 Dec 2010)
+
+  12 Dec 2010; Guillaume Castagnino <casta@xwing.info> -grisbi-0.7.4.ebuild,
+  +grisbi-0.7.95.ebuild:
+  add last grisbi dev version
+
+*grisbi-9999 (21 Nov 2010)
+
+  21 Nov 2010; Guillaume Castagnino <casta@xwing.info> +grisbi-9999.ebuild:
+  add live ebuild
+
+*grisbi-0.7.4 (25 Sep 2010)
+
+  25 Sep 2010; Guillaume Castagnino <casta@xwing.info> -grisbi-0.7.2.ebuild,
+  +grisbi-0.7.4.ebuild:
+  version bump
+
+  17 Aug 2010; Guillaume Castagnino <casta@xwing.info> grisbi-0.7.2.ebuild:
+  fix maintener mode
+
+  25 May 2010; Rémi Cardona <remi@gentoo.org> grisbi-0.6.0.ebuild:
+  simplify bash syntax
+
+*grisbi-0.6.0 (25 May 2010)
+
+  25 May 2010; Rémi Cardona <remi@gentoo.org> +grisbi-0.6.0.ebuild:
+  bump to 0.6.0, rewrite ebuild to use the gnome2 eclass
+
+  20 Mar 2010; Raúl Porcel <armin76@gentoo.org> grisbi-0.6.0_rc2.ebuild:
+  sparc stable wrt #306033
+
+  28 Feb 2010; nixnut <nixnut@gentoo.org> grisbi-0.6.0_rc2.ebuild:
+  ppc stable #306033
+
+  27 Feb 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  grisbi-0.6.0_rc2.ebuild:
+  x86 stable wrt bug #306033
+
+  20 Feb 2010; Pacho Ramos <pacho@gentoo.org> grisbi-0.6.0_rc2.ebuild:
+  amd64 stable, bug 306033
+
+  20 Feb 2010; Pacho Ramos <pacho@gentoo.org> grisbi-0.6.0_rc2.ebuild:
+  Fix icon in desktop file
+
+  14 Feb 2010; Rémi Cardona <remi@gentoo.org> metadata.xml:
+  added myself to maintainers
+
+*grisbi-0.6.0_rc2 (14 Feb 2010)
+
+  14 Feb 2010; Rémi Cardona <remi@gentoo.org>
+  +files/0.6.0_rc2-properly-detect-gmodule.patch, +grisbi-0.6.0_rc2.ebuild:
+  bump to 0.6.0_rc2, ebuild adapted from bug #304937
+
+  13 Feb 2010; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Updating Guillaume's mail
+
+  30 Apr 2009; Alexis Ballier <aballier@gentoo.org> grisbi-0.5.8.ebuild,
+  grisbi-0.5.9.ebuild:
+  require texlive-latexextra 2008 for latex-unicode as its not present in
+  tl-latexextra-2007
+
+  03 Aug 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Add USE flag description to metadata wrt GLEP 56.
+
+  19 May 2008; Daniel Gryniewicz <dang@gentoo.org> files/grisbi.desktop,
+  grisbi-0.5.8.ebuild, grisbi-0.5.9.ebuild:
+  Fix grisbi deps for new latex virtuals; bug #196745
+
+  18 May 2008; Gilles Dartiguelongue <eva@gentoo.org> -grisbi-0.5.7.ebuild,
+  grisbi-0.5.8.ebuild, grisbi-0.5.9.ebuild:
+  reorder R/DEPENDS (bug #217278) and change syntax here and there.
+
+  26 May 2007; Wulf C. Krueger <philantrop@gentoo.org> grisbi-0.5.9.ebuild:
+  Stable on amd64, bug 179782.
+
+  25 Jan 2007; Marius Mauch <genone@gentoo.org> grisbi-0.5.7.ebuild,
+  grisbi-0.5.8.ebuild, grisbi-0.5.9.ebuild:
+  Replacing einfo with elog
+
+  01 Dec 2006; Tobias Scherbaum <dertobi123@gentoo.org> grisbi-0.5.9.ebuild:
+  ppc stable, bug #156630
+
+  27 Nov 2006; Gustavo Zacarias <gustavoz@gentoo.org> grisbi-0.5.9.ebuild:
+  Stable on sparc
+
+*grisbi-0.5.9 (27 Oct 2006)
+
+  27 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org> grisbi-0.5.7.ebuild,
+  grisbi-0.5.8.ebuild, +grisbi-0.5.9.ebuild:
+  Revbump wrt #139930, 0.5.8 sparc stable, fix DEPs wrt #151284
+
+  13 May 2006; Olivier Crête <tester@gentoo.org> grisbi-0.5.8.ebuild:
+  Stable on amd64
+
+*grisbi-0.5.8 (01 Apr 2006)
+
+  01 Apr 2006; Olivier Crête <tester@gentoo.org> -grisbi-0.5.6.ebuild,
+  +grisbi-0.5.8.ebuild:
+  Version bump and cleanup of old version
+
+  19 Nov 2005; Simon Stelling <blubb@gentoo.org> grisbi-0.5.7.ebuild:
+  stable on amd64
+
+  22 Oct 2005; Mark Loeser <halcy0n@gentoo.org> grisbi-0.5.7.ebuild:
+  Stable on x86; bug #108914
+
+  08 Jul 2005; Seemant Kulleen <seemant@gentoo.org> grisbi-0.5.6.ebuild,
+  grisbi-0.5.7.ebuild:
+  fix the depend/rdepend thansk to swegener
+
+*grisbi-0.5.7 (27 Jun 2005)
+
+  27 Jun 2005; Seemant Kulleen <seemant@gentoo.org> +grisbi-0.5.7.ebuild:
+  Version bump, coming from: Guillaume Castagnino <guilc@fr.st> in bug #94866
+
+*grisbi-0.5.6 (16 May 2005)
+
+  16 May 2005; Seemant Kulleen <seemant@gentoo.org>
+  +files/grisbi-0.5.6-latex-unicode.patch, -grisbi-0.5.4-r1.ebuild,
+  -grisbi-0.5.5.ebuild, -grisbi-0.5.5.20050410.ebuild, +grisbi-0.5.6.ebuild:
+  version bump, thanks to: Guillaume Castagnino <guilc@fr.st> in bug #92674
+  repoman happy
+
+  10 May 2005; Seemant Kulleen <seemant@gentoo.org> grisbi-0.5.5.ebuild:
+  get the doc.patch business out of SRC_URI, it's breaking things
+
+*grisbi-0.5.5.20050410 (11 Apr 2005)
+
+  11 Apr 2005; Seemant Kulleen <seemant@gentoo.org> +files/grisbi.desktop,
+  -grisbi-0.5.2.ebuild, grisbi-0.5.4-r1.ebuild, grisbi-0.5.5.ebuild,
+  +grisbi-0.5.5.20050410.ebuild:
+  Version bump to cvs snapshot which fixes segfault on edit->preferences
+  issue, as reported in bug #87468 by Will Wilson <wilson.william@gmail.com>.
+  The snapshot was taken and ebuilt by: Guillaume Castagnino <guilc@fr.st> in
+  the same bug. He also added a nice .desktop file for this.
+
+*grisbi-0.5.5 (25 Feb 2005)
+
+  25 Feb 2005; Carsten Lohrke <carlo@gentoo.org>
+  +files/grisbi-0.5.5-latex-unicode.patch, +grisbi-0.5.5.ebuild:
+  version bump
+
+  01 Jan 2005; Jason Wever <weeve@gentoo.org> grisbi-0.5.4-r1.ebuild:
+  Added ~sparc keyword.
+
+*grisbi-0.5.4-r1 (28 Dec 2004)
+
+  28 Dec 2004; Seemant Kulleen <seemant@gentoo.org> +grisbi-0.5.4-r1.ebuild:
+  revision bump for new digest -- upstream changed the tarball hours after
+  package added to portage. shame on them.
+
+*grisbi-0.5.4 (27 Dec 2004)
+
+  27 Dec 2004; Seemant Kulleen <seemant@gentoo.org> +grisbi-0.5.4.ebuild:
+  version bump thanks to: Guillaume Castagnino <guilc@fr.st>. Sorry about not
+  getting to the previous bump in time.
+
+*grisbi-0.5.2 (21 Oct 2004)
+
+  21 Oct 2004; Seemant Kulleen <seemant@gentoo.org> +grisbi-0.5.2.ebuild:
+  version bump thanks to: Guillaume Castagnino <guilc@fr.st> in bug #67566
+
+*grisbi-0.5.2_pre1 (08 Oct 2004)
+
+  08 Oct 2004; Seemant Kulleen <seemant@gentoo.org> grisbi-0.5.0-r1.ebuild,
+  +grisbi-0.5.2_pre1.ebuild:
+  Version bump; adds support for ofx and nls USE flags. Ebuild by: Guillaume
+  Castagnino <guilc@laposte.net> via email
+
+  06 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org> grisbi-0.5.0-r1.ebuild:
+  Switch to use epause and ebeep, bug #62950
+
+  14 Aug 2004; Sven Wegener <swegener@gentoo.org> metadata.xml:
+  Corrected metadata.xml to match DTD.
+
+  07 Aug 2004; Tom Martin <slarti@gentoo.org> grisbi-0.5.0-r1.ebuild:
+  Typo in DESCRIPTION: personnal -> personal. Bug 59717.
+
+  18 Jul 2004; Daniel Ahlberg <aliz@gentoo.org> grisbi-0.5.0-r1.ebuild:
+  Added amd64 keyword, closing #57016.
+
+  16 Jul 2004; David Holm <dholm@gentoo.org> grisbi-0.5.0-r1.ebuild:
+  Added to ~ppc.
+
+*grisbi-0.5.0-r1 (13 Jul 2004)
+
+  13 Jul 2004; Seemant Kulleen <seemant@gentoo.org> +grisbi-0.5.0-r1.ebuild:
+  new accounting office package. Ebuild submitted by: Guillaume Castagnino
+  <guilc@fr.st> in bug #52595. Guillaume will be the third party maintainer for
+  this package. Seemant will be his gentoo proxy
+

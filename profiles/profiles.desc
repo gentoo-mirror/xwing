@@ -1,0 +1,15 @@
+#############################################
+# This is a list of valid profiles for each architecture.  This file is used by
+# repoman when doing a repoman scan or repoman full.
+# DO NOT ADD PROFILES WITH A "die" or "exit" IN THEM OR IT KILLS REPOMAN
+#
+#layout:
+#arch		profile_directory				status
+
+# we declare those profiles in overlay because some packages are pure 32bits binaries
+# so those packages are not available to non-multilib users
+amd64		default/linux/amd64/13.0/no-multilib		dev
+amd64		hardened/linux/amd64/no-multilib		stable
+amd64		hardened/linux/amd64/no-multilib/selinux	stable
+
+# vim: ts=8:noexpandtab:

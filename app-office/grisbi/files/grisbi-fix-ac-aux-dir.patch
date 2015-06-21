@@ -1,0 +1,12 @@
+diff --git a/configure.in b/configure.in
+index ae9d5b3..7f145bb 100644
+--- a/configure.in
++++ b/configure.in
+@@ -7,6 +7,7 @@ m4_define(grisbi_version, grisbi_major_version.grisbi_minor_version.grisbi_micro
+ 
+ AC_INIT([grisbi],[grisbi_version],[http://grisbi.tuxfamily.org/mantis/login_select_proj_page.php?ref=bug_report_page.php],[grisbi],[http://www.grisbi.org/index.fr.html])
+ 
++AC_CONFIG_AUX_DIR([build-aux])
+ AC_CONFIG_SRCDIR(src/main.c)
+ AC_CONFIG_HEADERS([config.h])
+ AC_CONFIG_MACRO_DIR([m4])

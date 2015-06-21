@@ -1,0 +1,128 @@
+# ChangeLog for media-gfx/AfterShotPro
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*AfterShotPro-2.1.2.10 (01 Feb 2015)
+
+  01 Feb 2015; Guillaume Castagnino <casta@xwing.info>
+  -AfterShotPro-2.0.3.25.ebuild, -AfterShotPro-2.0.3.25-r1.ebuild,
+  -AfterShotPro-2.1.0.40-r1.ebuild, +AfterShotPro-2.1.2.10.ebuild:
+  bump
+
+*AfterShotPro-2.1.0.40-r1 (27 Oct 2014)
+
+  27 Oct 2014; Guillaume Castagnino <casta@xwing.info>
+  -AfterShotPro-2.1.0.40.ebuild, +AfterShotPro-2.1.0.40-r1.ebuild:
+  fix HDR files installation
+
+*AfterShotPro-2.1.0.40 (26 Oct 2014)
+
+  26 Oct 2014; Guillaume Castagnino <casta@xwing.info>
+  +AfterShotPro-2.1.0.40.ebuild:
+  version bump
+
+*AfterShotPro-2.0.3.25-r1 (17 Sep 2014)
+
+  17 Sep 2014; Guillaume Castagnino <casta@xwing.info>
+  -AfterShotPro-1.1.0.30.ebuild, -AfterShotPro-1.1.1.10.ebuild,
+  +AfterShotPro-2.0.3.25-r1.ebuild:
+  update ASP to allow 32 bits build on amd64. Remove obsolete versions
+
+*AfterShotPro-2.0.3.25 (18 Aug 2014)
+
+  18 Aug 2014; Guillaume Castagnino <casta@xwing.info>
+  -AfterShotPro-2.0.0.133.ebuild, +AfterShotPro-2.0.3.25.ebuild:
+  version bump
+
+  26 May 2014; Guillaume Castagnino <casta@xwing.info>
+  AfterShotPro-2.0.0.133.ebuild:
+  fix 32bits build handling
+
+*AfterShotPro-2.0.0.133 (26 May 2014)
+
+  26 May 2014; Guillaume Castagnino <casta@xwing.info>
+  +AfterShotPro-2.0.0.133.ebuild:
+  adding ASP2 to overlay
+
+  01 Aug 2013; Guillaume Castagnino <casta@xwing.info>
+  AfterShotPro-1.2.0.7.ebuild:
+  no more libpng 1.2
+
+  01 Aug 2013; Guillaume Castagnino <casta@xwing.info>
+  AfterShotPro-1.1.0.30.ebuild, AfterShotPro-1.1.1.10.ebuild,
+  AfterShotPro-1.2.0.7.ebuild:
+  fix emul-* deps
+
+  29 Jul 2013; Guillaume Castagnino <casta@xwing.info>
+  AfterShotPro-1.1.0.30.ebuild, AfterShotPro-1.1.1.10.ebuild,
+  AfterShotPro-1.2.0.7.ebuild:
+  fix depends for last emul-* changes
+
+*AfterShotPro-1.2.0.7 (17 Jul 2013)
+
+  17 Jul 2013; Guillaume Castagnino <casta@xwing.info>
+  +AfterShotPro-1.2.0.7.ebuild:
+  version bump
+
+  14 Mar 2013; Guillaume Castagnino <casta@xwing.info>
+  AfterShotPro-1.1.0.30.ebuild, AfterShotPro-1.1.1.10.ebuild:
+  allow both versions of binary 32bits packages
+
+  13 Mar 2013; Guillaume Castagnino <casta@xwing.info>
+  AfterShotPro-1.1.0.30.ebuild, AfterShotPro-1.1.1.10.ebuild:
+  update ebuild for the new 32bits abi capable ebuilds
+
+  18 Feb 2013; Guillaume Castagnino <casta@xwing.info>
+  AfterShotPro-1.1.1.10.ebuild:
+  no more noiseninja but...lib still present
+
+*AfterShotPro-1.1.1.10 (18 Feb 2013)
+
+  18 Feb 2013; Guillaume Castagnino <casta@xwing.info>
+  -AfterShotPro-1.0.1.10.ebuild, AfterShotPro-1.1.0.30.ebuild,
+  +AfterShotPro-1.1.1.10.ebuild:
+  Add new version. warning, it seems to remove noise ninja. Do not upgrade if
+  you need it. Update download URL for 1.1.0.30 and remove no more available
+  1.0.1.10
+
+*AfterShotPro-1.1.0.30 (24 Oct 2012)
+
+  24 Oct 2012; Guillaume Castagnino <casta@xwing.info>
+  -AfterShotPro-1.1.0.28.ebuild, +AfterShotPro-1.1.0.30.ebuild:
+  bump beta version
+
+  18 Oct 2012; Guillaume Castagnino <casta@xwing.info>
+  AfterShotPro-1.1.0.28.ebuild:
+  fix workdir
+
+*AfterShotPro-1.1.0.28 (18 Oct 2012)
+
+  18 Oct 2012; Guillaume Castagnino <casta@xwing.info>
+  +AfterShotPro-1.1.0.28.ebuild:
+  add the brand new public beta
+
+*AfterShotPro-1.0.1.10 (13 Apr 2012)
+
+  13 Apr 2012; Guillaume Castagnino <casta@xwing.info> -AfterShotPro-1.ebuild,
+  +AfterShotPro-1.0.1.10.ebuild, metadata.xml:
+  Version bump. Nostalgia plugin is now embedded in package. Saddly, package
+  versionning is always broken: same URL as previous version, no version in
+  package name...
+
+  18 Feb 2012; Guillaume Castagnino <casta@xwing.info> AfterShotPro-1.ebuild:
+  add nuance use flag
+
+  04 Feb 2012; Guillaume Castagnino <casta@xwing.info> AfterShotPro-1.ebuild:
+  add QA_FLAGS_IGNORED
+
+  03 Feb 2012; Guillaume Castagnino <casta@xwing.info> AfterShotPro-1.ebuild,
+  metadata.xml:
+  add nostalgia plugin support
+
+*AfterShotPro-1 (10 Jan 2012)
+
+  10 Jan 2012; Guillaume Castagnino <casta@xwing.info> +AfterShotPro-1.ebuild,
+  +metadata.xml:
+  Initial AfterShotPro (successor of bibble) version. Depending on future
+  releases, versionning scheme may be prone to some changes...
+
