@@ -1,14 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=f3870534d005103ed54e0a059f089b7f
+SLOT=0
 DEFINED_PHASES=compile install postinst prepare
+EAPI=3
 DEPEND=>=net-print/cups-1.2.0 app-text/ghostscript-gpl[cups] gtk? ( =x11-libs/gtk+-1.2* =dev-libs/glib-1.2* )
 DESCRIPTION=Turboprint driver
-EAPI=3
-HOMEPAGE=http://www.turboprint.de
-IUSE=gtk
-KEYWORDS=~x86 ~amd64
 LICENSE=turboprint
-RDEPEND=>=net-print/cups-1.2.0 app-text/ghostscript-gpl[cups] gtk? ( =x11-libs/gtk+-1.2* =dev-libs/glib-1.2* )
+IUSE=gtk
 RESTRICT=mirror
-SLOT=0
 SRC_URI=x86? ( https://gentoo.xwing.info/distfiles/turboprint-1.96-4.tgz ) amd64? ( https://gentoo.xwing.info/distfiles/turboprint-1.96-4.x86_64.tgz )
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=f3870534d005103ed54e0a059f089b7f
+KEYWORDS=~x86 ~amd64
+HOMEPAGE=http://www.turboprint.de
+RDEPEND=>=net-print/cups-1.2.0 app-text/ghostscript-gpl[cups] gtk? ( =x11-libs/gtk+-1.2* =dev-libs/glib-1.2* )
