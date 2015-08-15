@@ -3,6 +3,5 @@
 # * generated automatically using pmaint *
 
 app-office/grisbi:goffice - Enable goffice (graphics) support
-media-gfx/AfterShotPro:nostalgia - Enable Nostalgia BW plugin support
 media-gfx/AfterShotPro:nuance - Enable Nuance Color grading plugin support
 media-gfx/bibble5:brenda - Enable Brenda plugin support

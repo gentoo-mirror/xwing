@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="nuance">Enable Nuance Color grading plugin support</flag>
-		<flag name="nostalgia">Enable Nostalgia BW plugin support</flag>
 	</use>
 </pkgmetadata>
 
