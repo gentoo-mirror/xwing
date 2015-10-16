@@ -1,0 +1,11 @@
+# ChangeLog for media-gfx/rawtherapee
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Id$
+
+*rawtherapee-9999 (16 Oct 2015)
+
+  16 Oct 2015; Guillaume Castagnino <casta@xwing.info>
+  +rawtherapee-9999.ebuild, +metadata.xml:
+  add rawtherapee live ebuild, since there are few releases and lots of new
+  features
+
