@@ -8,3 +8,4 @@ media-plugins/asp-plugins-nuance 1.0.10: Nuance - Colour Grading
 media-plugins/bibble5-plugins-brenda 1.0.1: Brenda - Colour Grading
 net-misc/netmask 2.4: Tool for generating terse netmasks in several common formats
 net-print/turboprint 1.96-r3: Turboprint driver
+x11-themes/greybird 1.6.2: The default theme from Xubuntu
