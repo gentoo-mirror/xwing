@@ -2,6 +2,9 @@
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
 # $Id$
 
+  20 Nov 2015; Guillaume Castagnino <casta@xwing.info> rawtherapee-9999.ebuild:
+  switch to gtk3 build. Force c++11 since gtkmm-3.18 needs it
+
 *rawtherapee-9999 (16 Oct 2015)
 
   16 Oct 2015; Guillaume Castagnino <casta@xwing.info>
