@@ -38,7 +38,7 @@ pkg_pretend() {
 	if use openmp ; then
 		tc-has-openmp || die "Please switch to an openmp compatible compiler"
 	fi
-	# build with gtkmm 3.18 requires -std=c++11
+	# build requires -std=c++11
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		if ! test-flag-CXX -std=c++11; then
 			eerror "${P} requires C++11-capable C++ compiler. Your current compiler"
@@ -50,8 +50,6 @@ pkg_pretend() {
 }
 
 src_configure() {
-	append-cxxflags -std=c++11
-
 	local mycmakeargs=(
 		$(cmake-utils_use openmp OPTION_OMP)
 		$(cmake-utils_use_with bzip2 BZIP)
