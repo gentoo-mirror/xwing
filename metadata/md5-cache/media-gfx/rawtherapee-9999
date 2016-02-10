@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare pretend test unpack
-DEPEND=bzip2? ( app-arch/bzip2 ) >=x11-libs/gtk+-3.16:3 >=dev-cpp/gtkmm-3.16:3.0 >=dev-cpp/glibmm-2.44:2 dev-libs/expat dev-libs/libsigc++:2 media-libs/libcanberra[gtk3] media-libs/tiff:0 media-libs/libpng:0 media-libs/libiptcdata media-libs/lcms:2 sci-libs/fftw:3.0 sys-libs/zlib virtual/jpeg:0 app-arch/xz-utils virtual/pkgconfig sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) >=dev-vcs/git-1.8.2.1
+DEPEND=bzip2? ( app-arch/bzip2 ) >=x11-libs/gtk+-3.16:3 >=dev-cpp/gtkmm-3.16:3.0 >=dev-cpp/glibmm-2.44:2 dev-libs/expat dev-libs/libsigc++:2 media-libs/libcanberra[gtk3] media-libs/tiff:0 media-libs/libpng:0 media-libs/libiptcdata media-libs/lcms:2 sci-libs/fftw:3.0 sys-libs/zlib virtual/jpeg:0 app-arch/xz-utils virtual/pkgconfig sys-devel/make >=dev-util/cmake-2.8.12 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=A powerful cross-platform raw image processing program
 EAPI=5
 HOMEPAGE=http://www.rawtherapee.com/
@@ -8,5 +8,5 @@ LICENSE=GPL-3
 RDEPEND=bzip2? ( app-arch/bzip2 ) >=x11-libs/gtk+-3.16:3 >=dev-cpp/gtkmm-3.16:3.0 >=dev-cpp/glibmm-2.44:2 dev-libs/expat dev-libs/libsigc++:2 media-libs/libcanberra[gtk3] media-libs/tiff:0 media-libs/libpng:0 media-libs/libiptcdata media-libs/lcms:2 sci-libs/fftw:3.0 sys-libs/zlib virtual/jpeg:0
 SLOT=0
 _eclass_exported_funcs=pkg_pretend:- src_unpack:git-r3 src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
-_eclasses_=cmake-utils	3443785f3176b7cfdf7bd1f2c403bd9f	eutils	28fb3e5852485af1c348d446b0b98389	flag-o-matic	d270fa247153df66074f795fa42dba3e	git-r3	ef66dfc3db09f327af21cf32f140fb2b	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=cmake-utils	c67ce9708a9c02be2d296cf547740e9c	eutils	28fb3e5852485af1c348d446b0b98389	flag-o-matic	d270fa247153df66074f795fa42dba3e	git-r3	ef66dfc3db09f327af21cf32f140fb2b	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=8996e4a3e0d377dab5a76d1382e130e5
