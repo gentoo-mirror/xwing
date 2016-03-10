@@ -14,7 +14,7 @@ SLOT="0"
 IUSE="mysql postgres sqlite"
 RDEPEND="dev-lang/perl
 	dev-perl/DBI
-	dev-perl/net-server
+	dev-perl/Net-Server
 	dev-perl/Date-Calc
 	virtual/mailx
 	postgres? ( dev-perl/DBD-Pg )
