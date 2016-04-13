@@ -12,5 +12,5 @@ RESTRICT=mirror strip
 SLOT=5
 SRC_URI=https://gentoo.xwing.info/distfiles/bibble5-5.2.3_i386.deb
 _eclass_exported_funcs=pkg_setup:- src_unpack:- src_install:-
-_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=dea29a1bf6bb4f52eb144adf0ab98cf6
