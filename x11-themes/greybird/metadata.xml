@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>desktop-misc</herd>
-  <herd>ayatana</herd>
-  <maintainer>
-    <email>ayatana-bugs@gentoo.org</email>
-  </maintainer>
-  <upstream>
-    <remote-id type="github">shimmerproject/Greybird</remote-id>
-  </upstream>
+	<maintainer type="person">
+		<email>casta@xwing.info</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">shimmerproject/Greybird</remote-id>
+	</upstream>
+	<use>
+		<flag name="emerald">Emerald support</flag>
+	</use>
 </pkgmetadata>

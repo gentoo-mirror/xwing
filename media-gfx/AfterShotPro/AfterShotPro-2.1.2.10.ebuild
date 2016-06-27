@@ -70,11 +70,8 @@ RDEPEND="
 "
 
 BASEDIR="opt/AfterShot2"
-SUFFIX=
-if ! use abi_x86_32 ; then
-	BASEDIR="${BASEDIR}(64-bit)"
-	SUFFIX="X64"
-fi
+BASEDIR="!abi_x86_32? ( ${BASEDIR}(64-bit) )"
+SUFFIX="!abi_x86_32? ( X64 )"
 
 # Skip some QA checks we cannot fix
 QA_DESKTOP_FILE="usr/share/applications/AfterShot2${SUFFIX}.desktop"
