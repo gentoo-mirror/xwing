@@ -1,0 +1,9 @@
+# ChangeLog for x11-misc/gtk3-nocsd
+# Copyright 1999-2016 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*gtk3-nocsd-9999 (27 Jun 2016)
+
+  27 Jun 2016; Guillaume Castagnino <casta@xwing.info> +files/90gtk3-nocsd,
+  +gtk3-nocsd-9999.ebuild, +metadata.xml:
+  add gtk3-nocsd
