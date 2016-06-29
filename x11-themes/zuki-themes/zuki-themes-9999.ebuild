@@ -17,7 +17,8 @@ IUSE=""
 
 RDEPEND="
 	>=x11-libs/gtk+-2:2
-	>=x11-libs/gtk+-3:3
+	>=x11-libs/gtk+-3.20:3
+	>=x11-libs/gdk-pixbuf-2:2
 	x11-themes/gtk-engines-murrine"
 RDEPEND="${DEPEND}"
 
