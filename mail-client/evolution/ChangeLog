@@ -1,0 +1,9 @@
+# ChangeLog for mail-client/evolution
+# Copyright 1999-2016 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*evolution-3.20.3 (29 Jun 2016)
+
+  29 Jun 2016; Guillaume Castagnino <casta@xwing.info> +evolution-3.20.3.ebuild,
+  +metadata.xml:
+  add up to date evolution

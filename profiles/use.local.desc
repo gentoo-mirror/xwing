@@ -3,5 +3,16 @@
 # * generated automatically using pmaint *
 
 app-office/grisbi:goffice - Enable goffice (graphics) support
+gnome-extra/evolution-data-server:api-doc-extras - Build documentation for private APIs
+gnome-extra/evolution-data-server:gnome-online-accounts - Enable using net-libs/gnome-online-accounts for authorization
+gnome-extra/evolution-data-server:google - enable google connector
+gnome-extra/evolution-data-server:weather - Enable optional weather calendar support
+mail-client/evolution:bogofilter - Build mail-filter/bogofilter plugin
+mail-client/evolution:crypt - Enable GPG encryption support using app-crypt/gnupg and app-crypt/pinentry
+mail-client/evolution:highlight - Enable text highlighting plugin
+mail-client/evolution:ldap - Enable support for fetching contacts from an LDAP or Active Directory server using net-nds/openldap
+mail-client/evolution:map - Enable support for displaying contacts on a map inside evolution using media-libs/libchamplain
+mail-client/evolution:spamassassin - Build mail-filter/spamassassin plugin
+mail-client/evolution:weather - Enable optional weather calendar support
 media-gfx/AfterShotPro:nuance - Enable Nuance Color grading plugin support
 media-gfx/bibble5:brenda - Enable Brenda plugin support

@@ -1,0 +1,9 @@
+# ChangeLog for gnome-extra/evolution-data-server
+# Copyright 1999-2016 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*evolution-data-server-3.20.3 (29 Jun 2016)
+
+  29 Jun 2016; Guillaume Castagnino <casta@xwing.info>
+  +evolution-data-server-3.20.3.ebuild, +files/calentry.schema, +metadata.xml:
+  add up to date evolution
