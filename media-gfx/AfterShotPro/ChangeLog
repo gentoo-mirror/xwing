@@ -1,6 +1,10 @@
 # ChangeLog for media-gfx/AfterShotPro
-# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2016 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  30 Jun 2016; Guillaume Castagnino <casta@xwing.info>
+  AfterShotPro-2.1.2.10.ebuild:
+  fix the broken repoman fix
 
 *AfterShotPro-2.1.2.10 (01 Feb 2015)
 
@@ -125,4 +129,3 @@
   +metadata.xml:
   Initial AfterShotPro (successor of bibble) version. Depending on future
   releases, versionning scheme may be prone to some changes...
-

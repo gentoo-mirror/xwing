@@ -5,4 +5,7 @@
 		<email>casta@xwing.info</email>
 		<name>Guillaume Castagnino</name>
 	</maintainer>
+	<use>
+		<flag name="gtk2">prefer gtk2 auild over gtk3</flag>
+	</use>
 </pkgmetadata>

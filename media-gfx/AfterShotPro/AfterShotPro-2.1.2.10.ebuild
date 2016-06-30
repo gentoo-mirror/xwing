@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -69,19 +69,24 @@ RDEPEND="
 	x86? ( ${NATIVE_DEPS} )
 "
 
-BASEDIR="opt/AfterShot2"
-BASEDIR="!abi_x86_32? ( ${BASEDIR}(64-bit) )"
-SUFFIX="!abi_x86_32? ( X64 )"
-
-# Skip some QA checks we cannot fix
-QA_DESKTOP_FILE="usr/share/applications/AfterShot2${SUFFIX}.desktop"
-QA_EXECDIR="${BASEDIR}/bin/AfterShot"
-QA_WX_LOAD="${BASEDIR}/bin/AfterShot"
-QA_FLAGS_IGNORED="${BASEDIR}/lib/libOpenCL\.so.*
-	${BASEDIR}/lib/libgomp\.so.*
-	${BASEDIR}/supportfiles/libs/NoiseNinja/libnoiseninja\.so.*"
-
 S="${WORKDIR}"
+
+pkg_setup() {
+	BASEDIR="opt/AfterShot2"
+	SUFFIX=
+	if ! use abi_x86_32 ; then
+		BASEDIR="${BASEDIR}(64-bit)"
+		SUFFIX="X64"
+	fi
+
+	# Skip some QA checks we cannot fix
+	QA_DESKTOP_FILE="usr/share/applications/AfterShot2${SUFFIX}.desktop"
+	QA_EXECDIR="${BASEDIR}/bin/AfterShot"
+	QA_WX_LOAD="${BASEDIR}/bin/AfterShot"
+	QA_FLAGS_IGNORED="${BASEDIR}/lib/libOpenCL\.so.*
+		${BASEDIR}/lib/libgomp\.so.*
+		${BASEDIR}/supportfiles/libs/NoiseNinja/libnoiseninja\.so.*"
+}
 
 src_unpack() {
 	unpack ${A}
