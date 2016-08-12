@@ -9,5 +9,4 @@ media-plugins/bibble5-plugins-brenda 1.0.1: Brenda - Colour Grading
 net-misc/netmask 2.4: Tool for generating terse netmasks in several common formats
 net-print/turboprint 1.96-r3: Turboprint driver
 x11-misc/gtk3-nocsd 9999: A hack to disable gtk3 client-side decorations
-x11-themes/mate-themes 3.20.10: A set of MATE themes, with sets for users with limited or low vision
 x11-themes/zuki-themes 9999: Zuki themes for GNOME, Xfce and more.
