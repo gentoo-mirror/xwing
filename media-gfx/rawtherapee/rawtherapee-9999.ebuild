@@ -22,6 +22,7 @@ RDEPEND="bzip2? ( app-arch/bzip2 )
 		>=dev-cpp/gtkmm-2.12:2.4
 		>=dev-cpp/glibmm-2.16:2
 		media-libs/libcanberra[gtk]
+		x11-themes/gtk-engines
 	)
 	!gtk2? (
 		>=x11-libs/gtk+-3.16:3
