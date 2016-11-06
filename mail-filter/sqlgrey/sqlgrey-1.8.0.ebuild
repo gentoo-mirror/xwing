@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils systemd user
 
@@ -22,15 +22,13 @@ RDEPEND="dev-lang/perl
 	mysql? ( dev-perl/DBD-mysql )"
 DEPEND="$RDEPEND
 	sys-apps/sed"
-KEYWORDS="~amd64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~sparc ~x86"
 
 REQUIRED_USE="|| ( postgres mysql sqlite )"
-PATCHES=( "${FILESDIR}/${P}-syslogformat.patch" )
-
-# remove this when EAPI6 will be ready in portage
-src_prepare() {
-	[[ ${PATCHES} ]] && epatch "${PATCHES[@]}"
-}
+PATCHES=(
+	"${FILESDIR}/${P}-init.patch"
+	"${FILESDIR}/${P}-syslogformat.patch"
+)
 
 pkg_setup() {
 	enewgroup sqlgrey
