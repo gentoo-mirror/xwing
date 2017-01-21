@@ -10,5 +10,5 @@ RESTRICT=strip mirror
 SLOT=0
 SRC_URI=http://nexi.com/asp/package/Nuance-1.0.10.afzplug -> Nuance-1.0.10.zip
 _eclass_exported_funcs=pkg_setup:asp-plugins src_install:asp-plugins
-_eclasses_=asp-plugins	64afd0fbd3ceb3892f124f4beaa153c4	eutils	017377e73405d964cd0137088cddb9c3	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=asp-plugins	64afd0fbd3ceb3892f124f4beaa153c4	eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=b69cc62eb65423f4250bf277c927b26a
