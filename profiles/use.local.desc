@@ -9,4 +9,3 @@ media-gfx/gthumb:http - Enable webservice integration through net-libs/libsoup
 media-gfx/gthumb:json - Compile code that uses the libjson-glib library
 media-gfx/gthumb:slideshow - Enable slideshow plugin
 media-gfx/gthumb:webp - Enable support for webp image format
-media-gfx/rawtherapee:gtk2 - prefer gtk2 auild over gtk3

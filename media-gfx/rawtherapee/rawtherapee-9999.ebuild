@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,27 +9,18 @@ inherit cmake-utils toolchain-funcs git-r3 flag-o-matic
 DESCRIPTION="A powerful cross-platform raw image processing program"
 HOMEPAGE="http://www.rawtherapee.com/"
 EGIT_REPO_URI="https://github.com/Beep6581/RawTherapee.git"
-EGIT_BRANCH="gtk3"
+EGIT_BRANCH="dev"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="bzip2 gtk2 openmp"
+IUSE="bzip2 openmp"
 
 RDEPEND="bzip2? ( app-arch/bzip2 )
-	gtk2? (
-		>=x11-libs/gtk+-2.24.18:2
-		>=dev-cpp/gtkmm-2.12:2.4
-		>=dev-cpp/glibmm-2.16:2
-		media-libs/libcanberra[gtk]
-		x11-themes/gtk-engines
-	)
-	!gtk2? (
-		>=x11-libs/gtk+-3.16:3
-		>=dev-cpp/gtkmm-3.16:3.0
-		>=dev-cpp/glibmm-2.44:2
-		media-libs/libcanberra[gtk3]
-	)
+	>=x11-libs/gtk+-3.16:3
+	>=dev-cpp/gtkmm-3.16:3.0
+	>=dev-cpp/glibmm-2.44:2
+	media-libs/libcanberra[gtk3]
 	media-libs/tiff:0
 	media-libs/libpng:0
 	media-libs/libiptcdata
@@ -40,12 +31,6 @@ RDEPEND="bzip2? ( app-arch/bzip2 )
 DEPEND="${RDEPEND}
 	app-arch/xz-utils
 	virtual/pkgconfig"
-
-pkg_setup() {
-	if use gtk2 ; then
-		EGIT_BRANCH="master"
-	fi
-}
 
 pkg_pretend() {
 	if use openmp ; then
@@ -71,5 +56,9 @@ src_configure() {
 		-DLICENCEDIR=/usr/share/${PN}
 		-DCACHE_NAME_SUFFIX=""
 	)
+
+	# lots of speed improvement, rawtherapee devs advice to use it.
+	replace-flags -O? -O3
+
 	cmake-utils_src_configure
 }
