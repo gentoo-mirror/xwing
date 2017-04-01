@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit cmake-utils toolchain-funcs git-r3 flag-o-matic
 
@@ -16,9 +16,9 @@ KEYWORDS=""
 IUSE="bzip2 openmp"
 
 RDEPEND="bzip2? ( app-arch/bzip2 )
-	>=x11-libs/gtk+-3.16:3
-	>=dev-cpp/gtkmm-3.16:3.0
-	>=dev-cpp/glibmm-2.44:2
+	x11-libs/gtk+:3
+	dev-libs/expat
+	dev-libs/libsigc++:2
 	media-libs/libcanberra[gtk3]
 	media-libs/tiff:0
 	media-libs/libpng:0
@@ -29,31 +29,25 @@ RDEPEND="bzip2? ( app-arch/bzip2 )
 	virtual/jpeg:0"
 DEPEND="${RDEPEND}
 	app-arch/xz-utils
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	dev-cpp/gtkmm:3.0"
 
 pkg_pretend() {
 	if use openmp ; then
 		tc-has-openmp || die "Please switch to an openmp compatible compiler"
 	fi
-	# build requires -std=c++11
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		if ! test-flag-CXX -std=c++11; then
-			eerror "${P} requires C++11-capable C++ compiler. Your current compiler"
-			eerror "does not seem to support -std=c++11 option. Please upgrade your compiler"
-			eerror "to gcc-4.7 or an equivalent version supporting C++11."
-			die "Currently active compiler does not support -std=c++11"
-		fi
-	fi
 }
 
 src_configure() {
+	filter-flags -ffast-math
 	local mycmakeargs=(
-		$(cmake-utils_use openmp OPTION_OMP)
-		$(cmake-utils_use_with bzip2 BZIP)
+		-DOPTION_OMP=$(usex openmp)
+		-DBZIP=$(usex bzip2)
 		-DDOCDIR=/usr/share/doc/${PF}
 		-DCREDITSDIR=/usr/share/${PN}
 		-DLICENCEDIR=/usr/share/${PN}
 		-DCACHE_NAME_SUFFIX=""
+		-DCMAKE_CXX_FLAGS="-std=c++11"
 	)
 
 	# lots of speed improvement, rawtherapee devs advice to use it.
