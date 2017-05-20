@@ -10,4 +10,5 @@ media-plugins/asp-plugins-nuance 1.0.10: Nuance - Colour Grading
 media-plugins/bibble5-plugins-brenda 1.0.1: Brenda - Colour Grading
 net-misc/netmask 2.4: Tool for generating terse netmasks in several common formats
 x11-misc/gtk3-nocsd 9999: A hack to disable gtk3 client-side decorations
+x11-plugins/purple-hangouts 9999: Hangouts Plugin for libpurple
 x11-themes/zuki-themes 9999: Zuki themes for GNOME, Xfce and more.
