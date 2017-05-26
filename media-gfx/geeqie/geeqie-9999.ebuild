@@ -6,7 +6,8 @@ inherit autotools git-r3
 
 DESCRIPTION="A lightweight GTK image viewer forked from GQview"
 HOMEPAGE="http://www.geeqie.org"
-EGIT_REPO_URI="https://github.com/BestImageViewer/geeqie.git"
+#EGIT_REPO_URI="https://github.com/BestImageViewer/geeqie.git"
+EGIT_REPO_URI="http://www.geeqie.org/git/geeqie.git"
 EGIT_BRANCH="master"
 
 LICENSE="GPL-2"
