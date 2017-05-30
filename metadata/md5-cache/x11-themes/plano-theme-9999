@@ -1,0 +1,12 @@
+DEFINED_PHASES=install unpack
+DEPEND=>=x11-libs/gtk+-2:2 >=x11-libs/gtk+-3.20:3 >=x11-libs/gdk-pixbuf-2:2 x11-themes/gtk-engines-murrine >=dev-vcs/git-1.8.2.1
+DESCRIPTION=plano theme for GNOME, Xfce and more.
+EAPI=6
+HOMEPAGE=https://github.com/lassekongo83/plano-theme
+KEYWORDS=~amd64
+LICENSE=GPL-3
+RDEPEND=>=x11-libs/gtk+-2:2 >=x11-libs/gtk+-3.20:3 >=x11-libs/gdk-pixbuf-2:2 x11-themes/gtk-engines-murrine
+SLOT=0
+_eclass_exported_funcs=src_unpack:git-r3 src_install:-
+_eclasses_=git-r3	cbafa3261c37c7e3af44bb16a34ea390
+_md5_=952efd5d0019d84a04540b56a99d0452
