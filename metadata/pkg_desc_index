@@ -1,4 +1,5 @@
 app-office/grisbi 0.8.9999 1.0.9999 9999: Grisbi is a personal accounting application for Linux
+dev-ruby/sass 3.4.24: An extension of CSS3, adding nested rules, variables, mixins, and more
 mail-filter/sqlgrey 1.8.0: SQLgrey is a postfix policy service implementing a grey-listing policy
 media-gfx/AfterShotPro 1.2.0.7 2.1.2.10: Professional photo workflow and RAW conversion software
 media-gfx/bibble5 5.2.3_p20111213: Professional photo workflow and RAW conversion software
@@ -11,6 +12,6 @@ media-plugins/bibble5-plugins-brenda 1.0.1: Brenda - Colour Grading
 net-misc/netmask 2.4: Tool for generating terse netmasks in several common formats
 x11-misc/gtk3-nocsd 9999: A hack to disable gtk3 client-side decorations
 x11-plugins/purple-hangouts 9999: Hangouts Plugin for libpurple
+x11-themes/numix-gtk-theme 9999: A modern flat theme that supports Gnome, Unity, XFCE and Openbox.
 x11-themes/plano-theme 9999: plano theme for GNOME, Xfce and more.
-x11-themes/plano-themes 9999: plano themes for GNOME, Xfce and more.
 x11-themes/zuki-themes 9999: Zuki themes for GNOME, Xfce and more.

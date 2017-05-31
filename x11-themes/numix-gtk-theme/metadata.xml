@@ -5,6 +5,6 @@
     <email>casta@xwing.info</email>
   </maintainer>
   <upstream>
-    <remote-id type="github">lassekongo83/plano-themes</remote-id>
+    <remote-id type="github">numixproject/numix-gtk-theme</remote-id>
   </upstream>
 </pkgmetadata>
