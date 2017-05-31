@@ -23,13 +23,16 @@ else
 	SRC_URI="${BASE_URI}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
-DEPEND="
+RDEPEND="
 	x11-themes/gtk-engines-murrine
 	dev-ruby/sass:*
 	dev-libs/glib:2
 	x11-libs/gdk-pixbuf:2
 "
-RDEPEND="${DEPEND}"
+DEPEND="
+	${RDEPEND}
+	custom-colors? ( media-gfx/inkscape )
+"
 
 src_prepare() {
 	default
@@ -39,6 +42,11 @@ src_prepare() {
 			src/gtk-3.0/scss/_global.scss \
 			src/gtk-3.20/scss/_global.scss \
 			src/gtk-2.0/gtkrc
+
+		# regenerate png
+		sed -si -e 's/f1544d/397db5/g' src/assets/all-assets.svg
+		rm -f src/assets/*.png
+		cd scripts && ./render-assets.sh
 	fi
 }
 
