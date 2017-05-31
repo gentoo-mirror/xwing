@@ -9,6 +9,7 @@ DESCRIPTION="A modern flat theme that supports Gnome, Unity, XFCE and Openbox."
 HOMEPAGE="https://numixproject.org"
 LICENSE="GPL-3+"
 SLOT="0"
+IUSE="+custom-colors"
 
 BASE_URI="https://github.com/numixproject/${PN}"
 
@@ -30,7 +31,18 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-src_compile(){
+src_prepare() {
+	default
+
+	if use custom-colors ; then
+		sed -si -e 's/f0544c/397db5/' -e 's/f06860/4778b3/' -e 's/fc6f5d/4787bf/' \
+			src/gtk-3.0/scss/_global.scss \
+			src/gtk-3.20/scss/_global.scss \
+			src/gtk-2.0/gtkrc
+	fi
+}
+
+src_compile() {
 	emake DESTDIR="${D}" || die
 }
 

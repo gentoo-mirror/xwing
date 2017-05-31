@@ -7,4 +7,7 @@
   <upstream>
     <remote-id type="github">numixproject/numix-gtk-theme</remote-id>
   </upstream>
+  <use>
+    <flag name="custom-colors">Use a custom colors scheme: blue instead of orange</flag>
+  </use>
 </pkgmetadata>
