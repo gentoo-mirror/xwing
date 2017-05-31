@@ -9,7 +9,7 @@ DESCRIPTION="A modern flat theme that supports Gnome, Unity, XFCE and Openbox."
 HOMEPAGE="https://numixproject.org"
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="+custom-colors"
+IUSE="custom-colors"
 
 BASE_URI="https://github.com/numixproject/${PN}"
 
