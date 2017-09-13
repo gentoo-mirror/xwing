@@ -26,6 +26,7 @@ RDEPEND="x11-libs/gtk+:3
 	media-libs/lcms:2
 	sci-libs/fftw:3.0
 	sys-libs/zlib
+	media-libs/lensfun
 	virtual/jpeg:0"
 DEPEND="${RDEPEND}
 	app-arch/xz-utils
