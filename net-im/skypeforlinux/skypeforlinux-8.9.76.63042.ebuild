@@ -9,7 +9,7 @@ inherit pax-utils rpm multilib-build xdg-utils gnome2-utils
 
 DESCRIPTION="P2P Internet Telephony (VoiceIP) client"
 HOMEPAGE="https://www.skype.com/"
-SRC_URI="https://repo.skype.com/rpm/unstable/skypeforlinux_8.9.76.63042-1.x86_64.rpm"
+SRC_URI="https://repo.skype.com/rpm/unstable/${PN}_${PV}-1.x86_64.rpm"
 
 LICENSE="Skype-TOS no-source-code"
 SLOT="0"
