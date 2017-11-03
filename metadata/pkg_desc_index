@@ -9,7 +9,7 @@ media-plugins/asp-plugins-nostalgia 1.0.7: Nostalgia - Film Simulation
 media-plugins/asp-plugins-nuance 1.0.10: Nuance - Colour Grading
 media-plugins/bibble5-plugins-brenda 1.0.1: Brenda - Colour Grading
 media-video/pitivi 0.98.1: A non-linear video editor using the GStreamer multimedia framework
-net-im/skypeforlinux 8.10.76.2: P2P Internet Telephony (VoiceIP) client
+net-im/skypeforlinux 8.10.76.7: P2P Internet Telephony (VoiceIP) client
 net-misc/netmask 2.4: Tool for generating terse netmasks in several common formats
 x11-misc/gtk3-nocsd 9999: A hack to disable gtk3 client-side decorations
 x11-plugins/purple-hangouts 9999: Hangouts Plugin for libpurple
