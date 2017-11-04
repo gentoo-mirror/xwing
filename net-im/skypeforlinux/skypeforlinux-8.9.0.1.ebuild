@@ -5,19 +5,21 @@ EAPI=6
 
 MULTILIB_COMPAT=( abi_x86_64 )
 
-inherit pax-utils rpm multilib-build xdg-utils gnome2-utils
+inherit pax-utils rpm multilib-build xdg-utils
 
-DESCRIPTION="P2P Internet Telephony (VoiceIP) client"
+DESCRIPTION="Instant messaging client, with support for audio and video"
 HOMEPAGE="https://www.skype.com/"
-SRC_URI="https://repo.skype.com/rpm/unstable/${PN}_${PV}-1.x86_64.rpm"
+SRC_URI="https://repo.skype.com/rpm/stable/${PN}_${PV}-1.x86_64.rpm"
 
-LICENSE="Skype-TOS no-source-code"
+LICENSE="no-source-code MIT MIT-with-advertising BSD-1 BSD-2 BSD-4 Apache-2.0 Boost-1.0 ISC CC-BY-SA-3.0 CC0-1.0 openssl ZLIB APSL-2 icu Artistic-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 IUSE="pax_kernel"
 
 S="${WORKDIR}"
 QA_PREBUILT=opt/${PN}/${PN}
+QA_TEXTRELS=opt/${PN}/resources/app.asar.unpacked/node_modules/slimcore/bin/slimcore.node
+QA_EXECSTACK=opt/${PN}/resources/app.asar.unpacked/node_modules/slimcore/bin/slimcore.node
 RESTRICT="mirror bindist strip" #299368
 
 RDEPEND="dev-libs/atk[${MULTILIB_USEDEP}]
@@ -59,8 +61,9 @@ src_prepare() {
 	default
 	sed -e "s!^SKYPE_PATH=.*!SKYPE_PATH=${EPREFIX}/opt/${PN}/${PN}!" \
 		-i usr/bin/${PN} || die
-	sed -e "s!^Exec=.*!Exec=${EPREFIX}/opt/bin/${PN}!" \
+	sed -e "s!^Exec=/usr/bin/${PN}!Exec=${EPREFIX}/opt/bin/${PN}!" \
 		-e "s!^Categories=.*!Categories=Network;InstantMessaging;Telephony;!" \
+		-e "/OnlyShowIn=.*/d" \
 		-i usr/share/applications/${PN}.desktop || die
 }
 
@@ -68,8 +71,22 @@ src_install() {
 	insinto /opt/${PN}/locales
 	doins usr/share/${PN}/locales/*.pak
 
-	insinto /opt/${PN}
-	doins -r usr/share/${PN}/resources
+	insinto /opt/${PN}/resources/app.asar.unpacked/node_modules/keyboard-layout/build/Release
+	doins usr/share/${PN}/resources/app.asar.unpacked/node_modules/keyboard-layout/build/Release/keyboard-layout-manager.node
+
+	insinto /opt/${PN}/resources/app.asar.unpacked/node_modules/keytar/build/Release
+	doins usr/share/${PN}/resources/app.asar.unpacked/node_modules/keytar/build/Release/keytar.node
+
+	insinto /opt/${PN}/resources/app.asar.unpacked/node_modules/@paulcbetts/cld/build/Release
+	doins usr/share/${PN}/resources/app.asar.unpacked/node_modules/@paulcbetts/cld/build/Release/cld.node
+	insinto /opt/${PN}/resources/app.asar.unpacked/node_modules/@paulcbetts/spellchecker/build/Release
+	doins usr/share/${PN}/resources/app.asar.unpacked/node_modules/@paulcbetts/spellchecker/build/Release/spellchecker.node
+
+	insinto /opt/${PN}/resources/app.asar.unpacked/node_modules/slimcore/bin
+	doins usr/share/${PN}/resources/app.asar.unpacked/node_modules/slimcore/bin/*.node
+
+	insinto /opt/${PN}/resources/app.asar.unpacked/node_modules/sqlite3/lib/binding
+	doins usr/share/${PN}/resources/app.asar.unpacked/node_modules/sqlite3/lib/binding/node_sqlite3.node
 
 	insinto /opt/${PN}/resources
 	doins usr/share/${PN}/resources/*.asar
@@ -78,7 +95,6 @@ src_install() {
 	doins usr/share/${PN}/*.pak
 	doins usr/share/${PN}/*.bin
 	doins usr/share/${PN}/*.dat
-	doins usr/share/${PN}/*.html
 	doins usr/share/${PN}/version
 	exeinto /opt/${PN}
 	doexe usr/share/${PN}/*.so
@@ -87,7 +103,10 @@ src_install() {
 	into /opt
 	dobin usr/bin/${PN}
 
+	dodoc usr/share/${PN}/*.html
 	dodoc -r usr/share/doc/${PN}/.
+	# symlink required for the "Help->3rd Party Notes" menu entry  (otherwise frozen skype -> xdg-open)
+	dosym ${P} usr/share/doc/${PN}
 
 	doicon usr/share/pixmaps/${PN}.png
 
@@ -100,6 +119,7 @@ src_install() {
 
 	if use pax_kernel; then
 		pax-mark -Cm "${ED%/}"/opt/${PN}/${PN}
+		pax-mark -Cm "${ED%/}"/opt/${PN}/resources/app.asar.unpacked/node_modules/slimcore/bin/slimcore.node
 		eqawarn "You have set USE=pax_kernel meaning that you intend to run"
 		eqawarn "${PN} under a PaX enabled kernel. To do so, we must modify"
 		eqawarn "the ${PN} binary itself and this *may* lead to breakage! If"
@@ -109,13 +129,11 @@ src_install() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
 }
