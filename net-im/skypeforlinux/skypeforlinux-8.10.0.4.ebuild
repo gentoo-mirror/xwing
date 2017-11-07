@@ -5,24 +5,23 @@ EAPI=6
 
 MULTILIB_COMPAT=( abi_x86_64 )
 
-inherit pax-utils rpm multilib-build xdg-utils
+inherit eutils pax-utils rpm multilib-build xdg-utils
 
 DESCRIPTION="Instant messaging client, with support for audio and video"
 HOMEPAGE="https://www.skype.com/"
 SRC_URI="https://repo.skype.com/rpm/stable/${PN}_${PV}-1.x86_64.rpm"
 
-LICENSE="no-source-code MIT MIT-with-advertising BSD-1 BSD-2 BSD-4 Apache-2.0 Boost-1.0 ISC CC-BY-SA-3.0 CC0-1.0 openssl ZLIB APSL-2 icu Artistic-2 LGPL-2.1"
+LICENSE="Skype-TOS no-source-code MIT MIT-with-advertising BSD-1 BSD-2 BSD Apache-2.0 Boost-1.0 ISC CC-BY-SA-3.0 CC0-1.0 openssl ZLIB APSL-2 icu Artistic-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="pax_kernel"
 
 S="${WORKDIR}"
-QA_PREBUILT=opt/${PN}/${PN}
-QA_TEXTRELS=opt/${PN}/resources/app.asar.unpacked/node_modules/slimcore/bin/slimcore.node
-QA_EXECSTACK=opt/${PN}/resources/app.asar.unpacked/node_modules/slimcore/bin/slimcore.node
+QA_PREBUILT="*"
 RESTRICT="mirror bindist strip" #299368
 
-RDEPEND="dev-libs/atk[${MULTILIB_USEDEP}]
+RDEPEND="
+	dev-libs/atk[${MULTILIB_USEDEP}]
 	dev-libs/expat[${MULTILIB_USEDEP}]
 	dev-libs/glib:2[${MULTILIB_USEDEP}]
 	dev-libs/nspr[${MULTILIB_USEDEP}]
@@ -32,10 +31,10 @@ RDEPEND="dev-libs/atk[${MULTILIB_USEDEP}]
 	media-libs/alsa-lib[${MULTILIB_USEDEP}]
 	media-libs/fontconfig:1.0[${MULTILIB_USEDEP}]
 	media-libs/freetype:2[${MULTILIB_USEDEP}]
+	media-libs/libv4l[${MULTILIB_USEDEP}]
 	net-print/cups[${MULTILIB_USEDEP}]
 	sys-apps/dbus[${MULTILIB_USEDEP}]
 	sys-devel/gcc[cxx]
-	sys-libs/glibc
 	virtual/ttf-fonts
 	x11-libs/cairo[${MULTILIB_USEDEP}]
 	x11-libs/gdk-pixbuf:2[${MULTILIB_USEDEP}]
@@ -51,6 +50,8 @@ RDEPEND="dev-libs/atk[${MULTILIB_USEDEP}]
 	x11-libs/libXrandr[${MULTILIB_USEDEP}]
 	x11-libs/libXrender[${MULTILIB_USEDEP}]
 	x11-libs/libXtst[${MULTILIB_USEDEP}]
+	x11-libs/libxcb[${MULTILIB_USEDEP}]
+	x11-libs/libxkbfile[${MULTILIB_USEDEP}]
 	x11-libs/pango[${MULTILIB_USEDEP}]"
 
 src_unpack() {
@@ -59,67 +60,38 @@ src_unpack() {
 
 src_prepare() {
 	default
-	sed -e "s!^SKYPE_PATH=.*!SKYPE_PATH=${EPREFIX}/opt/${PN}/${PN}!" \
-		-i usr/bin/${PN} || die
-	sed -e "s!^Exec=/usr/bin/${PN}!Exec=${EPREFIX}/opt/bin/${PN}!" \
+	sed -e "s!^SKYPE_PATH=.*!SKYPE_PATH=${EPREFIX}/opt/skypeforlinux/skypeforlinux!" \
+		-i usr/bin/skypeforlinux || die
+	sed -e "s!^Exec=/usr/!Exec=${EPREFIX}/opt/!" \
 		-e "s!^Categories=.*!Categories=Network;InstantMessaging;Telephony;!" \
-		-e "/OnlyShowIn=.*/d" \
-		-i usr/share/applications/${PN}.desktop || die
+		-e "/^OnlyShowIn=/d" \
+		-i usr/share/applications/skypeforlinux.desktop || die
 }
 
 src_install() {
-	insinto /opt/${PN}/locales
-	doins usr/share/${PN}/locales/*.pak
-
-	insinto /opt/${PN}/resources/app.asar.unpacked/node_modules/keyboard-layout/build/Release
-	doins usr/share/${PN}/resources/app.asar.unpacked/node_modules/keyboard-layout/build/Release/keyboard-layout-manager.node
-
-	insinto /opt/${PN}/resources/app.asar.unpacked/node_modules/keytar/build/Release
-	doins usr/share/${PN}/resources/app.asar.unpacked/node_modules/keytar/build/Release/keytar.node
-
-	insinto /opt/${PN}/resources/app.asar.unpacked/node_modules/@paulcbetts/cld/build/Release
-	doins usr/share/${PN}/resources/app.asar.unpacked/node_modules/@paulcbetts/cld/build/Release/cld.node
-	insinto /opt/${PN}/resources/app.asar.unpacked/node_modules/@paulcbetts/spellchecker/build/Release
-	doins usr/share/${PN}/resources/app.asar.unpacked/node_modules/@paulcbetts/spellchecker/build/Release/spellchecker.node
-
-	insinto /opt/${PN}/resources/app.asar.unpacked/node_modules/slimcore/bin
-	doins usr/share/${PN}/resources/app.asar.unpacked/node_modules/slimcore/bin/*.node
-
-	insinto /opt/${PN}/resources/app.asar.unpacked/node_modules/sqlite3/lib/binding
-	doins usr/share/${PN}/resources/app.asar.unpacked/node_modules/sqlite3/lib/binding/node_sqlite3.node
-
-	insinto /opt/${PN}/resources
-	doins usr/share/${PN}/resources/*.asar
-
-	insinto /opt/${PN}
-	doins usr/share/${PN}/*.pak
-	doins usr/share/${PN}/*.bin
-	doins usr/share/${PN}/*.dat
-	doins usr/share/${PN}/version
-	exeinto /opt/${PN}
-	doexe usr/share/${PN}/*.so
-	doexe usr/share/${PN}/${PN}
+	dodir /opt
+	cp -a usr/share/skypeforlinux "${D}"/opt || die
 
 	into /opt
-	dobin usr/bin/${PN}
+	dobin usr/bin/skypeforlinux
 
-	dodoc usr/share/${PN}/*.html
-	dodoc -r usr/share/doc/${PN}/.
+	dodoc usr/share/skypeforlinux/*.html
+	dodoc -r usr/share/doc/skypeforlinux/.
 	# symlink required for the "Help->3rd Party Notes" menu entry  (otherwise frozen skype -> xdg-open)
-	dosym ${P} usr/share/doc/${PN}
+	dosym ${P} usr/share/doc/skypeforlinux
 
-	doicon usr/share/pixmaps/${PN}.png
+	doicon usr/share/pixmaps/skypeforlinux.png
 
 	local res
 	for res in 16 32 256 512; do
-		newicon -s ${res} usr/share/icons/hicolor/${res}x${res}/apps/${PN}.png ${PN}.png
+		newicon -s ${res} usr/share/icons/hicolor/${res}x${res}/apps/skypeforlinux.png skypeforlinux.png
 	done
 
-	domenu usr/share/applications/${PN}.desktop
+	domenu usr/share/applications/skypeforlinux.desktop
 
 	if use pax_kernel; then
-		pax-mark -Cm "${ED%/}"/opt/${PN}/${PN}
-		pax-mark -Cm "${ED%/}"/opt/${PN}/resources/app.asar.unpacked/node_modules/slimcore/bin/slimcore.node
+		pax-mark -m "${ED%/}"/opt/skypeforlinux/skypeforlinux
+		pax-mark -m "${ED%/}"/opt/skypeforlinux/resources/app.asar.unpacked/node_modules/slimcore/bin/slimcore.node
 		eqawarn "You have set USE=pax_kernel meaning that you intend to run"
 		eqawarn "${PN} under a PaX enabled kernel. To do so, we must modify"
 		eqawarn "the ${PN} binary itself and this *may* lead to breakage! If"
