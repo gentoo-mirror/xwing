@@ -17,7 +17,9 @@ KEYWORDS="~amd64"
 IUSE="pax_kernel"
 
 S="${WORKDIR}"
-QA_PREBUILT="*"
+QA_PREBUILT=opt/skypeforlinux/skypeforlinux
+QA_TEXTRELS=opt/skypeforlinux/resources/app.asar.unpacked/node_modules/slimcore/bin/slimcore.node
+QA_EXECSTACK=opt/skypeforlinux/resources/app.asar.unpacked/node_modules/slimcore/bin/slimcore.node
 RESTRICT="mirror bindist strip" #299368
 
 RDEPEND="
@@ -64,7 +66,7 @@ src_prepare() {
 		-i usr/bin/skypeforlinux || die
 	sed -e "s!^Exec=/usr/!Exec=${EPREFIX}/opt/!" \
 		-e "s!^Categories=.*!Categories=Network;InstantMessaging;Telephony;!" \
-		-e "/^OnlyShowIn=/d" \
+		-e "/OnlyShowIn=.*/d" \
 		-i usr/share/applications/skypeforlinux.desktop || die
 }
 
@@ -80,6 +82,9 @@ src_install() {
 	# symlink required for the "Help->3rd Party Notes" menu entry  (otherwise frozen skype -> xdg-open)
 	dosym ${P} usr/share/doc/skypeforlinux
 
+	# compat symlink for skypeforlinux bin autocreate autostart desktop file
+	dosym ../../opt/bin/skypeforlinux usr/bin/skypeforlinux
+
 	doicon usr/share/pixmaps/skypeforlinux.png
 
 	local res
@@ -90,8 +95,8 @@ src_install() {
 	domenu usr/share/applications/skypeforlinux.desktop
 
 	if use pax_kernel; then
-		pax-mark -m "${ED%/}"/opt/skypeforlinux/skypeforlinux
-		pax-mark -m "${ED%/}"/opt/skypeforlinux/resources/app.asar.unpacked/node_modules/slimcore/bin/slimcore.node
+		pax-mark -Cm "${ED%/}"/opt/skypeforlinux/skypeforlinux
+		pax-mark -Cm "${ED%/}"/opt/skypeforlinux/resources/app.asar.unpacked/node_modules/slimcore/bin/slimcore.node
 		eqawarn "You have set USE=pax_kernel meaning that you intend to run"
 		eqawarn "${PN} under a PaX enabled kernel. To do so, we must modify"
 		eqawarn "the ${PN} binary itself and this *may* lead to breakage! If"
