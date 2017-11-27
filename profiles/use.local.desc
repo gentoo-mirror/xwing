@@ -12,5 +12,4 @@ media-gfx/gthumb:http - Enable webservice integration through net-libs/libsoup
 media-gfx/gthumb:json - Compile code that uses the libjson-glib library
 media-gfx/gthumb:slideshow - Enable slideshow plugin
 media-gfx/gthumb:webp - Enable support for webp image format
-net-im/skypeforlinux:pax_kernel - Triggers a paxmarking of the main skype binary
 x11-themes/numix-gtk-theme:custom-colors - Use a custom colors scheme: blue instead of orange
