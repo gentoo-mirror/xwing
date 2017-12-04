@@ -37,6 +37,9 @@ REQUIRED_USE="gpu-accel? ( gtk3 )
 	map? ( gpu-accel )"
 
 src_prepare() {
+	eapply "${FILESDIR}"/${PN}-disable-Werror.patch
+	eapply_user
+
 	default
 
 	eautoreconf
