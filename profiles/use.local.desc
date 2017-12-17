@@ -2,14 +2,3 @@
 # Please add your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using pmaint *
 
-app-office/grisbi:goffice - Enable goffice (graphics) support
-media-gfx/AfterShotPro:nuance - Enable Nuance Color grading plugin support
-media-gfx/bibble5:brenda - Enable Brenda plugin support
-media-gfx/geeqie:gpu-accel - Enable GPU acceleration support - experimental
-media-gfx/geeqie:gtk3 - Link against x11-libs/gtk+:3 instead of x11-libs/gtk+:2
-media-gfx/geeqie:map - Enable items map display - experimental
-media-gfx/gthumb:http - Enable webservice integration through net-libs/libsoup
-media-gfx/gthumb:json - Compile code that uses the libjson-glib library
-media-gfx/gthumb:slideshow - Enable slideshow plugin
-media-gfx/gthumb:webp - Enable support for webp image format
-x11-themes/numix-gtk-theme:custom-colors - Use a custom colors scheme: blue instead of orange
