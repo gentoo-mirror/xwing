@@ -1,0 +1,12 @@
+DEFINED_PHASES=install unpack
+DEPEND=>=x11-libs/gtk+-2:2 >=x11-libs/gtk+-3.20:3 >=x11-libs/gdk-pixbuf-2:2 x11-themes/gtk-engines-murrine >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=Amber theme for GNOME, Xfce and more.
+EAPI=6
+HOMEPAGE=https://github.com/lassekongo83/amber-theme
+IUSE=xfce gnome-shell
+KEYWORDS=~amd64
+LICENSE=GPL-3
+RDEPEND=>=x11-libs/gtk+-2:2 >=x11-libs/gtk+-3.20:3 >=x11-libs/gdk-pixbuf-2:2 x11-themes/gtk-engines-murrine
+SLOT=0
+_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9
+_md5_=0ca70e41d5a50771ad368cd4dd760baf
