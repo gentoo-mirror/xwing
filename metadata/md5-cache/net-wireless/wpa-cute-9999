@@ -1,0 +1,12 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile configure install unpack
+DEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5
+DESCRIPTION=A graphical wpa_supplicant front end
+EAPI=7
+HOMEPAGE=https://github.com/loh-tar/wpa-cute
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5
+SLOT=0
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	estack	43ddf5aaffa7a8d0482df54d25a66a1f	git-r3	0d4635eeb5a96cd5315597a47eba25c9	multilib	b2f01ad412baf81650c23fcf0975fa33	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=6c88c4442be26afe721bf10ffbc7f89f
