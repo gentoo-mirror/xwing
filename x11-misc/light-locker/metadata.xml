@@ -10,7 +10,6 @@
     <flag name="dpms">Turn on the display on screensaver deactivation.</flag>
     <flag name="gtk3">Build with GTK+ 3 instead of GTK+ 2.</flag>
     <flag name="screensaver">Lock the screen on screensaver activation.</flag>
-    <flag name="elogind">Enable elogind support.</flag>
   </use>
   <upstream>
     <remote-id type="github">the-cavalry/light-locker</remote-id>
