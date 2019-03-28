@@ -52,7 +52,7 @@ index 929befd..8639583 100644
 +        AC_DEFINE(WITH_ELOGIND, 1, [elogind support])
 +fi
 +AC_SUBST(ELOGIND_CFLAGS)
-+AC_SUBST(ELOGIND_LIBS, [-lelogind])
++AC_SUBST(ELOGIND_LIBS)
 +
  dnl ---------------------------------------------------------------------------
  dnl UPower
