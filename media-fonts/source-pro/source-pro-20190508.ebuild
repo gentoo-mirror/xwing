@@ -14,13 +14,16 @@ HOMEPAGE="https://adobe-fonts.github.io/source-sans-pro/
 	https://adobe-fonts.github.io/source-code-pro/"
 SRC_URI="https://github.com/adobe-fonts/source-sans-pro/releases/download/${SANSV}/source-sans-pro-${SANSV/\//-}.zip -> source-sans-pro-${PV}.zip
 	https://github.com/adobe-fonts/source-serif-pro/releases/download/${SERIFV}/source-serif-pro-${SERIFV/\//-}.zip -> source-serif-pro-${PV}.zip
-	https://github.com/adobe-fonts/source-code-pro/archive/${CODEV}.tar.gz -> source-code-pro-${PV}.tar.gz"
+	https://github.com/adobe-fonts/source-code-pro/archive/${CODEV}.tar.gz -> source-code-pro-${PV}.tar.gz
+	https://github.com/adobe-fonts/source-code-pro/releases/download/variable-fonts/SourceCodeVariable-Italic.otf
+	https://github.com/adobe-fonts/source-code-pro/releases/download/variable-fonts/SourceCodeVariable-Roman.otf"
 
 LICENSE="OFL-1.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x64-macos"
 IUSE="cjk"
 
+DEPEND="app-arch/unzip"
 RDEPEND="media-libs/fontconfig
 	cjk? ( media-fonts/source-han-sans )"
 
@@ -30,14 +33,17 @@ FONT_SUFFIX="otf"
 FONT_CONF=( "${FILESDIR}"/63-${PN}.conf )
 RESTRICT="binchecks strip"
 
+src_unpack() {
+	unpack ${A}
+	for DISTFILE in ${A}; do
+		if [ ${DISTFILE: -4} == ".${FONT_SUFFIX}" ]; then
+			cp -a "${DISTDIR}/${DISTFILE}" "${FONT_S}/${DISTFILE}" || die
+		fi
+	done
+}
+
 src_prepare() {
 	default
 	mv source-*/OTF/*.otf . || die
-}
-
-src_install() {
-	font_src_install
-	for d in source-sans-pro-${SANSV/\//-} source-serif-pro-${SERIFV/\//-} source-code-pro-${CODEV/\//-}; do
-		newdoc ${d}/README.md README-${d}.md
-	done
+	mv source-*/VAR/*.otf . || die
 }
