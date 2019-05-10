@@ -12,26 +12,14 @@ EGIT_REPO_URI="https://github.com/lassekongo83/plano-theme.git"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="custom gnome-shell openbox xfce"
+IUSE="gnome-shell openbox xfce"
 
 DEPEND="
-	custom? ( dev-lang/sassc )
 	>=x11-libs/gtk+-2:2
 	>=x11-libs/gtk+-3.20:3
 	>=x11-libs/gdk-pixbuf-2:2
 	x11-themes/gtk-engines-murrine"
 RDEPEND="${DEPEND}"
-
-src_prepare() {
-	default
-
-	if use custom; then
-		# make theme a bit darker
-		sed -si -e "s/ebeced/e1e2e3/" gtk-3.0/_colors.scss || die
-		# regen CSS with changes
-		cd gtk-3.0 && sh parse-sass.sh || die
-	fi
-}
 
 src_install() {
 	rm -rf LICENSE README.md plano.png .gitignore .gitattributes
