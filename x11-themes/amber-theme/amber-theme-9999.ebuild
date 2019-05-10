@@ -12,14 +12,28 @@ EGIT_REPO_URI="https://github.com/lassekongo83/amber-theme.git"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="xfce gnome-shell"
+IUSE="custom gnome-shell xfce"
 
 DEPEND="
+	custom? ( dev-lang/sassc )
 	>=x11-libs/gtk+-2:2
 	>=x11-libs/gtk+-3.20:3
 	>=x11-libs/gdk-pixbuf-2:2
 	x11-themes/gtk-engines-murrine"
 RDEPEND="${DEPEND}"
+
+src_prepare() {
+	default
+
+	if use custom; then
+		# disable dark menu for light variant
+		sed -si -e "s/\$dark_header: '.*'/\$dark_header: 'false'/" src/gtk-3.0/gtk.scss || die
+		# replace orange by blue
+		sed -si -e "s/fb6f55/75A4D9/" src/gtk-3.0/_colors.scss || die
+		# regen CSS with changes
+		cd src/gtk-3.0 && sh parse-sass.sh || die
+	fi
+}
 
 src_install() {
 	rm -r src/xfwm4/{*.build,*.sh,assets.txt,assets.svg}
