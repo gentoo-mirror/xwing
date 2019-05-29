@@ -45,11 +45,6 @@ DEPEND="dev-util/intltool
 	${RDEPEND}
 "
 
-src_prepare() {
-	default
-	eautoreconf
-}
-
 src_configure() {
 	econf \
 		--enable-purple \
