@@ -1,11 +1,12 @@
-DEFINED_PHASES=install unpack
-DEPEND=>=x11-libs/gtk+-2:2 >=x11-libs/gtk+-3.20:3 >=x11-libs/gdk-pixbuf-2:2 x11-themes/gtk-engines-murrine >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=>=x11-libs/gtk+-2:2 >=x11-libs/gtk+-3.24:3 >=x11-libs/gdk-pixbuf-2:2 x11-themes/gtk-engines-murrine dev-lang/sassc >=dev-vcs/git-1.8.2.1[curl] >=dev-util/meson-0.48.2 >=dev-util/ninja-1.7.2
 DESCRIPTION=Zuki themes for GNOME, Xfce and more.
 EAPI=6
 HOMEPAGE=https://github.com/lassekongo83/zuki-themes
+IUSE=gnome-shell xfce
 KEYWORDS=~amd64
 LICENSE=GPL-3
-RDEPEND=>=x11-libs/gtk+-2:2 >=x11-libs/gtk+-3.20:3 >=x11-libs/gdk-pixbuf-2:2 x11-themes/gtk-engines-murrine
+RDEPEND=>=x11-libs/gtk+-2:2 >=x11-libs/gtk+-3.24:3 >=x11-libs/gdk-pixbuf-2:2 x11-themes/gtk-engines-murrine dev-lang/sassc
 SLOT=0
-_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9
-_md5_=e29c9ce1cbb85c0ecec6cf54aa151c07
+_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	meson	2fbe03e3b496f82fd941bcdb9d351c91	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_md5_=1a3c07ecbcb89e03cf38817e428d44eb

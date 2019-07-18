@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit git-r3
+inherit git-r3 meson
 
 DESCRIPTION="Zuki themes for GNOME, Xfce and more."
 HOMEPAGE="https://github.com/lassekongo83/zuki-themes"
@@ -12,18 +12,19 @@ EGIT_REPO_URI="https://github.com/lassekongo83/zuki-themes.git"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="gnome-shell xfce"
 
 DEPEND="
 	>=x11-libs/gtk+-2:2
-	>=x11-libs/gtk+-3.20:3
+	>=x11-libs/gtk+-3.24:3
 	>=x11-libs/gdk-pixbuf-2:2
-	x11-themes/gtk-engines-murrine"
+	x11-themes/gtk-engines-murrine
+	dev-lang/sassc"
 RDEPEND="${DEPEND}"
 
-src_install() {
-	rm -rf LICENSE README.md zukitre.png zukitwo.png .gitignore .gitattributes
+src_prepare() {
+	default
 
-	insinto /usr/share/themes
-	doins -r *
+	use gnome-shell || sed -i -e "/gnome-shell/d" meson.build
+	use xfce || sed -i -e "/xfwm4/d" meson.build
 }
