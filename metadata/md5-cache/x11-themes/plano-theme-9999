@@ -6,7 +6,8 @@ HOMEPAGE=https://github.com/lassekongo83/plano-theme
 IUSE=gnome-shell openbox xfce
 KEYWORDS=~amd64
 LICENSE=GPL-3
+PROPERTIES=live
 RDEPEND=>=x11-libs/gtk+-2:2 >=x11-libs/gtk+-3.20:3 >=x11-libs/gdk-pixbuf-2:2 x11-themes/gtk-engines-murrine
 SLOT=0
-_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9
+_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1
 _md5_=9085b892d4319231dd25d6e67767497b

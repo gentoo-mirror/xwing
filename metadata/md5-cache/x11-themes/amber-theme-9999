@@ -6,7 +6,8 @@ HOMEPAGE=https://github.com/lassekongo83/amber-theme
 IUSE=custom gnome-shell xfce
 KEYWORDS=~amd64
 LICENSE=GPL-3
+PROPERTIES=live
 RDEPEND=custom? ( dev-lang/sassc ) >=x11-libs/gtk+-2:2 >=x11-libs/gtk+-3.20:3 >=x11-libs/gdk-pixbuf-2:2 x11-themes/gtk-engines-murrine
 SLOT=0
-_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9
+_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1
 _md5_=dd0cb080b10fee26d214d494d2474cf6
