@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit cmake-utils toolchain-funcs git-r3 flag-o-matic
 
@@ -16,22 +16,23 @@ KEYWORDS=""
 
 IUSE="openmp"
 
-RDEPEND="x11-libs/gtk+:3
+RDEPEND="
 	dev-libs/expat
 	dev-libs/libsigc++:2
-	media-libs/libcanberra[gtk3]
-	media-libs/tiff:0
-	media-libs/libpng:0
-	media-libs/libiptcdata
 	media-libs/lcms:2
 	media-libs/lensfun
+	media-libs/libcanberra[gtk3]
+	media-libs/libiptcdata
+	media-libs/libpng:0
+	media-libs/tiff:0
 	sci-libs/fftw:3.0
 	sys-libs/zlib
-	virtual/jpeg:0"
+	virtual/jpeg:0
+	x11-libs/gtk+:3"
 DEPEND="${RDEPEND}
-	app-arch/xz-utils
-	virtual/pkgconfig
-	dev-cpp/gtkmm:3.0"
+	dev-cpp/gtkmm:3.0
+	gnome-base/librsvg"
+BDEPEND="virtual/pkgconfig"
 
 pkg_pretend() {
 	if use openmp ; then
@@ -40,7 +41,11 @@ pkg_pretend() {
 }
 
 src_configure() {
+	# upstream tested that "fast-math" give wrong results, so filter it
+	# https://bugs.gentoo.org/show_bug.cgi?id=606896#c2
 	filter-flags -ffast-math
+	# -Ofast enable "fast-math" both in gcc and clang
+	replace-flags -Ofast -O3
 	# In case we add an ebuild for klt we can (i)use that one,
 	# see http://cecas.clemson.edu/~stb/klt/
 	local mycmakeargs=(
@@ -57,4 +62,14 @@ src_configure() {
 	replace-flags -O? -O3
 
 	cmake-utils_src_configure
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
+	xdg_desktop_database_update
 }
