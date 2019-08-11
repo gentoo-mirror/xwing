@@ -2,3 +2,34 @@
 # Please add your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using pmaint *
 
+media-fonts/liberation-fonts:fontforge - Use media-gfx/fontforge to build fonts from source
+media-gfx/geeqie:ffmpegthumbnailer - Enable video thumbnail support with media-video/ffmpegthumbnailer
+media-gfx/geeqie:gpu-accel - Enable GPU acceleration support - experimental
+media-gfx/geeqie:gtk3 - Link against x11-libs/gtk+:3 instead of x11-libs/gtk+:2
+media-gfx/geeqie:map - Enable items map display - experimental
+media-gfx/gthumb:http - Enable webservice integration through net-libs/libsoup
+media-gfx/gthumb:json - Compile code that uses the libjson-glib library
+media-gfx/gthumb:slideshow - Enable slideshow plugin
+media-gfx/gthumb:webp - Enable support for webp image format
+media-libs/avidemux-core:nvenc - Adds support for NVIDIA Encoder (NVENC) API for hardware accelerated encoding on NVIDIA cards.
+media-libs/avidemux-core:system-ffmpeg - Use the ffmpeg provided by the system.
+media-libs/avidemux-plugins:aften - Enable A/52 (AC-3) audio encoder support.
+media-libs/avidemux-plugins:amr - Enable Adaptive Multi-Rate format support via media-libs/opencore-amr.
+media-libs/avidemux-plugins:dcaenc - Enable DTS Coherent Acoustics audio encoder support via media-sound/dcaenc.
+media-libs/avidemux-plugins:fdk - Adds support for encoding AAC using media-libs/fdk-aac.
+media-libs/avidemux-plugins:fribidi - Enable unicode bidirectional algorithm support via dev-libs/fribidi.
+media-libs/avidemux-plugins:nvenc - Adds support for NVIDIA Encoder (NVENC) API for hardware accelerated encoding on NVIDIA cards.
+media-libs/avidemux-plugins:opus - Adds support for the Opus codec via media-libs/opus.
+media-libs/avidemux-plugins:twolame - Enable TwoLAME support via media-sound/twolame, an optimised MPEG Audio Layer 2 (MP2) encoder.
+media-libs/avidemux-plugins:vpx - Enable WebM VP8 Codec SDK support via media-libs/libvpx.
+media-libs/avidemux-plugins:x265 - Enables HEVC support with media-libs/x265.
+media-video/avidemux:nvenc - Adds support for NVIDIA Encoder (NVENC) API for hardware accelerated encoding on NVIDIA cards.
+x11-misc/colord:argyllcms - Enable ArgyllCMS sensor
+x11-misc/colord:extra-print-profiles - Generate extra print profiles. Warning: significant build time and memory requirements.
+x11-themes/amber-theme:custom - Enable personnal customizations
+x11-themes/amber-theme:gnome-shell - Install theme for gnome-base/gnome-shell
+x11-themes/amber-theme:xfce - Install theme for xfce-base/xfwm4
+x11-themes/numix-gtk-theme:custom-colors - Use a custom colors scheme: blue instead of orange
+x11-themes/plano-theme:gnome-shell - Install theme for gnome-base/gnome-shell
+x11-themes/plano-theme:openbox - Install theme for x11-wm/openbox
+x11-themes/plano-theme:xfce - Install theme for xfce-base/xfwm4

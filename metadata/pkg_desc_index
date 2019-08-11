@@ -1,0 +1,21 @@
+mail-filter/sqlgrey 1.8.0: SQLgrey is a postfix policy service implementing a grey-listing policy
+media-fonts/eb-garamond 9999: Claude Garamont's humanist typeface from the mid-16th century
+media-fonts/lato 2.0: Lato is a sanserif type face family
+media-fonts/liberation-fonts 2.00.5: A Helvetica/Times/Courier replacement TrueType font set, courtesy of Red Hat
+media-fonts/roboto-hinted 2.136: Standard font for Android 4.0 (Ice Cream Sandwich) and later, hinted version
+media-fonts/source-pro 20190508: Adobe's open source typeface family designed for UI environments
+media-gfx/geeqie 9999: A lightweight GTK image viewer forked from GQview
+media-gfx/gthumb 9999: Image viewer and browser for Gnome
+media-gfx/rawtherapee 9999: A powerful cross-platform raw image processing program
+media-libs/avidemux-core 2.7.3: Core libraries for simple video cutting, filtering and encoding tasks
+media-libs/avidemux-plugins 2.7.3: Plugins for the video editor media-video/avidemux
+media-video/avidemux 2.7.3: Video editor designed for simple cutting, filtering and encoding tasks
+net-misc/netmask 2.4: Tool for generating terse netmasks in several common formats
+x11-misc/colord 1.4.4: System service to accurately color manage input and output devices
+x11-misc/gtk3-nocsd 9999: A hack to disable gtk3 client-side decorations
+x11-themes/amber-theme 9999: Amber theme for GNOME, Xfce and more.
+x11-themes/greybird 9999: The default theme from Xubuntu
+x11-themes/numix-gtk-theme 9999: A modern flat theme that supports Gnome, Unity, XFCE and Openbox.
+x11-themes/plano-theme 9999: plano theme for GNOME, Xfce and more.
+x11-themes/qtstyleplugins 9999: Additional style plugins for Qt5 (gtk2, cleanlook, plastic, motif)
+x11-themes/zuki-themes 9999: Zuki themes for GNOME, Xfce and more.
