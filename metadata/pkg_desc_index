@@ -7,9 +7,6 @@ media-fonts/source-pro 20190508: Adobe's open source typeface family designed fo
 media-gfx/geeqie 9999: A lightweight GTK image viewer forked from GQview
 media-gfx/gthumb 9999: Image viewer and browser for Gnome
 media-gfx/rawtherapee 9999: A powerful cross-platform raw image processing program
-media-libs/avidemux-core 2.7.3: Core libraries for simple video cutting, filtering and encoding tasks
-media-libs/avidemux-plugins 2.7.3: Plugins for the video editor media-video/avidemux
-media-video/avidemux 2.7.3: Video editor designed for simple cutting, filtering and encoding tasks
 net-misc/netmask 2.4: Tool for generating terse netmasks in several common formats
 x11-misc/colord 1.4.4: System service to accurately color manage input and output devices
 x11-misc/gtk3-nocsd 9999: A hack to disable gtk3 client-side decorations
