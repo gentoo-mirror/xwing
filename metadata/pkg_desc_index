@@ -3,7 +3,7 @@ media-fonts/eb-garamond 9999: Claude Garamont's humanist typeface from the mid-1
 media-fonts/lato 2.0: Lato is a sanserif type face family
 media-fonts/liberation-fonts 2.00.5: A Helvetica/Times/Courier replacement TrueType font set, courtesy of Red Hat
 media-fonts/roboto-hinted 2.136: Standard font for Android 4.0 (Ice Cream Sandwich) and later, hinted version
-media-fonts/source-pro 20190508: Adobe's open source typeface family designed for UI environments
+media-fonts/source-pro 20190911: Adobe's open source typeface family designed for UI environments
 media-gfx/geeqie 9999: A lightweight GTK image viewer forked from GQview
 media-gfx/gthumb 9999: Image viewer and browser for Gnome
 media-gfx/rawtherapee 9999: A powerful cross-platform raw image processing program
