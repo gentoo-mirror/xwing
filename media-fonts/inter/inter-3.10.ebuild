@@ -15,6 +15,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 DEPEND="app-arch/unzip"
 
 S=${WORKDIR}
+FONT_S=${S}
 FONT_SUFFIX="ttf"
 
 src_prepare() {
