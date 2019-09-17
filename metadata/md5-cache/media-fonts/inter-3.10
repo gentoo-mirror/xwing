@@ -1,4 +1,4 @@
-DEFINED_PHASES=install postinst postrm prepare setup
+DEFINED_PHASES=install postinst postrm setup
 DEPEND=app-arch/unzip X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DESCRIPTION=The Inter font family
 EAPI=6
@@ -9,4 +9,4 @@ LICENSE=OFL-1.1
 SLOT=0
 SRC_URI=https://gentoo.xwing.info/distfiles/inter-3.10-no-calt.tar.xz
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	font	3a7bf49a5b835558d339d7bf8dfee9d6	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=850baa4d7f11c43daa26a6c382b16119
+_md5_=9aaa5f1d1b1d3063e91566f1be10aca0

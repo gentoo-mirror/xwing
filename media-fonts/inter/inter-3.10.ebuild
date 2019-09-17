@@ -19,8 +19,3 @@ DEPEND="app-arch/unzip"
 S=${WORKDIR}
 FONT_S=${S}
 FONT_SUFFIX="ttf"
-
-src_prepare() {
-	default
-	mv "Inter (TTF)/"*.ttf . || die
-}
