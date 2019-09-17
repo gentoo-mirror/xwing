@@ -6,7 +6,9 @@ inherit font
 
 DESCRIPTION="The Inter font family"
 HOMEPAGE="https://rsms.me/inter/"
-SRC_URI="https://github.com/rsms/${PN}/releases/download/v${PV}/Inter-${PV}.zip"
+#SRC_URI="https://github.com/rsms/${PN}/releases/download/v${PV}/Inter-${PV}.zip"c
+# for now use a custom build as calt feature is broken and thus annoying
+SRC_URI="https://gentoo.xwing.info/distfiles/${P}-no-calt.tar.xz"
 
 LICENSE="OFL-1.1"
 SLOT="0"
