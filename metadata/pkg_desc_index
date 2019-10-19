@@ -1,5 +1,6 @@
 mail-filter/sqlgrey 1.8.0: SQLgrey is a postfix policy service implementing a grey-listing policy
 media-fonts/eb-garamond 20190422: Claude Garamont's humanist typeface from the mid-16th century
+media-fonts/ibm-plex 3.0.0: The package of IBM's typeface
 media-fonts/inter 3.10: The Inter font family
 media-fonts/lato 2.0: Lato is a sanserif type face family
 media-fonts/liberation-sans-narrow 1.07.6: A Arial Narrow replacement TrueType font set, courtesy of Red Hat
