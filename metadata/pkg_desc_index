@@ -4,7 +4,6 @@ media-fonts/ibm-plex 3.0.0: The package of IBM's typeface
 media-fonts/inter 3.10: The Inter font family
 media-fonts/lato 2.015 20191014: Lato is a sanserif type face family
 media-fonts/liberation-sans-narrow 1.07.6: A Arial Narrow replacement TrueType font set, courtesy of Red Hat
-media-fonts/roboto-hinted 2.136: Standard font for Android 4.0 (Ice Cream Sandwich) and later, hinted version
 media-fonts/source-pro 20190911: Adobe's open source typeface family designed for UI environments
 media-fonts/ubuntu-font-family 0.83-r2: A set of matching libre/open fonts funded by Canonical
 media-gfx/geeqie 9999: A lightweight GTK image viewer forked from GQview
