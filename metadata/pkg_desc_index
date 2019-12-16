@@ -8,7 +8,6 @@ media-fonts/nunito-sans 2.502: Nunito Sans is a well balanced Sans Serif
 media-fonts/source-pro 20190911: Adobe's open source typeface family designed for UI environments
 media-fonts/ubuntu-font-family 0.83-r2: A set of matching libre/open fonts funded by Canonical
 media-gfx/geeqie 9999: A lightweight GTK image viewer forked from GQview
-media-gfx/gthumb 9999: Image viewer and browser for Gnome
 media-gfx/rawtherapee 9999: A powerful cross-platform raw image processing program
 net-misc/netmask 2.4: Tool for generating terse netmasks in several common formats
 x11-misc/colord 1.4.4: System service to accurately color manage input and output devices
