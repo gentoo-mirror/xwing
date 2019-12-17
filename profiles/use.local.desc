@@ -2,10 +2,8 @@
 # Please add your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using pmaint *
 
-media-gfx/geeqie:ffmpegthumbnailer - Enable video thumbnail support with media-video/ffmpegthumbnailer
-media-gfx/geeqie:gpu-accel - Enable GPU acceleration support - experimental
-media-gfx/geeqie:gtk3 - Link against x11-libs/gtk+:3 instead of x11-libs/gtk+:2
-media-gfx/geeqie:map - Enable items map display - experimental
+media-gfx/gthumb:http - Enable webservice integration through net-libs/libsoup
+media-gfx/gthumb:slideshow - Enable slideshow plugin
 x11-misc/colord:argyllcms - Enable ArgyllCMS sensor
 x11-misc/colord:extra-print-profiles - Generate extra print profiles. Warning: significant build time and memory requirements.
 x11-themes/amber-theme:custom - Enable personnal customizations
