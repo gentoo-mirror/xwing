@@ -4,8 +4,6 @@
 
 media-gfx/gthumb:http - Enable webservice integration through net-libs/libsoup
 media-gfx/gthumb:slideshow - Enable slideshow plugin
-x11-misc/colord:argyllcms - Enable ArgyllCMS sensor
-x11-misc/colord:extra-print-profiles - Generate extra print profiles. Warning: significant build time and memory requirements.
 x11-themes/amber-theme:custom - Enable personnal customizations
 x11-themes/amber-theme:gnome-shell - Install theme for gnome-base/gnome-shell
 x11-themes/amber-theme:xfce - Install theme for xfce-base/xfwm4
