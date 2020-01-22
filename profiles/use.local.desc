@@ -7,6 +7,7 @@ media-gfx/gthumb:slideshow - Enable slideshow plugin
 x11-themes/amber-theme:custom - Enable personnal customizations
 x11-themes/amber-theme:gnome-shell - Install theme for gnome-base/gnome-shell
 x11-themes/amber-theme:xfce - Install theme for xfce-base/xfwm4
+x11-themes/greybird:xfce - Install theme for xfce-base/xfwm4
 x11-themes/plano-theme:gnome-shell - Install theme for gnome-base/gnome-shell
 x11-themes/plano-theme:openbox - Install theme for x11-wm/openbox
 x11-themes/plano-theme:xfce - Install theme for xfce-base/xfwm4

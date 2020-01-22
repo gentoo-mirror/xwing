@@ -12,6 +12,7 @@ media-gfx/rawtherapee 9999: A powerful cross-platform raw image processing progr
 net-misc/netmask 2.4: Tool for generating terse netmasks in several common formats
 x11-misc/gtk3-nocsd 9999: A hack to disable gtk3 client-side decorations
 x11-themes/amber-theme 9999: Amber theme for GNOME, Xfce and more.
+x11-themes/greybird 9999: The default theme from Xubuntu
 x11-themes/plano-theme 9999: plano theme for GNOME, Xfce and more.
 x11-themes/qtstyleplugins 9999: Additional style plugins for Qt5 (gtk2, cleanlook, plastic, motif)
 x11-themes/zuki-themes 9999: Zuki themes for GNOME, Xfce and more.
