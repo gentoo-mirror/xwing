@@ -22,17 +22,19 @@ DEPEND="
 	x11-themes/gtk-engines-murrine"
 RDEPEND="${DEPEND}"
 
+PATCHES="
+	"${FILESDIR}/${PN}"-custom-color.patch
+"
+
 src_prepare() {
 	default
 
 	if use custom; then
-		# replace orange by blue
-		sed -si -e "s/fb6f55/75A4D9/" src/gtk-3.0/_colors.scss || die
 		# regen CSS with changes
-		cd src/gtk-3.0 && sh parse-sass.sh || die
+		pushd src/gtk-3.0 && sh parse-sass.sh && popd || die
+		use gnome-shell && pushd src/gnome-shell && sh parse-sass.sh && popd || die
 	fi
 
 	use gnome-shell || sed -i -e "/gnome-shell/d" src/meson.build
 	use xfce || sed -i -e "/xfwm4/d" src/meson.build
 }
-
