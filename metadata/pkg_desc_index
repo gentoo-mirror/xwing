@@ -9,6 +9,7 @@ media-fonts/source-pro 20190911: Adobe's open source typeface family designed fo
 media-fonts/ubuntu-font-family 0.83-r2: A set of matching libre/open fonts funded by Canonical
 media-gfx/gthumb 3.8.2: Image viewer and browser for Gnome
 media-gfx/rawtherapee 9999: A powerful cross-platform raw image processing program
+media-gfx/sane-backends 1.0.29: Scanner Access Now Easy - Backends
 net-misc/netmask 2.4: Tool for generating terse netmasks in several common formats
 x11-misc/gtk3-nocsd 9999: A hack to disable gtk3 client-side decorations
 x11-themes/amber-theme 9999: Amber theme for GNOME, Xfce and more.
