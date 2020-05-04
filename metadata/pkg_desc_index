@@ -7,6 +7,7 @@ media-fonts/liberation-sans-narrow 1.07.6: A Arial Narrow replacement TrueType f
 media-fonts/nunito-sans 2.502: Nunito Sans is a well balanced Sans Serif
 media-fonts/source-pro 20190911: Adobe's open source typeface family designed for UI environments
 media-fonts/ubuntu-font-family 0.83-r2: A set of matching libre/open fonts funded by Canonical
+media-fonts/vollkorn 4.105: Vollkorn, the free and healthy typeface for bread and butter use
 media-gfx/gthumb 3.8.2: Image viewer and browser for Gnome
 media-gfx/rawtherapee 9999: A powerful cross-platform raw image processing program
 media-gfx/sane-backends 1.0.29: Scanner Access Now Easy - Backends
