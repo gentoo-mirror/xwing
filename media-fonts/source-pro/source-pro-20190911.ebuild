@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,12 +15,12 @@ HOMEPAGE="https://adobe-fonts.github.io/source-sans-pro/
 SRC_URI="https://github.com/adobe-fonts/source-sans-pro/releases/download/${SANSV}/source-sans-pro-${SANSV}.zip
 	https://github.com/adobe-fonts/source-serif-pro/releases/download/${SERIFV}/source-serif-pro-${SERIFV}.zip
 	https://github.com/adobe-fonts/source-code-pro/archive/${CODEV}.tar.gz -> source-code-pro-${PV}.tar.gz
-	https://github.com/adobe-fonts/source-code-pro/releases/download/variable-fonts/SourceCodeVariable-Italic.ttf
-	https://github.com/adobe-fonts/source-code-pro/releases/download/variable-fonts/SourceCodeVariable-Roman.ttf"
+	https://github.com/adobe-fonts/source-code-pro/releases/download/variable-fonts/SourceCodeVariable-Italic.otf
+	https://github.com/adobe-fonts/source-code-pro/releases/download/variable-fonts/SourceCodeVariable-Roman.otf"
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x64-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x64-macos"
 IUSE="cjk"
 
 DEPEND="app-arch/unzip"
@@ -29,7 +29,7 @@ RDEPEND="media-libs/fontconfig
 
 S=${WORKDIR}
 FONT_S="${S}"
-FONT_SUFFIX="ttf"
+FONT_SUFFIX="otf"
 FONT_CONF=( "${FILESDIR}"/63-${PN}.conf )
 RESTRICT="binchecks strip"
 
@@ -44,6 +44,6 @@ src_unpack() {
 
 src_prepare() {
 	default
-	mv source-*/TTF/*.ttf . || die
-	mv source-*/VAR/*.ttf . || die
+	mv source-*/OTF/*.otf . || die
+	mv source-*/VAR/*.otf . || die
 }
