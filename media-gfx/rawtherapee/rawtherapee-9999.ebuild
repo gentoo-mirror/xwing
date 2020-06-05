@@ -60,8 +60,7 @@ src_configure() {
 	)
 
 	# lots of speed improvement, rawtherapee devs advice to use it.
-	# for now disable it: there are purple cast when using -O3 with gcc-10
-	#replace-flags -O? -O3
+	replace-flags -O? -O3
 
 	cmake_src_configure
 }
