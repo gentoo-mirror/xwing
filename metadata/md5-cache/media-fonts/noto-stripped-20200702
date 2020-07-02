@@ -8,6 +8,6 @@ KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~sparc ~x86
 LICENSE=OFL-1.1
 RESTRICT=binchecks strip
 SLOT=0
-SRC_URI=https://gentoo.xwing.info/distfiles/noto-stripped-20200625.tar.xz
+SRC_URI=https://gentoo.xwing.info/distfiles/noto-stripped-20200702.tar.xz
 _eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
 _md5_=c2d977af1135a5e84e996dd7e6aed4cd
