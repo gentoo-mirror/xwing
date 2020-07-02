@@ -9,7 +9,7 @@ DESCRIPTION="Lync & Skype for Business client on Linux"
 HOMEPAGE="https://tel.red"
 
 SRC_URI="
-	https://www.tel.red/repos/ubuntu/pool/non-free/${PN}_${PV}-1ubuntu+disco_amd64.deb
+	https://tel.red/repos/debian/pool/non-free/${PN}_${PV}-1debian+buster_amd64.deb
 "
 
 LICENSE="eula_tel.red"
@@ -30,7 +30,6 @@ RDEPEND="
 	>=dev-qt/qtnetwork-5.6:5
 	>=dev-qt/qtwidgets-5.6:5
 	dev-libs/openssl:0/1.1
-	media-libs/jpeg:8
 	media-libs/libv4l
 	media-sound/pulseaudio
 	media-video/ffmpeg:0/56.58.58[X]
