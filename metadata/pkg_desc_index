@@ -11,7 +11,7 @@ media-fonts/ubuntu-font-family 0.83-r2: A set of matching libre/open fonts funde
 media-fonts/vollkorn 4.105: Vollkorn, the free and healthy typeface for bread and butter use
 media-gfx/gthumb 3.8.2: Image viewer and browser for Gnome
 media-gfx/rawtherapee 9999: A powerful cross-platform raw image processing program
-net-im/sky 2.1.7589: Lync & Skype for Business client on Linux
+net-im/sky 2.1.7599: Lync & Skype for Business client on Linux
 net-misc/netmask 2.4: Tool for generating terse netmasks in several common formats
 x11-misc/gtk3-nocsd 9999: A hack to disable gtk3 client-side decorations
 x11-themes/amber-theme 9999: Amber theme for GNOME, Xfce and more.
