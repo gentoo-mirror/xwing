@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Open Source implementation of Audio Processing Technology codec (aptX)
+EAPI=7
+HOMEPAGE=https://github.com/pali/libopenaptx
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1+
+SLOT=0
+SRC_URI=https://github.com/pali/libopenaptx/releases/download/0.2.0/libopenaptx-0.2.0.tar.gz
+_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=374aeb129ddc75ad6fb4dc9479c5e5f5
