@@ -10,7 +10,7 @@ EGIT_REPO_URI="https://github.com/pali/hsphfpd-prototype.git"
 
 LICENSE="Unlicense"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""

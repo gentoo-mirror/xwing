@@ -12,6 +12,7 @@ media-fonts/vollkorn 4.105: Vollkorn, the free and healthy typeface for bread an
 media-gfx/gthumb 3.8.2: Image viewer and browser for Gnome
 media-gfx/rawtherapee 9999: A powerful cross-platform raw image processing program
 media-libs/libopenaptx 0.2.0: Open Source implementation of Audio Processing Technology codec (aptX)
+media-sound/pulseaudio 13.99.1: A networked sound server with an advanced plugin system
 net-im/sky 2.1.7625: Lync & Skype for Business client on Linux
 net-misc/netmask 2.4: Tool for generating terse netmasks in several common formats
 net-wireless/bluez 5.54_p20200904: Bluetooth Tools and System Daemons for Linux
