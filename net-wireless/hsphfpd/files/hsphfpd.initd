@@ -1,0 +1,12 @@
+#!/sbin/openrc-run
+# Copyright 2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name="hsphfpd daemon"
+description="hsphfpd daemon"
+command=/usr/bin/hsphfpd.pl
+command_args="${hsphfpd_args}"
+
+depend() {
+    after dbus
+}
