@@ -6,7 +6,22 @@ name="hsphfpd daemon"
 description="hsphfpd daemon"
 command=/usr/bin/hsphfpd.pl
 command_args="${hsphfpd_args}"
+pidfile=/var/run/hsphfpd
 
 depend() {
-    after dbus
+    after dbus bluetooth
+}
+
+start() {
+  ebegin "Starting hsphfpd"
+  start-stop-daemon --start --background --exec "${command}" \
+    --make-pidfile --pidfile "${pidfile}" --name hsphfpd
+  eend $?
+}
+
+stop() {
+  ebegin "Stopping hsphfpd"
+  start-stop-daemon --stop --exec "${command}" \
+    --pidfile "${pidfile}" --name hsphfpd
+  eend $?
 }
