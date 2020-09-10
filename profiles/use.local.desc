@@ -23,15 +23,6 @@ media-sound/pulseaudio:ssl - Use dev-libs/openssl to provide support for RAOP (A
 media-sound/pulseaudio:system-wide - Allow preparation and installation of the system-wide init script for PulseAudio. Since this support is only supported for embedded situations, do not enable without reading the upstream instructions at https://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/User/WhatIsWrongWithSystemWide/ .
 media-sound/pulseaudio:systemd - Build with sys-apps/systemd support to replace standalone ConsoleKit.
 media-sound/pulseaudio:webrtc-aec - Uses the webrtc.org AudioProcessing library for enhancing VoIP calls greatly in applications that support it by performing acoustic echo cancellation, analog gain control, noise suppression and other processing.
-net-wireless/bluez:btpclient - Enable BTP client
-net-wireless/bluez:deprecated - Build deprecated plugins
-net-wireless/bluez:experimental - Build experimental plugins
-net-wireless/bluez:extra-tools - Install tools that upstream doesn't install on purpose by default. All this tools shouldn't be used. Then, please notify upstream about you still need them to let them know the situation.
-net-wireless/bluez:mesh - Add support for Bluetooth Mesh control application and advertising bearer.
-net-wireless/bluez:midi - Enable MIDI support
-net-wireless/bluez:obex - Enable OBEX transfer support
-net-wireless/bluez:test-programs - Install tools for testing of various Bluetooth functions
-net-wireless/bluez:user-session - Allow compatibility with user-session semantics for session bus under systemd
 x11-themes/amber-theme:custom - Enable personnal customizations
 x11-themes/amber-theme:gnome-shell - Install theme for gnome-base/gnome-shell
 x11-themes/amber-theme:xfce - Install theme for xfce-base/xfwm4

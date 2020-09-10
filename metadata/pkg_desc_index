@@ -15,7 +15,6 @@ media-libs/libopenaptx 0.2.0: Open Source implementation of Audio Processing Tec
 media-sound/pulseaudio 13.99.1: A networked sound server with an advanced plugin system
 net-im/sky 2.1.7625: Lync & Skype for Business client on Linux
 net-misc/netmask 2.4: Tool for generating terse netmasks in several common formats
-net-wireless/bluez 5.54_p20200904: Bluetooth Tools and System Daemons for Linux
 net-wireless/hsphfpd 9999: Daemon for Bluetooth devices with HSP and HFP profiles
 x11-misc/gtk3-nocsd 9999: A hack to disable gtk3 client-side decorations
 x11-themes/amber-theme 9999: Amber theme for GNOME, Xfce and more.
