@@ -7,7 +7,7 @@ inherit autotools bash-completion-r1 flag-o-matic gnome2-utils linux-info system
 DESCRIPTION="A networked sound server with an advanced plugin system"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/PulseAudio/"
 SRC_URI="https://freedesktop.org/software/pulseaudio/releases/${P}.tar.xz
-https://gentoo.xwing.info/distfiles/pulseaudio-13-hsphfpd.patch.xz"
+https://gentoo.xwing.info/distfiles/${P}-hsphfpd.patch.xz"
 
 # libpulse-simple and libpulse link to libpulse-core; this is daemon's
 # library and can link to gdbm and other GPL-only libraries. In this
@@ -121,7 +121,7 @@ RDEPEND="${RDEPEND}
 "
 
 PATCHES=(
-	"${WORKDIR}"/pulseaudio-13-hsphfpd.patch
+	"${WORKDIR}"/pulseaudio-13.99.2-hsphfpd.patch
 )
 
 pkg_pretend() {
