@@ -13,7 +13,7 @@ media-gfx/gthumb 3.8.2: Image viewer and browser for Gnome
 media-gfx/rawtherapee 9999: A powerful cross-platform raw image processing program
 media-libs/libopenaptx 0.2.0: Open Source implementation of Audio Processing Technology codec (aptX)
 media-sound/pulseaudio 13.99.2: A networked sound server with an advanced plugin system
-net-im/sky 2.1.7733: Lync & Skype for Business client on Linux
+net-im/sky 2.1.7738: Lync & Skype for Business client on Linux
 net-misc/netmask 2.4: Tool for generating terse netmasks in several common formats
 net-wireless/hsphfpd 9999: Daemon for Bluetooth devices with HSP and HFP profiles
 x11-misc/gtk3-nocsd 9999: A hack to disable gtk3 client-side decorations
