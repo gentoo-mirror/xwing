@@ -121,7 +121,7 @@ RDEPEND="${RDEPEND}
 "
 
 PATCHES=(
-	"${WORKDIR}"/pulseaudio-13.99.2-hsphfpd.patch
+	"${WORKDIR}/${P}-hsphfpd.patch"
 )
 
 pkg_pretend() {
