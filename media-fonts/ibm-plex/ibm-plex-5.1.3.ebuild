@@ -20,5 +20,8 @@ FONT_SUFFIX="ttf"
 
 src_prepare() {
 	default
-	mv IBM-Plex-*/*.ttf . || die
+	mv IBM-Plex-Sans-Condensed/*.ttf . || die
+	mv IBM-Plex-Sans/*.ttf . || die
+	mv IBM-Plex-Mono/*.ttf . || die
+	mv IBM-Plex-Serif/*.ttf . || die
 }
