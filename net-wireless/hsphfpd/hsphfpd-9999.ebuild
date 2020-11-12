@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit linux-info git-r3
+inherit linux-info git-r3 systemd
 
 DESCRIPTION="Daemon for Bluetooth devices with HSP and HFP profiles"
 HOMEPAGE="https://github.com/pali/hsphfpd-prototype"
@@ -36,4 +36,7 @@ src_install() {
 
 	# install init script
 	newinitd "${FILESDIR}/${PN}.initd" ${PN}
+
+	# install systemd service
+	systemd_dounit "${FILESDIR}/${PN}.service"
 }
