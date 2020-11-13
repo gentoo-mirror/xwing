@@ -8,7 +8,7 @@ BusName=org.hsphfpd
 ExecStart=/usr/bin/hsphfpd.pl
 StandardOutput=file:/run/hsphfpd.log
 StandardError=file:/run/hsphfpd.log
-Restart=on-failure
+Restart=always
 LimitNPROC=1
 
 [Install]
