@@ -1,0 +1,14 @@
+[Unit]
+Description=SpamAssassin Proxy Daemon
+Before=mail-transfer-agent.target
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/run/spampd.pid
+EnvironmentFile=-/etc/conf.d/spampd
+ExecStart=/usr/sbin/spampd.pl $SPAMPD_OPTS
+ExecReload=/usr/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
