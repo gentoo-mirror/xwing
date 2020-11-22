@@ -21,8 +21,11 @@ BDEPEND=""
 
 src_install() {
 	dosbin spampd.pl
+
 	dodoc changelog.txt misc/spampd-rh-rc-script.sh
-	dohtml spampd.html
+	docinto html
+	dodoc spampd.html
+
 	newinitd "${FILESDIR}"/init spampd
 	newconfd "${FILESDIR}"/conf spampd
 
