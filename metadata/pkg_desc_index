@@ -1,11 +1,12 @@
 app-office/grisbi 1.9.96: Grisbi is a personal accounting application for Linux
 mail-filter/spampd 2.53-r1: spampd is a program to scan messages for Unsolicited Commercial E-mail content
+media-fonts/croscorefonts 20201120: Open licensed fonts metrically compatible with MS corefonts
 media-fonts/eb-garamond 20190422: Claude Garamont's humanist typeface from the mid-16th century
 media-fonts/ibm-plex 5.1.3: The package of IBM's typeface
 media-fonts/lato 2.015 20191014: Lato is a sanserif type face family
 media-fonts/liberation-sans-narrow 1.07.6: A Arial Narrow replacement TrueType font set, courtesy of Red Hat
 media-fonts/noto-emoji-stripped 20200916: Google Noto Emoji fonts, minimal package
-media-fonts/noto-stripped 20201103: Google's Noto font, only basic variants (Sans, Serif, Mono)
+media-fonts/noto-stripped 20201120: Google's Noto font, only basic variants (Sans, Serif, Mono)
 media-fonts/nunito-sans 2.502: Nunito Sans is a well balanced Sans Serif
 media-fonts/source-pro 20190911: Adobe's open source typeface family designed for UI environments
 media-fonts/ubuntu-font-family 0.83-r2: A set of matching libre/open fonts funded by Canonical
