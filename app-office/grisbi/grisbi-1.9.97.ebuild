@@ -6,12 +6,9 @@ GNOME2_LA_PUNT="yes"
 
 inherit gnome2
 
-MY_PV="${PV/_p/-}"
-MY_P="${PN}-${MY_PV}"
-
 DESCRIPTION="Grisbi is a personal accounting application for Linux"
 HOMEPAGE="http://www.grisbi.org https://github.com/grisbi/grisbi"
-SRC_URI="mirror://sourceforge/${PN}/grisbi%20unstable/${PV/_p*/}/${MY_P}.tar.bz2"
+SRC_URI="mirror://sourceforge/${PN}/grisbi%20unstable/${PV}/${P}.tar.bz2"
 IUSE="goffice libressl nls ofx ssl"
 
 LICENSE="GPL-2"
@@ -33,8 +30,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
-
-S="${WORKDIR}/${MY_P}"
 
 src_configure() {
 	gnome2_src_configure \
