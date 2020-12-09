@@ -9,7 +9,7 @@ media-fonts/ibm-plex 5.1.3: The package of IBM's typeface
 media-fonts/lato 2.015 20191014: Lato is a sanserif type face family
 media-fonts/liberation-sans-narrow 1.07.6: A Arial Narrow replacement TrueType font set, courtesy of Red Hat
 media-fonts/noto-emoji-stripped 20200916: Google Noto Emoji fonts, minimal package
-media-fonts/noto-stripped 20201120: Google's Noto font, only basic variants (Sans, Serif, Mono)
+media-fonts/noto-stripped 20201209: Google's Noto font, only basic variants (Sans, Serif, Mono)
 media-fonts/source-pro 20190911: Adobe's open source typeface family designed for UI environments
 media-fonts/ubuntu-font-family 0.83-r2: A set of matching libre/open fonts funded by Canonical
 media-gfx/rawtherapee 9999: A powerful cross-platform raw image processing program
