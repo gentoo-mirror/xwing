@@ -15,8 +15,6 @@ mail-client/evolution:ldap - Enable support for fetching contacts from an LDAP o
 mail-client/evolution:spamassassin - Build mail-filter/spamassassin plugin
 mail-client/evolution:weather - Enable optional weather calendar support
 mail-client/evolution:ytnef - Enable optional TNEF attachments parser support using net-mail/ytnef
-media-gfx/gthumb:http - Enable webservice integration through net-libs/libsoup
-media-gfx/gthumb:slideshow - Enable slideshow plugin
 media-sound/pulseaudio:X - Build the X11 publish module to export PulseAudio information through X11 protocol for clients to make use. Don't enable this flag if you want to use a system wide instance. If unsure, enable this flag.
 media-sound/pulseaudio:alsa-plugin - Request installing media-plugins/alsa-plugins with PulseAudio plugin enabled. This ensures that clients supporting ALSA only will use PulseAudio.
 media-sound/pulseaudio:aptx - Add aptX proprietary codec support.
@@ -35,10 +33,3 @@ media-sound/pulseaudio:ssl - Use dev-libs/openssl to provide support for RAOP (A
 media-sound/pulseaudio:system-wide - Allow preparation and installation of the system-wide init script for PulseAudio. Since this support is only supported for embedded situations, do not enable without reading the upstream instructions at https://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/User/WhatIsWrongWithSystemWide/ .
 media-sound/pulseaudio:systemd - Build with sys-apps/systemd support to replace standalone ConsoleKit.
 media-sound/pulseaudio:webrtc-aec - Uses the webrtc.org AudioProcessing library for enhancing VoIP calls greatly in applications that support it by performing acoustic echo cancellation, analog gain control, noise suppression and other processing.
-x11-themes/amber-theme:custom - Enable personnal customizations
-x11-themes/amber-theme:gnome-shell - Install theme for gnome-base/gnome-shell
-x11-themes/amber-theme:xfce - Install theme for xfce-base/xfwm4
-x11-themes/greybird:xfce - Install theme for xfce-base/xfwm4
-x11-themes/plano-theme:gnome-shell - Install theme for gnome-base/gnome-shell
-x11-themes/plano-theme:openbox - Install theme for x11-wm/openbox
-x11-themes/plano-theme:xfce - Install theme for xfce-base/xfwm4

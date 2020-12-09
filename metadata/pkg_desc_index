@@ -10,19 +10,12 @@ media-fonts/lato 2.015 20191014: Lato is a sanserif type face family
 media-fonts/liberation-sans-narrow 1.07.6: A Arial Narrow replacement TrueType font set, courtesy of Red Hat
 media-fonts/noto-emoji-stripped 20200916: Google Noto Emoji fonts, minimal package
 media-fonts/noto-stripped 20201120: Google's Noto font, only basic variants (Sans, Serif, Mono)
-media-fonts/nunito-sans 2.502: Nunito Sans is a well balanced Sans Serif
 media-fonts/source-pro 20190911: Adobe's open source typeface family designed for UI environments
 media-fonts/ubuntu-font-family 0.83-r2: A set of matching libre/open fonts funded by Canonical
-media-fonts/vollkorn 4.105: Vollkorn, the free and healthy typeface for bread and butter use
-media-gfx/gthumb 3.8.2: Image viewer and browser for Gnome
 media-gfx/rawtherapee 9999: A powerful cross-platform raw image processing program
 media-libs/libopenaptx 0.2.0: Open Source implementation of Audio Processing Technology codec (aptX)
 media-sound/pulseaudio 14.0: A networked sound server with an advanced plugin system
 net-im/sky 2.1.7772: Lync & Skype for Business client on Linux
 net-misc/netmask 2.4: Tool for generating terse netmasks in several common formats
 net-wireless/hsphfpd 9999: Daemon for Bluetooth devices with HSP and HFP profiles
-x11-misc/gtk3-nocsd 9999: A hack to disable gtk3 client-side decorations
-x11-themes/amber-theme 9999: Amber theme for GNOME, Xfce and more.
-x11-themes/greybird 9999: The default theme from Xubuntu
-x11-themes/plano-theme 9999: plano theme for GNOME, Xfce and more.
 x11-themes/zuki-themes 9999: Zuki themes for GNOME, Xfce and more.
