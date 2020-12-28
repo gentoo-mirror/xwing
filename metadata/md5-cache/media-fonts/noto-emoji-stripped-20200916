@@ -9,5 +9,5 @@ LICENSE=OFL-1.1
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=https://gentoo.xwing.info/distfiles/noto-emoji-stripped-20200916.tar.xz
-_eclasses_=font	e052246186f22bd6a37797238374613b
+_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
 _md5_=c40bff7d996d01e267837b2b2a79b039
