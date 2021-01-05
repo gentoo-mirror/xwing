@@ -41,7 +41,6 @@ src_configure() {
 		--with-libxml2 \
 		--without-cunit \
 		--disable-static \
-		--disable-config-file \
 		$(use_with ssl openssl) \
 		$(use_with ofx) \
 		$(use_with goffice) \
