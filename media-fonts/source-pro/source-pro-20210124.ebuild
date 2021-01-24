@@ -1,22 +1,20 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit font
 
-SANSV="3.006R"
-SERIFV="3.000R"
-CODEV="2.030R-ro/1.050R-it"
+SANSV="3.028R"
+SERIFV="3.001R"
+CODEV="2.038R-ro/1.058R-it"
 
 DESCRIPTION="Adobe's open source typeface family designed for UI environments"
 HOMEPAGE="https://adobe-fonts.github.io/source-sans-pro/
 	https://adobe-fonts.github.io/source-serif-pro/
 	https://adobe-fonts.github.io/source-code-pro/"
-SRC_URI="https://github.com/adobe-fonts/source-sans-pro/releases/download/${SANSV}/source-sans-pro-${SANSV}.zip
+SRC_URI="https://github.com/adobe-fonts/source-sans-pro/releases/download/${SANSV}/source-sans-${SANSV/\./v}.zip
 	https://github.com/adobe-fonts/source-serif-pro/releases/download/${SERIFV}/source-serif-pro-${SERIFV}.zip
-	https://github.com/adobe-fonts/source-code-pro/archive/${CODEV}.tar.gz -> source-code-pro-${PV}.tar.gz
-	https://github.com/adobe-fonts/source-code-pro/releases/download/variable-fonts/SourceCodeVariable-Italic.otf
-	https://github.com/adobe-fonts/source-code-pro/releases/download/variable-fonts/SourceCodeVariable-Roman.otf"
+	https://github.com/adobe-fonts/source-code-pro/releases/download/${CODEV}/1.018R-VAR/TTF-source-code-pro-${CODEV/\//-}.zip"
 
 LICENSE="OFL-1.1"
 SLOT="0"
@@ -29,7 +27,7 @@ RDEPEND="media-libs/fontconfig
 
 S=${WORKDIR}
 FONT_S="${S}"
-FONT_SUFFIX="otf"
+FONT_SUFFIX="ttf"
 FONT_CONF=( "${FILESDIR}"/63-${PN}.conf )
 RESTRICT="binchecks strip"
 
@@ -44,6 +42,6 @@ src_unpack() {
 
 src_prepare() {
 	default
-	mv source-*/OTF/*.otf . || die
-	mv source-*/VAR/*.otf . || die
+	mv source-*/TTF/*.ttf . || die
+	mv TTF/*.ttf . || die
 }
