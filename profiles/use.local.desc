@@ -21,3 +21,8 @@ media-sound/pulseaudio:ssl - Use dev-libs/openssl to provide support for RAOP (A
 media-sound/pulseaudio:system-wide - Allow preparation and installation of the system-wide init script for PulseAudio. Since this support is only supported for embedded situations, do not enable without reading the upstream instructions at https://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/User/WhatIsWrongWithSystemWide/ .
 media-sound/pulseaudio:systemd - Build with sys-apps/systemd support to replace standalone ConsoleKit.
 media-sound/pulseaudio:webrtc-aec - Uses the webrtc.org AudioProcessing library for enhancing VoIP calls greatly in applications that support it by performing acoustic echo cancellation, analog gain control, noise suppression and other processing.
+media-video/pipewire:aptx - Enable SPA aptx plugin
+media-video/pipewire:hsphfpd - Enable SPA hsphfpd plugin integration
+media-video/pipewire:jack - Enable SPA JACK plugin and emulation to be able to run JACK applications on top of PipeWire
+media-video/pipewire:rtkit - Enable rtkit daemon support
+media-video/pipewire:vulkan - Enable vulkan spa plugin integration
