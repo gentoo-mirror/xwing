@@ -18,7 +18,7 @@ HOMEPAGE="https://pipewire.org/"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/0.3"
-IUSE="alsa aptx bluetooth debug doc ffmpeg gstreamer hsphfpd jack rtkit systemd test vulkan X"
+IUSE="alsa aptx bluetooth debug doc ffmpeg gstreamer hsphfpd jack rtkit sdl sndfile systemd test vulkan X"
 
 BDEPEND="
 	app-doc/xmltoman
@@ -29,8 +29,8 @@ BDEPEND="
 "
 RDEPEND="
 	>=media-libs/alsa-lib-1.1.7
-	media-libs/libsdl2
-	>=media-libs/libsndfile-1.0.20
+	sdl? ( media-libs/libsdl2 )
+	sndfile? ( >=media-libs/libsndfile-1.0.20 )
 	sys-apps/dbus
 	sys-auth/realtime-base
 	virtual/libudev
@@ -101,6 +101,8 @@ src_configure() {
 		$(meson_use doc docs)
 		$(meson_use gstreamer)
 		$(meson_use gstreamer gstreamer-device-provider)
+		$(meson_feature sdl sdl2)
+		$(meson_feature sndfile)
 		$(meson_use systemd)
 		$(meson_use test test)
 		$(meson_use test tests)
