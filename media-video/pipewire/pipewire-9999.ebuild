@@ -29,8 +29,6 @@ BDEPEND="
 "
 RDEPEND="
 	>=media-libs/alsa-lib-1.1.7
-	sdl? ( media-libs/libsdl2 )
-	sndfile? ( >=media-libs/libsndfile-1.0.20 )
 	sys-apps/dbus
 	sys-auth/realtime-base
 	virtual/libudev
@@ -47,6 +45,8 @@ RDEPEND="
 	)
 	hsphfpd? ( net-wireless/hsphfpd )
 	jack? ( >=media-sound/jack2-1.9.10:2 )
+	sdl? ( media-libs/libsdl2 )
+	sndfile? ( >=media-libs/libsndfile-1.0.20 )
 	rtkit? ( sys-auth/rtkit )
 	systemd? ( sys-apps/systemd )
 	vulkan? ( media-libs/vulkan-loader )
