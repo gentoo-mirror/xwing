@@ -14,7 +14,7 @@ media-libs/libopenaptx 0.2.0: Open Source implementation of Audio Processing Tec
 media-sound/ocenaudio 3.10.3: Easy, fast and powerful audio editor
 media-sound/pulseaudio 14.0: A networked sound server with an advanced plugin system
 media-video/pipewire 9999: Multimedia processing graphs
-net-im/sky 2.1.7772: Lync & Skype for Business client on Linux
+net-im/sky 2.1.7772 2.1.7794.1: Lync & Skype for Business client on Linux
 net-misc/netmask 2.4: Tool for generating terse netmasks in several common formats
 net-print/brlaser 6_p20200420: Brother laser printer driver
 net-wireless/hsphfpd 9999: Daemon for Bluetooth devices with HSP and HFP profiles
