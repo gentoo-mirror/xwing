@@ -8,6 +8,6 @@ KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~sparc ~x86
 LICENSE=OFL-1.1
 RESTRICT=binchecks strip
 SLOT=0
-SRC_URI=https://gentoo.xwing.info/distfiles/croscorefonts-20210108.tar.xz
+SRC_URI=https://gentoo.xwing.info/distfiles/croscorefonts-20210304.tar.xz
 _eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
 _md5_=a67da19a5edf5bac6e51129219457bb9
