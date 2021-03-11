@@ -79,33 +79,33 @@ src_prepare() {
 
 src_configure() {
 	local emesonargs=(
-		-Dexamples=true # contains required pipewire-media-session
-		-Dman=true
-		-Dspa-plugins=true
+		-Dexamples=enabled # contains required pipewire-media-session
+		-Dman=enabled
+		-Dspa-plugins=enabled
 		--buildtype=$(usex debug debugoptimized plain)
 		# alsa plugin and jack emulation
-		-Dpipewire-alsa=true
-		$(meson_use jack pipewire-jack)
+		-Dpipewire-alsa=enabled
+		$(meson_feature jack pipewire-jack)
 		# spa-plugins
 		# we install alsa support unconditionally
-		$(meson_use bluetooth bluez5)
-		$(meson_use !hsphfpd bluez5-backend-hsp-native)
-		$(meson_use !hsphfpd bluez5-backend-hfp-native)
-		-Dbluez5-backend-ofono=false
-		$(meson_use hsphfpd bluez5-backend-hsphfpd)
-		$(meson_use ffmpeg)
-		$(meson_use jack)
-		$(meson_use vulkan)
+		$(meson_feature bluetooth bluez5)
+		$(meson_feature !hsphfpd bluez5-backend-hsp-native)
+		$(meson_feature !hsphfpd bluez5-backend-hfp-native)
+		-Dbluez5-backend-ofono=disabled
+		$(meson_feature hsphfpd bluez5-backend-hsphfpd)
+		$(meson_feature ffmpeg)
+		$(meson_feature jack)
+		$(meson_feature vulkan)
 		# libcamera is not packaged
 		# misc
-		$(meson_use doc docs)
-		$(meson_use gstreamer)
-		$(meson_use gstreamer gstreamer-device-provider)
+		$(meson_feature doc docs)
+		$(meson_feature gstreamer)
+		$(meson_feature gstreamer gstreamer-device-provider)
 		$(meson_feature sdl sdl2)
 		$(meson_feature sndfile)
-		$(meson_use systemd)
-		$(meson_use test test)
-		$(meson_use test tests)
+		$(meson_feature systemd)
+		$(meson_feature test test)
+		$(meson_feature test tests)
 	)
 	meson_src_configure
 }
