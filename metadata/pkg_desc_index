@@ -18,5 +18,6 @@ net-im/sky 2.1.7772 2.1.7798.1: Lync & Skype for Business client on Linux
 net-misc/netmask 2.4: Tool for generating terse netmasks in several common formats
 net-print/brlaser 6_p20200420: Brother laser printer driver
 net-wireless/hsphfpd 9999: Daemon for Bluetooth devices with HSP and HFP profiles
+sys-process/systemd-cron 1.5.17-r1: systemd units to create timers for cron directories and crontab
 x11-themes/papirus-icon-theme 20210302: icon theme for Linux
 x11-themes/zuki-themes 9999: Zuki themes for GNOME, Xfce and more.
