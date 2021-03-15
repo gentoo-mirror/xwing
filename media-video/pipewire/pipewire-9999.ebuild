@@ -18,7 +18,13 @@ HOMEPAGE="https://pipewire.org/"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/0.3"
-IUSE="alsa aptx bluetooth debug doc ffmpeg gstreamer hsphfpd jack rtkit sdl sndfile systemd test vulkan X"
+# ldacBT not packaged for ldac support
+IUSE="alsa aac aptx bluetooth debug doc ffmpeg gstreamer hsphfpd jack rtkit sdl sndfile systemd test vulkan X"
+REQUIRED_USE="
+	aac? ( bluetooth )
+	aptx? ( bluetooth )
+	hsphfpd? ( bluetooth )
+"
 
 BDEPEND="
 	app-doc/xmltoman
@@ -36,6 +42,7 @@ RDEPEND="
 		media-libs/sbc
 		net-wireless/bluez:=
 		aptx? ( media-libs/libopenaptx )
+		aac? ( media-libs/fdk-aac )
 	)
 	ffmpeg? ( media-video/ffmpeg:= )
 	gstreamer? (
@@ -89,10 +96,13 @@ src_configure() {
 		# spa-plugins
 		# we install alsa support unconditionally
 		$(meson_feature bluetooth bluez5)
-		$(meson_feature !hsphfpd bluez5-backend-hsp-native)
-		$(meson_feature !hsphfpd bluez5-backend-hfp-native)
-		-Dbluez5-backend-ofono=disabled
+		$(meson_feature $(usex bluetooth !hsphfpd bluetooth) bluez5-backend-hsp-native)
+		$(meson_feature $(usex bluetooth !hsphfpd bluetooth) bluez5-backend-hfp-native)
 		$(meson_feature hsphfpd bluez5-backend-hsphfpd)
+		-Dbluez5-backend-ofono=disabled
+		# bluetooth codecs
+		$(meson_feature aac bluez5-codec-aac)
+		$(meson_feature aptx bluez5-codec-aptx)
 		$(meson_feature ffmpeg)
 		$(meson_feature jack)
 		$(meson_feature vulkan)
