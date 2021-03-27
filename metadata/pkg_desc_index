@@ -1,8 +1,13 @@
 app-office/grisbi 2.0.3: Grisbi is a personal accounting application for Linux
 mail-filter/spampd 2.53-r1: spampd is a program to scan messages for Unsolicited Commercial E-mail content
 media-fonts/croscorefonts 20210304: Open licensed fonts metrically compatible with MS corefonts
+media-fonts/eb-garamond 20190422: Claude Garamont's humanist typeface from the mid-16th century
+media-fonts/ibm-plex 5.1.3: The package of IBM's typeface
+media-fonts/liberation-sans-narrow 1.07.6: A Arial Narrow replacement TrueType font set, courtesy of Red Hat
 media-fonts/noto-emoji-stripped 20201214: Google Noto Emoji fonts, minimal package
 media-fonts/noto-stripped 20210304: Google's Noto font, only basic variants (Sans, Serif, Mono)
+media-fonts/source-pro 20210124: Adobe's open source typeface family designed for UI environments
+media-fonts/ubuntu-font-family 0.83-r2: A set of matching libre/open fonts funded by Canonical
 media-gfx/rawtherapee 9999: A powerful cross-platform raw image processing program
 media-libs/libopenaptx 0.2.0: Open Source implementation of Audio Processing Technology codec (aptX)
 media-sound/ocenaudio 3.10.4: Easy, fast and powerful audio editor
