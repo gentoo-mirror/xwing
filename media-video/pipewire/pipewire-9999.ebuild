@@ -6,7 +6,8 @@ EAPI=7
 inherit meson
 
 if [[ ${PV} == 9999 ]]; then
-	EGIT_REPO_URI="https://github.com/PipeWire/pipewire.git"
+	EGIT_REPO_URI="https://gitlab.freedesktop.org/pipewire/pipewire.git"
+	EGIT_BRANCH="master"
 	inherit git-r3
 else
 	SRC_URI="https://github.com/PipeWire/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
