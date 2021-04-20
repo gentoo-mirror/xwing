@@ -5,4 +5,7 @@
 		<email>casta@xwing.info</email>
 		<name>Guillaume Castagnino</name>
 	</maintainer>
+	<use>
+		<flag name="lto">Enable LTO during build</flag>
+	</use>
 </pkgmetadata>
