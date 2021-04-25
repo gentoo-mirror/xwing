@@ -1,8 +1,0 @@
---- ./src/units/cron-failure@.service.in.old	2021-03-09 14:16:12.331152156 +0100
-+++ ./src/units/cron-failure@.service.in	2021-03-09 14:17:46.801659607 +0100
-@@ -10,3 +10,5 @@
- ExecStart=@libdir@/@package@/mail_on_failure %i
- DynamicUser=yes
- Group=systemd-journal
-+ReadWriteDirectories=/var/spool/postfix/maildrop
-+

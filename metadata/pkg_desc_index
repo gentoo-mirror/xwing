@@ -11,11 +11,9 @@ media-fonts/ubuntu-font-family 0.83-r2: A set of matching libre/open fonts funde
 media-gfx/rawtherapee 9999: A powerful cross-platform raw image processing program
 media-sound/ocenaudio 3.10.5: Easy, fast and powerful audio editor
 media-sound/pulseaudio 14.0: A networked sound server with an advanced plugin system
-media-video/pipewire 9999: Multimedia processing graphs
 net-im/sky 2.1.7772 2.1.7800.1: Lync & Skype for Business client on Linux
 net-misc/netmask 2.4: Tool for generating terse netmasks in several common formats
 net-print/brlaser 6_p20200420: Brother laser printer driver
 net-wireless/hsphfpd 9999: Daemon for Bluetooth devices with HSP and HFP profiles
-sys-process/systemd-cron 1.5.17-r1: systemd units to create timers for cron directories and crontab
 x11-themes/papirus-icon-theme 20210401: icon theme for Linux
 x11-themes/zuki-themes 9999: Zuki themes for GNOME, Xfce and more.
