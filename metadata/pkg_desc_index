@@ -12,7 +12,7 @@ media-fonts/ubuntu-font-family 0.83-r2: A set of matching libre/open fonts funde
 media-gfx/rawtherapee 9999: A powerful cross-platform raw image processing program
 media-sound/ocenaudio 3.10.9: Easy, fast and powerful audio editor
 media-sound/pulseaudio 14.99.1_p20210607: A networked sound server with an advanced plugin system
-net-im/sky 2.1.7772 2.1.7800.1: Lync & Skype for Business client on Linux
+net-im/sky 2.1.7772 2.1.7801.1: Lync & Skype for Business client on Linux
 net-misc/netmask 2.4: Tool for generating terse netmasks in several common formats
 net-print/brlaser 6_p20200420: Brother laser printer driver
 net-wireless/hsphfpd 9999: Daemon for Bluetooth devices with HSP and HFP profiles
