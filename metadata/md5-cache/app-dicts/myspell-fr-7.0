@@ -8,5 +8,5 @@ KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
 LICENSE=MPL-2.0 LGPL-2.1
 SLOT=0
 SRC_URI=http://grammalecte.net/grammalecte/oxt/lo-oo-ressources-linguistiques-fr-v7.0.oxt
-_eclasses_=myspell-r2	c3ce3195fd25a3958492bf548ef8b1f9
+_eclasses_=myspell-r2	ef7a68d04e0a4e113580dda8d3142612
 _md5_=da77e9d2e5f8a5ec93ee60fa92ef7ac5
