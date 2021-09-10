@@ -8,6 +8,6 @@ KEYWORDS=~amd64 ~x86
 LICENSE=ocenaudio_license
 RDEPEND=app-arch/bzip2 app-arch/xz-utils dev-libs/libgudev dev-libs/libxml2 dev-libs/openssl dev-qt/qtconcurrent dev-qt/qtcore dev-qt/qtgui dev-qt/qtnetwork dev-qt/qtwidgets media-libs/alsa-lib media-sound/pulseaudio sys-libs/zlib virtual/jack
 SLOT=0
-SRC_URI=https://www.ocenaudio.com/downloads/index.php/ocenaudio_archlinux.pkg.tar.xz -> ocenaudio-3.10.10.tar.xz
+SRC_URI=https://www.ocenaudio.com/downloads/index.php/ocenaudio_archlinux.pkg.tar.xz -> ocenaudio-3.10.12.tar.xz
 _eclasses_=xdg-utils	27f9a2f19502b925ac117bd657aa2979
 _md5_=4777e29a411154868808d188b6f5e5b0
