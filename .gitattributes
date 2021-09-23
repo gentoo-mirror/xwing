@@ -1,1 +1,1 @@
-disfiles/* filter=lfs diff=lfs merge=lfs -text
+distfiles/* filter=lfs diff=lfs merge=lfs -text
