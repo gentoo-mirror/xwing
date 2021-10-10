@@ -21,7 +21,6 @@ auto-sync = yes
 EOF
 ```
 
-
 ### With layman
 
 ```
