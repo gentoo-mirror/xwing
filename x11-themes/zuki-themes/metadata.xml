@@ -7,4 +7,8 @@
   <upstream>
     <remote-id type="github">lassekongo83/zuki-themes</remote-id>
   </upstream>
+    <use>
+     <flag name="gnome-shell">Build gnome-shell decorations</flag>
+     <flag name="xfce">Build xfwm4 decorations</flag>
+   </use>
 </pkgmetadata>

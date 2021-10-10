@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -76,7 +76,7 @@ src_install() {
 
 	exeinto "${_sky_bindir}"
 	doexe "${WORKDIR}/${_sky_basedir}/"{sky,sky_sender,man.sh}
-	dosym "${D}${_sky_bindir}/sky" /usr/bin/sky
+	dosym "../../lib64/${PN/-*/}/sky" usr/bin/sky
 
 	insinto "${_sky_libdir}"
 	insopts -m0755

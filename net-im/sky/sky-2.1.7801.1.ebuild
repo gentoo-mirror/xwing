@@ -73,7 +73,7 @@ src_install() {
 
 	exeinto "${_sky_bindir}"
 	doexe "${WORKDIR}/${_sky_basedir}/"{sky,sky_sender,man.sh}
-	dosym "${D}${_sky_bindir}/sky" /usr/bin/sky
+	dosym "../../lib64/${PN/-*/}/sky" usr/bin/sky
 
 	insinto "${_sky_libdir}"
 	insopts -m0755
