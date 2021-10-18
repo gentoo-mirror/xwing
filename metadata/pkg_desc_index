@@ -9,6 +9,7 @@ media-fonts/noto-emoji-stripped 20210715: Google Noto Emoji fonts, minimal packa
 media-fonts/noto-stripped 20211005: Google's Noto font, only basic variants (Sans, Serif, Mono)
 media-fonts/source-pro 20210124: Adobe's open source typeface family designed for UI environments
 media-gfx/rawtherapee 9999: A powerful cross-platform raw image processing program
+media-gfx/sane-backends 1.0.32: Scanner Access Now Easy - Backends
 media-sound/ocenaudio 3.10.12: Easy, fast and powerful audio editor
 net-im/sky 2.1.7772 2.1.7801.1: Lync & Skype for Business client on Linux
 net-misc/netmask 2.4: Tool for generating terse netmasks in several common formats
