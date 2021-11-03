@@ -45,6 +45,5 @@ src_install() {
 	einstalldocs
 	dodoc smb.conf.example Documentation/configuration.txt
 
-	sed -i -e "s:/sbin:${EPREFIX}/usr/sbin:g" ksmbd.service
-	systemd_dounit ksmbd.service
+	systemd_dounit "${FILESDIR}/ksmbd.service"
 }

@@ -12,4 +12,4 @@ RDEPEND=dev-libs/glib dev-libs/libnl:3 kerberos? ( virtual/krb5 )
 SLOT=0
 SRC_URI=https://github.com/cifsd-team/ksmbd-tools/archive/a1144518d74a26e0a45c0c1685f56f0f695bb497.zip
 _eclasses_=gnuconfig	262062cef0ba4f22b397193da514a350	toolchain-funcs	9ea1c67b6f8315fdc2568abb674519aa	multilib	4b66d835ec72e021e359bb81eacfe988	libtool	241a8f577b9781a42a7421e53448a44e	autotools	c9df06c186913b43eb211100ef5fe2cf	systemd	2736b403a83f194b59b767f3b344c2c1
-_md5_=378a8b60876d79fe7224c335b950282c
+_md5_=b3febb38968c68adc6ac342191d066d7
