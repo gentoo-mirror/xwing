@@ -27,8 +27,13 @@ BDEPEND=""
 
 S="${WORKDIR}/${PN}-${HASH}"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-fix-control-return-code.patch"
+)
+
 src_prepare() {
-	eapply_user
+	default
+
 	eautoreconf
 }
 

@@ -1,0 +1,49 @@
+commit 0905c42d80152a28005cd132c19197bf579cada8
+Author: Guillaume Castagnino <guillaume.castagnino@rohde-schwarz.com>
+Date:   Wed Nov 3 11:16:05 2021 +0100
+
+    Standardize exit codes
+    
+    In case of success, EXIT_SUCCESS must be returned by the control binary
+    This standard behaviour is expected for example for the unit file
+
+diff --git a/control/control.c b/control/control.c
+index 5b86355..5ff2780 100644
+--- a/control/control.c
++++ b/control/control.c
+@@ -43,7 +43,7 @@ static int ksmbd_control_shutdown(void)
+ 
+ 	ret = write(fd, "hard", 4);
+ 	close(fd);
+-	return ret;
++	return ret != -1 ? EXIT_SUCCESS : EXIT_FAILURE;
+ }
+ 
+ static int ksmbd_control_show_version(void)
+@@ -61,7 +61,7 @@ static int ksmbd_control_show_version(void)
+ 	close(fd);
+ 	if (ret != -1)
+ 		pr_info("ksmbd version : %s\n", ver);
+-	return ret;
++	return ret != -1 ? EXIT_SUCCESS : EXIT_FAILURE;
+ }
+ 
+ static int ksmbd_control_debug(char *comp)
+@@ -85,7 +85,7 @@ static int ksmbd_control_debug(char *comp)
+ 	pr_info("%s\n", buf);
+ out:
+ 	close(fd);
+-	return ret;
++	return ret != -1 ? EXIT_SUCCESS : EXIT_FAILURE;
+ }
+ 
+ int main(int argc, char *argv[])
+@@ -104,7 +104,7 @@ int main(int argc, char *argv[])
+ 	while ((c = getopt(argc, argv, "sd:cVh")) != EOF)
+ 		switch (c) {
+ 		case 's':
+-			ksmbd_control_shutdown();
++			ret = ksmbd_control_shutdown();
+ 			break;
+ 		case 'd':
+ 			ret = ksmbd_control_debug(optarg);

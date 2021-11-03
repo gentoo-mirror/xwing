@@ -13,5 +13,5 @@ media-sound/ocenaudio 3.10.13: Easy, fast and powerful audio editor
 net-im/sky 2.1.7772 2.1.7801.1: Lync & Skype for Business client on Linux
 net-misc/netmask 2.4: Tool for generating terse netmasks in several common formats
 net-print/brlaser 6_p20200420: Brother laser printer driver
-sys-fs/ksmbd-tools 3.4.2_p20211026-r1: cifsd kernel server userspace utilities
+sys-fs/ksmbd-tools 3.4.2_p20211026-r2: cifsd kernel server userspace utilities
 x11-themes/zuki-themes 9999: Zuki themes for GNOME, Xfce and more.
