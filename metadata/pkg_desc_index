@@ -1,17 +1,17 @@
 app-dicts/myspell-fr 7.0: French dictionaries for myspell/hunspell
 app-office/grisbi 2.0.5: Grisbi is a personal accounting application for Linux
 mail-filter/spampd 2.53-r1: spampd is a program to scan messages for Unsolicited Commercial E-mail content
-media-fonts/croscorefonts 20211005: Open licensed fonts metrically compatible with MS corefonts
+media-fonts/croscorefonts 20211104: Open licensed fonts metrically compatible with MS corefonts
 media-fonts/eb-garamond 20190422: Claude Garamont's humanist typeface from the mid-16th century
-media-fonts/ibm-plex 5.2.1: The package of IBM's typeface
+media-fonts/ibm-plex 6.0.0: The package of IBM's typeface
 media-fonts/liberation-sans-narrow 1.07.6: A Arial Narrow replacement TrueType font set, courtesy of Red Hat
 media-fonts/noto-emoji-stripped 20210715: Google Noto Emoji fonts, minimal package
-media-fonts/noto-stripped 20211005: Google's Noto font, only basic variants (Sans, Serif, Mono)
-media-fonts/source-pro 20210124: Adobe's open source typeface family designed for UI environments
+media-fonts/noto-stripped 20211104: Google's Noto font, only basic variants (Sans, Serif, Mono)
+media-fonts/source-pro 20211105: Adobe's open source typeface family designed for UI environments
 media-gfx/rawtherapee 9999: A powerful cross-platform raw image processing program
 media-sound/ocenaudio 3.10.13: Easy, fast and powerful audio editor
 net-im/sky 2.1.7772 2.1.7801.1: Lync & Skype for Business client on Linux
 net-misc/netmask 2.4: Tool for generating terse netmasks in several common formats
 net-print/brlaser 6_p20200420: Brother laser printer driver
-sys-fs/ksmbd-tools 3.4.2_p20211026-r2: cifsd kernel server userspace utilities
+sys-fs/ksmbd-tools 3.4.2_p20211105: cifsd kernel server userspace utilities
 x11-themes/zuki-themes 9999: Zuki themes for GNOME, Xfce and more.

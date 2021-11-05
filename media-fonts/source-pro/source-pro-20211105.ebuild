@@ -4,16 +4,16 @@
 EAPI=7
 inherit font
 
-SANSV="3.028R"
-SERIFV="3.001R"
+SANSV="3.046R"
+SERIFV="4.004R"
 CODEV="2.038R-ro/1.058R-it"
 
 DESCRIPTION="Adobe's open source typeface family designed for UI environments"
 HOMEPAGE="https://adobe-fonts.github.io/source-sans-pro/
 	https://adobe-fonts.github.io/source-serif-pro/
 	https://adobe-fonts.github.io/source-code-pro/"
-SRC_URI="https://github.com/adobe-fonts/source-sans-pro/releases/download/${SANSV}/source-sans-${SANSV/\./v}.zip
-	https://github.com/adobe-fonts/source-serif-pro/releases/download/${SERIFV}/source-serif-pro-${SERIFV}.zip
+SRC_URI="https://github.com/adobe-fonts/source-sans-pro/releases/download/${SANSV}/TTF-source-sans-${SANSV}.zip
+	https://github.com/adobe-fonts/source-serif-pro/releases/download/${SERIFV}/source-serif-${SERIFV/R/}.zip
 	https://github.com/adobe-fonts/source-code-pro/releases/download/${CODEV}/1.018R-VAR/TTF-source-code-pro-${CODEV/\//-}.zip"
 
 LICENSE="OFL-1.1"
