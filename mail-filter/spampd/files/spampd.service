@@ -4,9 +4,7 @@ Before=mail-transfer-agent.target
 After=syslog.target network.target
 
 [Service]
-User=mail
-Group=mail
-ExecStart=/usr/sbin/spampd --nodetach -u mail -g mail $SPAMPD_OPTS
+ExecStart=/usr/sbin/spampd --nodetach $SPAMPD_OPTS
 ExecReload=/bin/kill -HUP $MAINPID
 
 [Install]
