@@ -1,12 +1,12 @@
 [Unit]
 Description=SpamAssassin Proxy Daemon
 Before=mail-transfer-agent.target
-After=network.target
+After=syslog.target network.target
 
 [Service]
-Type=forking
-PIDFile=/run/spampd.pid
-ExecStart=/usr/sbin/spampd.pl --host=localhost:10025 --relayhost=localhost:10026 --maxsize=500 --sef --tagall
+User=mail
+Group=mail
+ExecStart=/usr/sbin/spampd.pl --nodetach -u mail -g mail --host=localhost:10025 --relayhost=localhost:10026 --maxsize=500 --sef --tagall
 ExecReload=/usr/bin/kill -HUP $MAINPID
 
 [Install]

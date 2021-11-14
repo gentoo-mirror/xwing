@@ -1,7 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
 inherit systemd
 
 DESCRIPTION="spampd is a program to scan messages for Unsolicited Commercial E-mail content"
@@ -13,18 +14,28 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
-RDEPEND="dev-lang/perl
+RDEPEND="acct-group/mail
+	acct-user/mail
+	dev-lang/perl
 	dev-perl/Net-Server
-	mail-filter/spamassassin"
+	mail-filter/spamassassin
+	virtual/perl-IO-Socket-IP"
 DEPEND="${RDEPEND}"
 BDEPEND=""
+
+PATCHES=(
+	"${FILESDIR}/${P}-no-pid-file.patch"
+)
+
+src_compile() {
+	pod2man ${PN}.pod > ${PN}.1
+}
 
 src_install() {
 	dosbin spampd.pl
 
-	dodoc changelog.txt misc/spampd-rh-rc-script.sh
-	docinto html
-	dodoc spampd.html
+	dodoc changelog.txt
+	doman ${PN}.1
 
 	newinitd "${FILESDIR}"/init spampd
 	newconfd "${FILESDIR}"/conf spampd
