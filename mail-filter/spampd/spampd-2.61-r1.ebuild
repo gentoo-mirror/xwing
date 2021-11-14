@@ -42,4 +42,5 @@ src_install() {
 	newconfd "${FILESDIR}"/conf spampd
 
 	systemd_dounit "${FILESDIR}/${PN}.service"
+	systemd_install_serviced "${FILESDIR}/${PN}.service.conf"
 }

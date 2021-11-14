@@ -6,7 +6,7 @@ After=syslog.target network.target
 [Service]
 User=mail
 Group=mail
-ExecStart=/usr/sbin/spampd --nodetach -u mail -g mail --host=localhost:10025 --relayhost=localhost:10026 --maxsize=500 --sef --tagall
+ExecStart=/usr/sbin/spampd --nodetach -u mail -g mail $SPAMPD_OPTS
 ExecReload=/bin/kill -HUP $MAINPID
 
 [Install]

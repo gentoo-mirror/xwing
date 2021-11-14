@@ -1,6 +1,6 @@
 app-dicts/myspell-fr 7.0: French dictionaries for myspell/hunspell
 app-office/grisbi 2.0.5: Grisbi is a personal accounting application for Linux
-mail-filter/spampd 2.61: spampd is a program to scan messages for Unsolicited Commercial E-mail content
+mail-filter/spampd 2.61-r1: spampd is a program to scan messages for Unsolicited Commercial E-mail content
 media-fonts/croscorefonts 20211104: Open licensed fonts metrically compatible with MS corefonts
 media-fonts/eb-garamond 20190422: Claude Garamont's humanist typeface from the mid-16th century
 media-fonts/ibm-plex 6.0.0: The package of IBM's typeface
