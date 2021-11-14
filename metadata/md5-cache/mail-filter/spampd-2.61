@@ -11,4 +11,4 @@ RDEPEND=acct-group/mail acct-user/mail dev-lang/perl dev-perl/Net-Server mail-fi
 SLOT=0
 SRC_URI=https://github.com/mpaperno/spampd/archive/2.61.tar.gz -> spampd-2.61.tar.gz
 _eclasses_=toolchain-funcs	9ea1c67b6f8315fdc2568abb674519aa	multilib	4b66d835ec72e021e359bb81eacfe988	systemd	2736b403a83f194b59b767f3b344c2c1
-_md5_=244c1443ac39b721042243eb9c5c38cb
+_md5_=f9ad833bf9730455001bd138a8404d77

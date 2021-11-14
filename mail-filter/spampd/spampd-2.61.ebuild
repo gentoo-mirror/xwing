@@ -28,11 +28,12 @@ PATCHES=(
 )
 
 src_compile() {
+	mv ${PN}.pl ${PN}
 	pod2man ${PN}.pod > ${PN}.1
 }
 
 src_install() {
-	dosbin spampd.pl
+	dosbin ${PN}
 
 	dodoc changelog.txt
 	doman ${PN}.1
