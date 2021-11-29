@@ -9,7 +9,7 @@ DESCRIPTION="cifsd kernel server userspace utilities"
 HOMEPAGE="https://github.com/cifsd-team/ksmbd-tools"
 #SRC_URI="https://github.com/cifsd-team/${PN}/releases/download/${PV}/${P}.tgz"
 # for now, use a snapshot to have the unit file and last fixes
-HASH=24df05ea26852fcf349647af2ef642112fceafba
+HASH=7232230911c02f81cb50b38f47ccf7100dd066f9
 SRC_URI="https://github.com/cifsd-team/${PN}/archive/${HASH}.zip -> ${P}.zip"
 
 LICENSE="GPL-2"
