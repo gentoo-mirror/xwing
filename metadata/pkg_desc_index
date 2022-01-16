@@ -9,6 +9,7 @@ media-fonts/noto-stripped 20211104: Google's Noto font, only basic variants (San
 media-fonts/source-pro 20211105: Adobe's open source typeface family designed for UI environments
 media-gfx/rawtherapee 9999: A powerful cross-platform raw image processing program
 media-sound/ocenaudio 3.11.2: Easy, fast and powerful audio editor
+media-video/mpc-qt 20.10 9999: Media Player Classic Qute Theater
 net-im/sky 2.1.7772 2.1.7801.1: Lync & Skype for Business client on Linux
 net-misc/netmask 2.4: Tool for generating terse netmasks in several common formats
 net-print/brlaser 6_p20200420: Brother laser printer driver

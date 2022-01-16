@@ -1,0 +1,13 @@
+BDEPEND=media-video/mpv[libmpv] dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=configure install postinst postrm prepare unpack
+DEPEND=media-video/mpv[libmpv] dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5
+DESCRIPTION=Media Player Classic Qute Theater
+EAPI=8
+HOMEPAGE=https://github.com/mpc-qt/mpc-qt
+INHERIT=qmake-utils xdg-utils git-r3
+LICENSE=GPL-2
+PROPERTIES=live
+RDEPEND=media-video/mpv[libmpv] dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5
+SLOT=0
+_eclasses_=toolchain-funcs	badd6e329e1f3e6bee99b35bf8763ce8	multilib	de4beb52bfa93c4c5d96792a6b5e1784	qmake-utils	f5eb2f69fffe94292aaaf802fb21c8d1	xdg-utils	4f29a8b760a594a212abe9c2ba957c31	git-r3	cc875b0c1e9b3bdac1af0f82f3ba29da
+_md5_=425e5d0d29bbc9adedc8394cc21f1b7c
