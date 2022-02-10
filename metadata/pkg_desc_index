@@ -13,4 +13,5 @@ media-video/mpc-qt 20.10 9999: Media Player Classic Qute Theater
 net-im/sky 2.1.7772 2.1.7801.1: Lync & Skype for Business client on Linux
 net-misc/netmask 2.4: Tool for generating terse netmasks in several common formats
 net-print/brlaser 6_p20200420: Brother laser printer driver
+x11-themes/smplayer-themes 20.11.0: Icon themes for smplayer
 x11-themes/zuki-themes 9999: Zuki themes for GNOME, Xfce and more.
