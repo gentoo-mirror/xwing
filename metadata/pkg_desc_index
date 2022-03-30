@@ -8,7 +8,7 @@ media-fonts/noto-emoji-stripped 20210715: Google Noto Emoji fonts, minimal packa
 media-fonts/noto-stripped 20220315: Google's Noto font, only basic variants (Sans, Serif, Mono)
 media-fonts/source-pro 20211105: Adobe's open source typeface family designed for UI environments
 media-gfx/rawtherapee 9999: A powerful cross-platform raw image processing program
-media-sound/ocenaudio 3.11.5: Easy, fast and powerful audio editor
+media-sound/ocenaudio 3.11.7: Easy, fast and powerful audio editor
 net-print/brlaser 6_p20200420: Brother laser printer driver
 x11-themes/smplayer-themes 20.11.0: Icon themes for smplayer
 x11-themes/zuki-themes 9999: Zuki themes for GNOME, Xfce and more.
