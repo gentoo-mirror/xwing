@@ -1,0 +1,13 @@
+BDEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
+DEFINED_PHASES=install postinst postrm setup
+DESCRIPTION=Serif typeface for Roman and Cyrillic languages
+EAPI=7
+HOMEPAGE=https://software.sil.org/charis/
+INHERIT=font
+IUSE=X
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~loong ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x64-macos
+LICENSE=OFL-1.1
+SLOT=0
+SRC_URI=https://github.com/silnrsi/font-charis/releases/download/v6.101/CharisSIL-6.101.tar.xz -> sil-charis-6.101.tar.xz
+_eclasses_=font	d31f12a0f6e13d56dc3062e76ae58a61
+_md5_=29371be7faecf5111f6e204bf1cc55f1

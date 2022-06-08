@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 inherit font
 
 MY_PN="EBGaramond12"
-COMMIT="8e8d2aff04abb39fceca0b1e8da1f444e466fb3b"
+COMMIT="e608414f52e532b68e2182f96b4ce9db35335593"
 DESCRIPTION="Claude Garamont's humanist typeface from the mid-16th century"
 HOMEPAGE="https://github.com/octaviopardo/EBGaramond12"
 SRC_URI="https://github.com/octaviopardo/${MY_PN}/archive/${COMMIT}.zip -> ${P}.zip"
