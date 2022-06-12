@@ -1,0 +1,13 @@
+BDEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
+DEFINED_PHASES=install postinst postrm setup
+DESCRIPTION=A strong, neutral, principles-driven, open source typeface for text or display
+EAPI=8
+HOMEPAGE=https://public-sans.digital.gov/
+INHERIT=font
+IUSE=X
+KEYWORDS=~amd64 ~x86
+LICENSE=OFL-1.1
+SLOT=0
+SRC_URI=https://github.com/uswds/public-sans/releases/download/v2.001/public-sans-v2.001.zip
+_eclasses_=font	d31f12a0f6e13d56dc3062e76ae58a61
+_md5_=6ad884c94aecf2edac63ebfd8bb09e45
