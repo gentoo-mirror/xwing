@@ -10,4 +10,4 @@ LICENSE=OFL-1.1
 SLOT=0
 SRC_URI=https://github.com/silnrsi/font-charis/releases/download/v6.101/CharisSIL-6.101.tar.xz -> sil-charis-6.101.tar.xz
 _eclasses_=font	d31f12a0f6e13d56dc3062e76ae58a61
-_md5_=29371be7faecf5111f6e204bf1cc55f1
+_md5_=053724e56b624eb756fef59ab87d2869

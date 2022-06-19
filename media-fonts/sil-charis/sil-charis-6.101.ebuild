@@ -8,7 +8,7 @@ inherit font
 
 DESCRIPTION="Serif typeface for Roman and Cyrillic languages"
 HOMEPAGE="https://software.sil.org/charis/"
-SRC_URI="https://github.com/silnrsi/font-charis/releases/download/v6.101/${MY_PN}-${PV}.tar.xz -> ${P}.tar.xz"
+SRC_URI="https://github.com/silnrsi/font-charis/releases/download/v${PV}/${MY_PN}-${PV}.tar.xz -> ${P}.tar.xz"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="OFL-1.1"
