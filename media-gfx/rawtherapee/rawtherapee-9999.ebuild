@@ -22,11 +22,11 @@ RDEPEND="
 	media-libs/lensfun
 	media-libs/libcanberra[gtk3]
 	media-libs/libiptcdata
+	media-libs/libjpeg-turbo
 	media-libs/libpng:0=
 	media-libs/tiff:0
 	sci-libs/fftw:3.0=
 	sys-libs/zlib
-	virtual/jpeg:0
 	x11-libs/gtk+:3
 	tcmalloc? ( dev-util/google-perftools )"
 DEPEND="${RDEPEND}
@@ -35,9 +35,11 @@ DEPEND="${RDEPEND}
 BDEPEND="virtual/pkgconfig"
 
 pkg_pretend() {
-	if use openmp ; then
-		tc-has-openmp || die "Please switch to an openmp compatible compiler"
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 src_configure() {

@@ -8,7 +8,7 @@ MY_PN="EBGaramond12"
 COMMIT="e608414f52e532b68e2182f96b4ce9db35335593"
 DESCRIPTION="Claude Garamont's humanist typeface from the mid-16th century"
 HOMEPAGE="https://github.com/octaviopardo/EBGaramond12"
-SRC_URI="https://github.com/octaviopardo/${MY_PN}/archive/${COMMIT}.zip -> ${P}.zip"
+SRC_URI="https://github.com/octaviopardo/${MY_PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="OFL-1.1"
 SLOT="0"

@@ -14,6 +14,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
+BDEPEND="app-arch/unzip"
+
 S="${WORKDIR}/TrueType"
 FONT_S="${S}"
 FONT_SUFFIX="ttf"

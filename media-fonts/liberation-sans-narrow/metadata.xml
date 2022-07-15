@@ -5,7 +5,4 @@
 		<email>fonts@gentoo.org</email>
 		<name>Fonts</name>
 	</maintainer>
-	<longdescription lang="en">
-		A GPL-2 Arial Narrow replacement TrueType font set, courtesy of Red Hat
-	</longdescription>
 </pkgmetadata>
