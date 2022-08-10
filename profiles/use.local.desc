@@ -4,4 +4,5 @@
 
 app-office/grisbi:goffice - enable goffice graphic support
 media-gfx/rawtherapee:lto - Enable LTO during build
+net-mail/davmail-bin:server - Add a davmail user and an entry to /etc/init.d and systemd unit to use davmail as a service
 x11-themes/zuki-themes:xfce - Build xfwm4 decorations
