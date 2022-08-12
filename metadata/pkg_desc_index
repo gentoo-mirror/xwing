@@ -1,5 +1,3 @@
-acct-group/davmail 0: Group for Davmail
-acct-user/davmail 0: User for Davmail
 app-dicts/myspell-fr 7.0: French dictionaries for myspell/hunspell
 app-office/grisbi 2.0.5: Grisbi is a personal accounting application for Linux
 media-fonts/croscorefonts 20220630: Open licensed fonts metrically compatible with MS corefonts
@@ -12,7 +10,6 @@ media-fonts/sil-charis 6.101: Serif typeface for Roman and Cyrillic languages
 media-fonts/source-pro 20211105: Adobe's open source typeface family designed for UI environments
 media-gfx/rawtherapee 9999: A powerful cross-platform raw image processing program
 media-sound/ocenaudio 3.11.13: Easy, fast and powerful audio editor
-net-mail/davmail-bin 6.0.1.3390: POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway
 net-print/brlaser 6_p20200420: Brother laser printer driver
 x11-themes/smplayer-themes 20.11.0: Icon themes for smplayer
 x11-themes/zuki-themes 9999: Zuki themes for GNOME, Xfce and more.
