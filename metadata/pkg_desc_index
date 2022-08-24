@@ -2,7 +2,7 @@ app-dicts/myspell-fr 7.0: French dictionaries for myspell/hunspell
 app-office/grisbi 2.0.5: Grisbi is a personal accounting application for Linux
 media-fonts/croscorefonts 20220630: Open licensed fonts metrically compatible with MS corefonts
 media-fonts/eb-garamond 20210929: Claude Garamont's humanist typeface from the mid-16th century
-media-fonts/ibm-plex 6.0.2: The package of IBM's typeface
+media-fonts/ibm-plex 6.1.0: The package of IBM's typeface
 media-fonts/liberation-sans-narrow 1.07.6: A Arial Narrow replacement TrueType font set, courtesy of Red Hat
 media-fonts/noto-emoji-stripped 20220506: Google Noto Emoji fonts, minimal package
 media-fonts/noto-stripped 20220630: Google's Noto font, only basic variants (Sans, Serif, Mono)
