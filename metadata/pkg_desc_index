@@ -7,7 +7,6 @@ media-fonts/liberation-sans-narrow 1.07.6: A Arial Narrow replacement TrueType f
 media-fonts/noto-emoji-stripped 20220506: Google Noto Emoji fonts, minimal package
 media-fonts/noto-stripped 20220630: Google's Noto font, only basic variants (Sans, Serif, Mono)
 media-fonts/sil-charis 6.101: Serif typeface for Roman and Cyrillic languages
-media-fonts/source-pro 20211105: Adobe's open source typeface family designed for UI environments
 media-gfx/rawtherapee 9999: A powerful cross-platform raw image processing program
 media-sound/ocenaudio 3.11.13: Easy, fast and powerful audio editor
 net-print/brlaser 6_p20200420: Brother laser printer driver
