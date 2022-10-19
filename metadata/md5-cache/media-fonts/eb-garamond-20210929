@@ -9,5 +9,5 @@ KEYWORDS=~amd64 ~arm ~arm64 ~x86
 LICENSE=OFL-1.1
 SLOT=0
 SRC_URI=https://github.com/octaviopardo/EBGaramond12/archive/e608414f52e532b68e2182f96b4ce9db35335593.tar.gz -> eb-garamond-20210929.tar.gz
-_eclasses_=font	d31f12a0f6e13d56dc3062e76ae58a61
+_eclasses_=font	bc7d91ca9054e47ad87b5763214665a4
 _md5_=a468817f6e113f59de8b2bc4e16e5626
