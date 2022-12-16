@@ -22,9 +22,9 @@ RDEPEND="
 	media-libs/lensfun
 	media-libs/libcanberra[gtk3]
 	media-libs/libiptcdata
-	media-libs/libjpeg-turbo
+	media-libs/libjpeg-turbo:=
 	media-libs/libpng:0=
-	media-libs/tiff:0
+	media-libs/tiff:=
 	sci-libs/fftw:3.0=
 	sys-libs/zlib
 	x11-libs/gtk+:3
