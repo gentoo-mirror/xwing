@@ -2,13 +2,13 @@ BDEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DEFINED_PHASES=install postinst postrm setup
 DESCRIPTION=Google's Noto font, only basic variants (Sans, Serif, Mono)
 EAPI=7
-HOMEPAGE=https://www.google.com/get/noto/ https://github.com/googlefonts/noto-fonts
+HOMEPAGE=https://notofonts.github.io/ https://github.com/notofonts/notofonts.github.io
 INHERIT=font
 IUSE=X
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~sparc ~x86
 LICENSE=OFL-1.1
 RESTRICT=binchecks strip
 SLOT=0
-SRC_URI=https://gentoo.xwing.info/distfiles/noto-stripped-20220630.tar.xz
+SRC_URI=https://gentoo.xwing.info/distfiles/noto-stripped-20230201.tar.xz
 _eclasses_=font	5e03cb70902daa9ff8967c61130f0f60
-_md5_=a0a8eef19a9ac169e25d7181b17b457e
+_md5_=efd4b3af724fdc2cfb6aa3460d2003ce

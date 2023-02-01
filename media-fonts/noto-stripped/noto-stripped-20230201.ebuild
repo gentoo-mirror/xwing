@@ -5,7 +5,7 @@ EAPI=7
 inherit font
 
 DESCRIPTION="Google's Noto font, only basic variants (Sans, Serif, Mono)"
-HOMEPAGE="https://www.google.com/get/noto/ https://github.com/googlefonts/noto-fonts"
+HOMEPAGE="https://notofonts.github.io/ https://github.com/notofonts/notofonts.github.io"
 
 SRC_URI="https://gentoo.xwing.info/distfiles/${P}.tar.xz"
 
