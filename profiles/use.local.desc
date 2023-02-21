@@ -4,4 +4,3 @@
 
 app-office/grisbi:goffice - enable goffice graphic support
 media-gfx/rawtherapee:lto - Enable LTO during build
-x11-themes/zuki-themes:xfce - Build xfwm4 decorations
