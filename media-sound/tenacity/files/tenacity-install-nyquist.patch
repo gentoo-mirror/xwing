@@ -1,0 +1,73 @@
+Authentication-Results: mail-b.sr.ht; dkim=pass header.d=hacktivis.me header.i=@hacktivis.me
+Received: from cloudsdale.the-delta.net.eu.org (cloudsdale.the-delta.net.eu.org [138.201.117.120])
+	by mail-b.sr.ht (Postfix) with ESMTPS id 3293411EFCE
+	for <~tenacity/tenacity-dev@lists.sr.ht>; Sun, 19 Sep 2021 10:12:18 +0000 (UTC)
+Received: 
+	by cloudsdale.the-delta.net.eu.org (OpenSMTPD) with ESMTP id f4f3e061;
+	Sun, 19 Sep 2021 10:12:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed; d=hacktivis.me; h=from:to
+	:cc:date:message-id:in-reply-to:references:mime-version
+	:content-transfer-encoding; s=20190711_142157; bh=jjQaWeelzuBNDo
+	bl54orkL18snjqzPQB9SJNSwNrcgA=; b=cM0V8VZSH7mYgme28dst3lYWidL4U/
+	36K73vXqlqgd/hL2dd04sqtjsS4qCvPA9+7fNvUgfJgmLmeqJz5y30WzCrBlfkEC
+	uu/8KRF7z1Y/SjFfXlfZinye5i8FfOD/bJCecgz0K2N9pntcrORn3IgQhW1cZbNT
+	3ciHTniwOfsEUfLh1mGvkQ5Z3HNnCWmp3dGn9j6tT90vfqET3DOjLq2xfFvCkxoR
+	3p7KpQIry6J4GbF07WCdanRCbuXv56M/np1Q0ouCA5Bn+yaT+0n0w7yKW1+/CYSC
+	XszFFN+fQ7f8dB+pWQCsiq0sf/d9zyL8uHa0PDrzP3n5CbU/tZwzoXMg9hjL2oJY
+	payJ0A78yjw3V6XHz+ZRObNYJprGVjAHmguaNEIZTlMoL+YcDUISk3KCwkzY0A4a
+	PWrBwuW9wZXyDiHO3upMTLAJNKempE6YZsedZP0hFoIqAQLopiaX34JucafM0tuD
+	mfcqgDms1fmJV9occg084pbirq3Xe8iBP1PELaK5oH3nzMwOorGqq/aGzWMJRhjZ
+	WWCqc9SBjn9LKuzseJyRWXk2hVgoh0vPaZ7RtlZuhuJhgBIUzUKdQqPSwIdyAPjz
+	EZh0pHm2m9jgb+XRgo/f8kjAkwwPThamJ583D+LMa1gdTCeELOu4BOWnIKXeumep
+	J9+qgJkUgSCBE=
+DomainKey-Signature: a=rsa-sha1; c=nofws; d=hacktivis.me; h=from:to:cc
+	:date:message-id:in-reply-to:references:mime-version
+	:content-transfer-encoding; q=dns; s=20190711_142157; b=Z12fz/HG
+	1+jXAcRuPDIGJtIbFM9pwf2KPb7bY9kRq0SziGfhgbD+As6ota2Omyuc0DexT6W0
+	2K6o64nPJXwWa9UKAJG7HpeAz2C13Z+Ak2RGjTtkPtgG1jIsKqCJuZOOeMEvRhq7
+	/WcKv8AEzW+RgftkFuwOjF6Be8zwC5YF4qabudc33ffjNHaQ5gzSzEHiy0uPPyMz
+	pa4+btHrQx5QZHoh57prXcMeksvCQAXbXQDswXUIFVNtHL0z8Onl5fB6tj4U9H8P
+	jlxEpwrmBip0L8ShjpnH+xzSNs3tACoNQ5OgN4IxNTioImzlox73RiAnLJ2ugZQ+
+	/XI/e1WAR+VgHXHscb93mMwuBvJi9js17U3lanM8vZHRVWxCU3egkPkEGCQ8ybLJ
+	Rqa3UYDR43P1iizby1eQP8di89uaP7LNHH7E3kN2a7pVX5uMpbQBJb0StY0z6a16
+	m0p4l+mYJuXZkiTWzSVGRzNRH4laFWYb2irBtJwRRtIu7Dm8kx0N0TWSqoXn/hVG
+	OQOWYHpIr+FZ19PdpBTgJ7lpPsfzvjpV19gAo625ir4yFijVVtOrkSM0KpmsFTNe
+	ULy6ikM56EzenmwI/A913z/6M8MaSfsfsRS8WRwWyAe513sesgQ/WUr+tXJ1lTiJ
+	UFj31gr29hsW6IL/v6e5j/hWywbC2ug2698=
+Received: from localhost (cloudsdale.the-delta.net.eu.org [local])
+	by cloudsdale.the-delta.net.eu.org (OpenSMTPD) with ESMTPA id 5d49e40c;
+	Sun, 19 Sep 2021 10:12:17 +0000 (UTC)
+From: "Haelwenn (lanodan) Monnier" <contact@hacktivis.me>
+To: ~tenacity/tenacity-dev@lists.sr.ht
+Cc: "Haelwenn (lanodan) Monnier" <contact@hacktivis.me>
+Subject: [PATCH tenacity v2] cmake: Add install target for libnyquist
+Date: Sun, 19 Sep 2021 12:12:15 +0200
+Message-Id: <20210919101215.10817-1-contact@hacktivis.me>
+X-Mailer: git-send-email 2.32.0
+In-Reply-To: <CEDS418GIZU4.2O5KCOMET529M@neophyte>
+References: <CEDS418GIZU4.2O5KCOMET529M@neophyte>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Haelwenn (lanodan) Monnier <contact@hacktivis.me>
+---
+ lib-src/libnyquist/CMakeLists.txt | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/lib-src/libnyquist/CMakeLists.txt b/lib-src/libnyquist/CMakeLists.txt
+index 45993c7d3..d4d16c393 100644
+--- a/lib-src/libnyquist/CMakeLists.txt
++++ b/lib-src/libnyquist/CMakeLists.txt
+@@ -290,3 +290,9 @@ target_compile_options(libnyquist
+    PRIVATE
+       $<$<PLATFORM_ID:Darwin>:-fno-common>
+ )
++
++install(
++   TARGETS libnyquist
++   LIBRARY
++   DESTINATION "${_LIBDIR}"
++)
+-- 
+2.32.0
+

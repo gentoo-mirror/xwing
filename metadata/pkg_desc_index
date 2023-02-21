@@ -7,5 +7,6 @@ media-fonts/noto-emoji-stripped 20220920: Google Noto Emoji fonts, minimal packa
 media-fonts/noto-stripped 20230201: Google's Noto font, only basic variants (Sans, Serif, Mono)
 media-gfx/rawtherapee 9999: A powerful cross-platform raw image processing program
 media-sound/ocenaudio 3.11.22: Easy, fast and powerful audio editor
+media-sound/tenacity 1.3_beta2: Free crossplatform audio editor
 net-print/brlaser 6_p20200420: Brother laser printer driver
 x11-themes/smplayer-themes 20.11.0: Icon themes for smplayer

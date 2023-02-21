@@ -4,3 +4,11 @@
 
 app-office/grisbi:goffice - enable goffice graphic support
 media-gfx/rawtherapee:lto - Enable LTO during build
+media-sound/tenacity:id3tag - Enables ID3 tagging with id3tag library
+media-sound/tenacity:lv2 - Add support for Ladspa V2
+media-sound/tenacity:midi - Enable support for MIDI via media-libs/portmidi and media-libs/portsmf
+media-sound/tenacity:sbsms - Enables sbsms library support for slower, more accurate pitch and tempo changing
+media-sound/tenacity:soundtouch - Enable support of media-libs/libsoundtouch plugin
+media-sound/tenacity:twolame - Enables twolame support (MPEG Audio Layer 2 encoder)
+media-sound/tenacity:vamp - Enables vamp plugins support (Audio analysing plugins)
+media-sound/tenacity:vst2 - Enable VST2 plugin support

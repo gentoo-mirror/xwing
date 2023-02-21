@@ -1,0 +1,11 @@
+--- a/src/tracks/labeltrack/ui/LabelGlyphHandle.cpp	2023-02-21 11:44:47.725028378 +0100
++++ b/src/tracks/labeltrack/ui/LabelGlyphHandle.cpp	2023-02-21 11:44:58.205006340 +0100
+@@ -21,7 +21,7 @@
+ #include "ViewInfo.h"
+ #include "../../../SelectionState.h"
+ #include "../../../ProjectAudioIO.h"
+-#include "../../../images/Cursors.h"
++#include "../../../../images/Cursors.h"
+ #include "../../../tracks/ui/TimeShiftHandle.h"
+ 
+ #include <wx/cursor.h>
