@@ -27,12 +27,18 @@ src_install() {
 	dodir /opt/${PN}
 	cp -a . "${ED}"/opt/${PN} || die
 
+	# install wrapper reading /etc/chromium/* for CHROME_FLAGS
+	exeinto /opt/${PN}
+	doexe "${FILESDIR}/${PN}.sh"
+
 	# remove chrome-sandbox binary, users should use kernel namespaces
 	# https://bugs.gentoo.org/692692#c18
 	rm "${ED}"/opt/${PN}/chrome-sandbox || die
 
-	dosym "${EPREFIX}"/opt/${PN}/${PN} /usr/bin/${PN}
+	dosym ../../opt/${PN}/${PN}.sh /usr/bin/${PN}
 
 	newicon -s scalable "${FILESDIR}/${PN}.svg" ${PN}.svg
-	make_desktop_entry /opt/${PN}/${PN} "Teams for Linux" ${PN} Network
+	make_desktop_entry "${EPREFIX}"/opt/${PN}/${PN}.sh "Teams for Linux" \
+		${PN} "Network;Chat;InstantMessaging;" \
+		"MimeType=x-scheme-handler/msteams;"
 }
