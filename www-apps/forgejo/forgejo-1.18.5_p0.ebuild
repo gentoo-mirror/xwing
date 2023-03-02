@@ -13,10 +13,9 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://codeberg.org/forgejo/forgejo.git"
 else
 	SRC_URI="https://codeberg.org/attachments/bb93c0c9-98c4-465c-bcff-e07ac3ee72a3 -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-src-${PV/_p/-}"
 	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 fi
-
-S="${WORKDIR}/${PN}-src-${PV}-0"
 
 LICENSE="Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0"
 SLOT="0"
