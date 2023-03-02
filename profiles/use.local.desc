@@ -12,3 +12,4 @@ media-sound/tenacity:soundtouch - Enable support of media-libs/libsoundtouch plu
 media-sound/tenacity:twolame - Enables twolame support (MPEG Audio Layer 2 encoder)
 media-sound/tenacity:vamp - Enables vamp plugins support (Audio analysing plugins)
 media-sound/tenacity:vst2 - Enable VST2 plugin support
+www-apps/forgejo:acct - User and group management via acct-*/git packages

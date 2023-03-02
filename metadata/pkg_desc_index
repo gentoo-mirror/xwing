@@ -10,4 +10,5 @@ media-sound/ocenaudio 3.11.22: Easy, fast and powerful audio editor
 media-sound/tenacity 1.3_beta2: Free crossplatform audio editor
 net-im/teams-for-linux 1.0.49-r1: Microsoft Teams client for Linux. Binary precompiled version.
 net-print/brlaser 6_p20200420: Brother laser printer driver
+www-apps/forgejo 1.18.5: A painless self-hosted Git service. Gitea soft-fork drop-in replacement
 x11-themes/smplayer-themes 20.11.0: Icon themes for smplayer
