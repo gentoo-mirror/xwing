@@ -10,5 +10,5 @@ LICENSE=OFL-1.1
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=https://gentoo.xwing.info/distfiles/noto-stripped-20230201.tar.xz
-_eclasses_=font	5e03cb70902daa9ff8967c61130f0f60
+_eclasses_=font	aa113a3df9cd0a9693a1c1ee7c34a6eb
 _md5_=efd4b3af724fdc2cfb6aa3460d2003ce
