@@ -12,6 +12,6 @@ LICENSE=Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0
 RDEPEND=acct? ( acct-group/git acct-user/git[gitea] ) pam? ( sys-libs/pam ) dev-vcs/git !www-apps/gitea virtual/tmpfiles
 RESTRICT=test strip
 SLOT=0
-SRC_URI=https://codeberg.org/attachments/bb93c0c9-98c4-465c-bcff-e07ac3ee72a3 -> forgejo-1.18.5_p0.tar.gz
+SRC_URI=https://codeberg.org/attachments/bb93c0c9-98c4-465c-bcff-e07ac3ee72a3 -> forgejo-1.19.0_p2.tar.gz
 _eclasses_=fcaps	c0a086b957a1b183a8d136eabf02f191	multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	toolchain-funcs	6001248ef162a5fa2a21ce132a212f6b	multilib	5ca4e49abed8e3a2f7b56920eadee157	go-module	f9700c7efec1fd4955363169e9930c1c	tmpfiles	216aa76c3a6fcb5d893c23a0de86048f	systemd	5f4bb0758df2e483babf68cd517078ca	flag-o-matic	69394e25812406faa1f90edaf4969395
 _md5_=88cd1019b6d90d4782a13b74c182a787
