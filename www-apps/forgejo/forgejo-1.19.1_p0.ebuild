@@ -12,8 +12,10 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://codeberg.org/forgejo/forgejo.git"
 else
-	SRC_URI="https://codeberg.org/attachments/b272a3d7-9095-4a82-8e8b-cac9d3a6bc2b -> ${P}.tar.gz"
-	S="${WORKDIR}/${PN}-src-${PV/_p/-}"
+	MY_PV="${PV/_p/-}"
+	MY_P="${PN}-src-${MY_PV}"
+	SRC_URI="https://codeberg.org/forgejo/forgejo/releases/download/v${MY_PV}/${MY_P}.tar.gz"
+	S="${WORKDIR}/${MY_P}"
 	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 fi
 
