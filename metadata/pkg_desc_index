@@ -5,7 +5,7 @@ media-fonts/eb-garamond 20210929: Claude Garamont's humanist typeface from the m
 media-fonts/ibm-plex 6.2.0: The package of IBM's typeface
 media-fonts/liberation-sans-narrow 1.07.6: A Arial Narrow replacement TrueType font set, courtesy of Red Hat
 media-fonts/noto-emoji-stripped 20220920: Google Noto Emoji fonts, minimal package
-media-fonts/noto-stripped 20230201: Google's Noto font, only basic variants (Sans, Serif, Mono)
+media-fonts/noto-stripped 20230417: Google's Noto font, only basic variants (Sans, Serif, Mono)
 media-gfx/rawtherapee 9999: A powerful cross-platform raw image processing program
 media-sound/ocenaudio 3.11.22: Easy, fast and powerful audio editor
 media-sound/tenacity 1.3_beta2: Free crossplatform audio editor
