@@ -16,8 +16,15 @@ KEYWORDS=""
 IUSE="lto openmp tcmalloc"
 
 RDEPEND="
+	dev-cpp/atkmm:0
+	dev-cpp/cairomm:0
+	dev-cpp/glibmm:2
+	dev-cpp/gtkmm:3.0
+	dev-cpp/pangomm:1.4
 	dev-libs/expat
+	dev-libs/glib:2
 	dev-libs/libsigc++:2
+	gnome-base/librsvg:2
 	media-libs/lcms:2
 	media-libs/lensfun
 	media-libs/libcanberra[gtk3]
@@ -29,9 +36,7 @@ RDEPEND="
 	sys-libs/zlib
 	x11-libs/gtk+:3
 	tcmalloc? ( dev-util/google-perftools )"
-DEPEND="${RDEPEND}
-	dev-cpp/gtkmm:3.0
-	gnome-base/librsvg"
+DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 pkg_pretend() {
