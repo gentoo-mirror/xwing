@@ -9,3 +9,14 @@
  #include "../../../tracks/ui/TimeShiftHandle.h"
  
  #include <wx/cursor.h>
+--- a/src/tracks/playabletrack/wavetrack/ui/WaveClipTrimHandle.cpp	2023-05-15 12:32:44.579941831 +0200
++++ b/src/tracks/playabletrack/wavetrack/ui/WaveClipTrimHandle.cpp	2023-05-15 12:32:55.555077003 +0200
+@@ -16,7 +16,7 @@
+ #include "../../../../TrackArtist.h"
+ #include "../../../../Snap.h"
+ #include "../../../../TrackPanelDrawingContext.h"
+-#include "../../../images/Cursors.h"
++#include "../../../../../images/Cursors.h"
+ #include "WaveClip.h"
+ #include "WaveTrack.h"
+ #include "WaveTrackView.h"

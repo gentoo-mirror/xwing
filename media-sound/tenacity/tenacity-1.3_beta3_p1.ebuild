@@ -9,7 +9,10 @@ inherit cmake wxwidgets xdg
 
 DESCRIPTION="Free crossplatform audio editor"
 HOMEPAGE="https://tenacityaudio.org/"
-SRC_URI="https://codeberg.org/tenacityteam/${PN}/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
+
+MY_PV="${PV/_p/-}"
+MY_PV="${MY_PV/_/-}"
+SRC_URI="https://codeberg.org/tenacityteam/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}"
 
 # GPL-2: Tenacity code
@@ -65,6 +68,7 @@ DOCS=( LICENSE.txt README.md )
 PATCHES=(
 	"${FILESDIR}"/${PN}-cursors-header.patch
 	"${FILESDIR}"/${PN}-install-nyquist.patch
+	"${FILESDIR}"/${PN}-gcc13.patch
 	"${FILESDIR}"/${PN}-drop-files.patch
 )
 
