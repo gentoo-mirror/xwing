@@ -16,6 +16,7 @@ KEYWORDS=""
 IUSE="lto openmp tcmalloc"
 
 RDEPEND="
+	app-arch/brotli:=
 	dev-cpp/atkmm:0
 	dev-cpp/cairomm:0
 	dev-cpp/glibmm:2
@@ -23,8 +24,10 @@ RDEPEND="
 	dev-cpp/pangomm:1.4
 	dev-libs/expat
 	dev-libs/glib:2
+	dev-libs/inih
 	dev-libs/libsigc++:2
 	gnome-base/librsvg:2
+	media-gfx/exiv2:=
 	media-libs/lcms:2
 	media-libs/lensfun
 	media-libs/libcanberra[gtk3]
@@ -38,6 +41,10 @@ RDEPEND="
 	tcmalloc? ( dev-util/google-perftools )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-exiv2.patch"
+)
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
