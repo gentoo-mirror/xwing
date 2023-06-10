@@ -1,144 +1,3 @@
-diff --git a/.github/workflows/appimage.yml b/.github/workflows/appimage.yml
-index 9ad9a6cbd..fae43ed25 100644
---- a/.github/workflows/appimage.yml
-+++ b/.github/workflows/appimage.yml
-@@ -11,7 +11,7 @@ on:
-       - dev
-   workflow_dispatch:
- env:
--  publish_pre_dev_labels: '[]'
-+  publish_pre_dev_labels: '["Beep6581:metadata-exiv2"]'
- jobs:
-   build:
-     runs-on: ubuntu-20.04
-@@ -30,7 +30,21 @@ jobs:
-           echo "Running apt update."
-           sudo apt update
-           echo "Installing dependencies with apt."
--          DEBIAN_FRONTEND=noninteractive sudo apt install -y cmake libgtk-3-dev libgtkmm-3.0-dev liblensfun-dev librsvg2-dev liblcms2-dev libfftw3-dev libiptcdata0-dev libtiff5-dev libcanberra-gtk3-dev liblensfun-bin
-+          DEBIAN_FRONTEND=noninteractive sudo apt install -y cmake libgtk-3-dev libgtkmm-3.0-dev liblensfun-dev librsvg2-dev liblcms2-dev libfftw3-dev libiptcdata0-dev libtiff5-dev libcanberra-gtk3-dev liblensfun-bin libexpat1-dev libbrotli-dev zlib1g-dev libinih-dev
-+
-+      - name: Install Exiv2
-+        run: |
-+          EXIV2_VERSION='v0.28.0'
-+          echo "Cloning Exiv2 $EXIV2_VERSION."
-+          git clone --depth 1 --branch "$EXIV2_VERSION" https://github.com/Exiv2/exiv2.git ext/exiv2
-+
-+          echo "Configuring build."
-+          mkdir ext/exiv2/build
-+          cd ext/exiv2/build
-+          cmake -DCMAKE_BUILD_TYPE=Release -DEXIV2_ENABLE_BMFF=ON ..
-+
-+          echo "Building and installing."
-+          sudo make -j$(nproc) install
- 
-       - name: Configure build
-         run: |
-@@ -113,6 +127,9 @@ jobs:
-       - name: Package AppImage
-         working-directory: ./build
-         run: |
-+          echo "LD_LIBRARY_PATH is '$LD_LIBRARY_PATH'. Adding /usr/local/lib."
-+          export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib"
-+
-           echo "Creating artifact name."
-           if [ '${{github.ref_type}}' == 'tag' ]; then
-             ARTIFACT_NAME="RawTherapee_${REF_NAME_FILTERED}_${{matrix.build_type}}"
-diff --git a/.github/workflows/codeql.yml b/.github/workflows/codeql.yml
-index b90d30e27..d3b3244b4 100644
---- a/.github/workflows/codeql.yml
-+++ b/.github/workflows/codeql.yml
-@@ -35,7 +35,7 @@ jobs:
-           echo "Running apt update."
-           sudo apt update
-           echo "Installing dependencies with apt."
--          DEBIAN_FRONTEND=noninteractive sudo apt install -y cmake libgtk-3-dev libgtkmm-3.0-dev liblensfun-dev librsvg2-dev liblcms2-dev libfftw3-dev libiptcdata0-dev libtiff5-dev libcanberra-gtk3-dev liblensfun-bin
-+          DEBIAN_FRONTEND=noninteractive sudo apt install -y cmake libgtk-3-dev libgtkmm-3.0-dev liblensfun-dev librsvg2-dev liblcms2-dev libfftw3-dev libiptcdata0-dev libtiff5-dev libcanberra-gtk3-dev liblensfun-bin libexiv2-dev
- 
-       - name: Configure build
-         run: |
-diff --git a/.github/workflows/macos.yml b/.github/workflows/macos.yml
-index 3348d48b9..0deac5cec 100644
---- a/.github/workflows/macos.yml
-+++ b/.github/workflows/macos.yml
-@@ -21,7 +21,7 @@ jobs:
-            mkdir build
-            date +%s > build/stamp
-            brew uninstall --ignore-dependencies libtiff
--           brew install libtiff gtk+3 gtkmm3 gtk-mac-integration adwaita-icon-theme libsigc++@2 little-cms2 libiptcdata fftw lensfun expat pkgconfig llvm shared-mime-info | tee -a depslog
-+           brew install libtiff gtk+3 gtkmm3 gtk-mac-integration adwaita-icon-theme libsigc++@2 little-cms2 libiptcdata fftw lensfun expat pkgconfig llvm shared-mime-info exiv2 | tee -a depslog
-            date -u
-            echo "----====Pourage====----"
-            cat depslog | grep Pouring
-diff --git a/.github/workflows/windows.yml b/.github/workflows/windows.yml
-index 4ab10212c..81450a61a 100644
---- a/.github/workflows/windows.yml
-+++ b/.github/workflows/windows.yml
-@@ -11,7 +11,7 @@ on:
-       - dev
-   workflow_dispatch:
- env:
--  publish_pre_dev_labels: '[]'
-+  publish_pre_dev_labels: '["Beep6581:metadata-exiv2"]'
- jobs:
-   build:
-     runs-on: windows-2022
-@@ -47,6 +47,7 @@ jobs:
-             mingw-w64-x86_64-fftw
-             mingw-w64-x86_64-lensfun
-             mingw-w64-x86_64-libiptcdata
-+            mingw-w64-x86_64-exiv2
- 
-       - name: Configure build
-         run: |
-@@ -118,9 +119,12 @@ jobs:
-             "libcairo-2.dll" \
-             "libcairo-gobject-2.dll" \
-             "libcairomm-1.0-1.dll" \
-+            "libcrypto-3-x64.dll" \
-+            "libcurl-4.dll" \
-             "libdatrie-1.dll" \
-             "libdeflate.dll" \
-             "libepoxy-0.dll" \
-+            "libexiv2.dll" \
-             "libexpat-1.dll" \
-             libffi-*.dll \
-             "libfftw3f-3.dll" \
-@@ -144,6 +148,7 @@ jobs:
-             "libgtkmm-3.0-1.dll" \
-             "libharfbuzz-0.dll" \
-             "libiconv-2.dll" \
-+            "libidn2-0.dll" \
-             "libintl-8.dll" \
-             "libjbig-0.dll" \
-             "libjpeg-8.dll" \
-@@ -151,6 +156,7 @@ jobs:
-             "liblensfun.dll" \
-             "libLerc.dll" \
-             "liblzma-5.dll" \
-+            "libnghttp2-14.dll" \
-             "libpango-1.0-0.dll" \
-             "libpangocairo-1.0-0.dll" \
-             "libpangoft2-1.0-0.dll" \
-@@ -159,14 +165,18 @@ jobs:
-             "libpcre2-8-0.dll" \
-             "libpixman-1-0.dll" \
-             "libpng16-16.dll" \
-+            "libpsl-5.dll" \
-             "librsvg-2-2.dll" \
-             "libsharpyuv-0.dll" \
-             "libsigc-2.0-0.dll" \
-+            "libssh2-1.dll" \
-+            "libssl-3-x64.dll" \
-             "libstdc++-6.dll" \
-             "libsystre-0.dll" \
-             "libthai-0.dll" \
-             "libtiff-6.dll" \
-             "libtre-5.dll" \
-+            "libunistring-5.dll" \
-             "libwebp-7.dll" \
-             "libwinpthread-1.dll" \
-             "libxml2-2.dll" \
 diff --git a/.gitignore b/.gitignore
 index fc65c877c..7774f1f3a 100644
 --- a/.gitignore
@@ -751,7 +610,7 @@ index 8ab7a2e27..dd4ab4bdd 100644
    </g>
  </svg>
 diff --git a/rtdata/languages/default b/rtdata/languages/default
-index 45471bb5c..3ddfaa5e9 100644
+index 050836d21..a655cdd29 100644
 --- a/rtdata/languages/default
 +++ b/rtdata/languages/default
 @@ -52,6 +52,7 @@ DYNPROFILEEDITOR_PROFILE;Processing Profile
@@ -782,7 +641,7 @@ index 45471bb5c..3ddfaa5e9 100644
  EXPORT_BYPASS;Processing steps to bypass
  EXPORT_BYPASS_ALL;Select / Unselect All
  EXPORT_BYPASS_DEFRINGE;Bypass Defringe
-@@ -1661,7 +1664,7 @@ MAIN_TAB_COLOR;Color
+@@ -1667,7 +1670,7 @@ MAIN_TAB_COLOR;Color
  MAIN_TAB_COLOR_TOOLTIP;Shortcut: <b>Alt-c</b>
  MAIN_TAB_DETAIL;Detail
  MAIN_TAB_DETAIL_TOOLTIP;Shortcut: <b>Alt-d</b>
@@ -791,7 +650,7 @@ index 45471bb5c..3ddfaa5e9 100644
  MAIN_TAB_EXIF;Exif
  MAIN_TAB_EXPORT; Fast Export 
  MAIN_TAB_EXPOSURE;Exposure
-@@ -1669,7 +1672,7 @@ MAIN_TAB_EXPOSURE_TOOLTIP;Shortcut: <b>Alt-e</b>
+@@ -1675,7 +1678,7 @@ MAIN_TAB_EXPOSURE_TOOLTIP;Shortcut: <b>Alt-e</b>
  MAIN_TAB_FAVORITES;Favorites
  MAIN_TAB_FAVORITES_TOOLTIP;Shortcut: <b>Alt-u</b>
  MAIN_TAB_FILTER; Filter 
@@ -800,7 +659,7 @@ index 45471bb5c..3ddfaa5e9 100644
  MAIN_TAB_IPTC;IPTC
  MAIN_TAB_LOCALLAB;Local
  MAIN_TAB_LOCALLAB_TOOLTIP;Shortcut: <b>Alt-o</b>
-@@ -1921,6 +1924,11 @@ PREFERENCES_MENUGROUPLABEL;Group 'Color label'
+@@ -1928,6 +1931,11 @@ PREFERENCES_MENUGROUPLABEL;Group 'Color label'
  PREFERENCES_MENUGROUPPROFILEOPERATIONS;Group 'Processing profile operations'
  PREFERENCES_MENUGROUPRANK;Group 'Rank'
  PREFERENCES_MENUOPTIONS;Context Menu Options
@@ -812,7 +671,7 @@ index 45471bb5c..3ddfaa5e9 100644
  PREFERENCES_MONINTENT;Default rendering intent
  PREFERENCES_MONITOR;Monitor
  PREFERENCES_MONPROFILE;Default color profile
-@@ -2003,6 +2011,9 @@ PREFERENCES_TP_LABEL;Tool panel:
+@@ -2010,6 +2018,9 @@ PREFERENCES_TP_LABEL;Tool panel:
  PREFERENCES_TP_VSCROLLBAR;Hide vertical scrollbar
  PREFERENCES_USEBUNDLEDPROFILES;Use bundled profiles
  PREFERENCES_WORKFLOW;Layout
@@ -823,7 +682,7 @@ index 45471bb5c..3ddfaa5e9 100644
  PROFILEPANEL_COPYPPASTE;Parameters to copy
  PROFILEPANEL_GLOBALPROFILES;Bundled profiles
 diff --git a/rtengine/CMakeLists.txt b/rtengine/CMakeLists.txt
-index c657d6f9d..19a93c1c4 100644
+index 58c45f39b..5a9b2d953 100644
 --- a/rtengine/CMakeLists.txt
 +++ b/rtengine/CMakeLists.txt
 @@ -42,8 +42,11 @@ if(NOT WITH_SYSTEM_KLT)
@@ -839,7 +698,7 @@ index c657d6f9d..19a93c1c4 100644
      "${EXPAT_LIBRARY_DIRS}"
      "${EXTRA_LIBDIR}"
      "${FFTW3F_LIBRARY_DIRS}"
-@@ -142,6 +145,7 @@ set(RTENGINESOURCEFILES
+@@ -143,6 +146,7 @@ set(RTENGINESOURCEFILES
      lcp.cc
      lmmse_demosaic.cc
      loadinitial.cc
@@ -847,7 +706,7 @@ index c657d6f9d..19a93c1c4 100644
      munselllch.cc
      myfile.cc
      panasonic_decoders.cc
-@@ -222,7 +226,7 @@ endif()
+@@ -223,7 +227,7 @@ endif()
  
  set_target_properties(rtengine PROPERTIES COMPILE_FLAGS "${RTENGINE_CXX_FLAGS}")
  
@@ -856,7 +715,7 @@ index c657d6f9d..19a93c1c4 100644
      ${EXPAT_LIBRARIES}
      ${EXTRA_LIB}
      ${FFTW3F_LIBRARIES}
-@@ -239,7 +243,8 @@ target_link_libraries(rtengine rtexif
+@@ -240,7 +244,8 @@ target_link_libraries(rtengine rtexif
      ${LENSFUN_LIBRARIES}
      ${RSVG_LIBRARIES}
      ${KLT_LIBRARIES}
@@ -4690,7 +4549,7 @@ index 1f4c2179a..87b560088 100644
      {
          return dirpyrdenoiseExpComp;
 diff --git a/rtengine/improccoordinator.cc b/rtengine/improccoordinator.cc
-index 664029a5e..45f75b0ca 100644
+index 3a3529131..a4b30bad8 100644
 --- a/rtengine/improccoordinator.cc
 +++ b/rtengine/improccoordinator.cc
 @@ -33,6 +33,7 @@
@@ -4775,7 +4634,7 @@ index 664029a5e..45f75b0ca 100644
                  if (istm) { //calculate mean and sigma on full image for RT-spot use by normalize_mean_dt
                      ipf.mean_sig (nprevl->L, meantme, stdtme, xxs, xxe, yys, yye);
                  }
-@@ -1173,7 +1174,7 @@ void ImProcCoordinator::updatePreviewImage(int todo, bool panningRelatedChange)
+@@ -1172,7 +1173,7 @@ void ImProcCoordinator::updatePreviewImage(int todo, bool panningRelatedChange)
                  huerefp[sp] = huer;
                  chromarefp[sp] = chromar;
                  lumarefp[sp] = lumar;
@@ -4784,7 +4643,7 @@ index 664029a5e..45f75b0ca 100644
                  CurveFactory::complexCurvelocal(ecomp, black / 65535., hlcompr, hlcomprthresh, shcompr, br, cont, lumar,
                                                  hltonecurveloc, shtonecurveloc, tonecurveloc, lightCurveloc, avg,
                                                  sca);
-@@ -1236,7 +1237,7 @@ void ImProcCoordinator::updatePreviewImage(int todo, bool panningRelatedChange)
+@@ -1244,7 +1245,7 @@ void ImProcCoordinator::updatePreviewImage(int todo, bool panningRelatedChange)
                                locccmasblCurve, lcmasblutili, locllmasblCurve, llmasblutili, lochhmasblCurve, lhmasblutili,
                                locccmaslcCurve, lcmaslcutili, locllmaslcCurve, llmaslcutili, lochhmaslcCurve, lhmaslcutili,
                                locccmaslogCurve, lcmaslogutili, locllmaslogCurve, llmaslogutili, lochhmaslogCurve, lhmaslogutili,
@@ -4793,7 +4652,7 @@ index 664029a5e..45f75b0ca 100644
                                locccmas_Curve, lcmas_utili, locllmas_Curve, llmas_utili, lochhmas_Curve, lhmas_utili,
                                locccmascieCurve, lcmascieutili, locllmascieCurve, llmascieutili, lochhmascieCurve, lhmascieutili,
  
-@@ -1264,8 +1265,8 @@ void ImProcCoordinator::updatePreviewImage(int todo, bool panningRelatedChange)
+@@ -1273,8 +1274,8 @@ void ImProcCoordinator::updatePreviewImage(int todo, bool panningRelatedChange)
                      float meanf = 0.f;
                      float stdf = 0.f;
                      ipf.mean_sig (savenormtm->L, meanf, stdf, xxs, xxe, yys, yye);
@@ -4804,7 +4663,7 @@ index 664029a5e..45f75b0ca 100644
                      params->locallab.spots.at(sp).noiselumc = (int) meanf;
                      params->locallab.spots.at(sp).softradiustm = stdf ;
                  }
-@@ -1274,7 +1275,7 @@ void ImProcCoordinator::updatePreviewImage(int todo, bool panningRelatedChange)
+@@ -1283,7 +1284,7 @@ void ImProcCoordinator::updatePreviewImage(int todo, bool panningRelatedChange)
                      float meanf = 0.f;
                      float stdf = 0.f;
                      ipf.mean_sig (savenormreti->L, meanf, stdf,xxs, xxe, yys, yye );
@@ -4813,7 +4672,7 @@ index 664029a5e..45f75b0ca 100644
                      params->locallab.spots.at(sp).sensihs = (int) meanf;
                      params->locallab.spots.at(sp).sensiv = (int) stdf;
                  }
-@@ -1319,7 +1320,7 @@ void ImProcCoordinator::updatePreviewImage(int todo, bool panningRelatedChange)
+@@ -1327,7 +1328,7 @@ void ImProcCoordinator::updatePreviewImage(int todo, bool panningRelatedChange)
                      chromarefp[sp] = chromar;
                      lumarefp[sp] = lumar;
                      fabrefp[sp] = fab;
@@ -4822,7 +4681,7 @@ index 664029a5e..45f75b0ca 100644
                  }
              //    spotref.fab = fab;
              //    locallref.at(sp).fab = fab;
-@@ -1347,9 +1348,9 @@ void ImProcCoordinator::updatePreviewImage(int todo, bool panningRelatedChange)
+@@ -1355,9 +1356,9 @@ void ImProcCoordinator::updatePreviewImage(int todo, bool panningRelatedChange)
              //*************************************************************
              // end locallab
              //*************************************************************
@@ -4834,7 +4693,7 @@ index 664029a5e..45f75b0ca 100644
          if ((todo & M_RGBCURVE) || (todo & M_CROP)) {
              //complexCurve also calculated pre-curves histogram depending on crop
              CurveFactory::complexCurve(params->toneCurve.expcomp, params->toneCurve.black / 65535.0,
-@@ -1552,7 +1553,7 @@ void ImProcCoordinator::updatePreviewImage(int todo, bool panningRelatedChange)
+@@ -1560,7 +1561,7 @@ void ImProcCoordinator::updatePreviewImage(int todo, bool panningRelatedChange)
                  bool proedge = WaveParams.expedge;
                  bool profin = WaveParams.expfinal;
                  bool proton = WaveParams.exptoning;
@@ -4843,7 +4702,7 @@ index 664029a5e..45f75b0ca 100644
  
                  if (WaveParams.showmask) {
                   //   WaveParams.showmask = false;
-@@ -1576,7 +1577,7 @@ void ImProcCoordinator::updatePreviewImage(int todo, bool panningRelatedChange)
+@@ -1584,7 +1585,7 @@ void ImProcCoordinator::updatePreviewImage(int todo, bool panningRelatedChange)
                      WaveParams.expedge = false;
                      WaveParams.expfinal = false;
                      WaveParams.exptoning = false;
@@ -4852,7 +4711,7 @@ index 664029a5e..45f75b0ca 100644
                  }
  
                  ipf.ip_wavelet(nprevl, nprevl, kall, WaveParams, wavCLVCurve, wavdenoise, wavdenoiseh, wavblcurve, waOpacityCurveRG, waOpacityCurveSH, waOpacityCurveBY, waOpacityCurveW, waOpacityCurveWL, wavclCurve, scale);
-@@ -1589,7 +1590,7 @@ void ImProcCoordinator::updatePreviewImage(int todo, bool panningRelatedChange)
+@@ -1597,7 +1598,7 @@ void ImProcCoordinator::updatePreviewImage(int todo, bool panningRelatedChange)
                      WaveParams.expfinal = profin;
                      WaveParams.exptoning = proton;
                      WaveParams.expnoise = pronois;
@@ -4861,7 +4720,7 @@ index 664029a5e..45f75b0ca 100644
                      if (WaveParams.softrad > 0.f) {
  
                          array2D<float> ble(pW, pH);
-@@ -1619,7 +1620,7 @@ void ImProcCoordinator::updatePreviewImage(int todo, bool panningRelatedChange)
+@@ -1627,7 +1628,7 @@ void ImProcCoordinator::updatePreviewImage(int todo, bool panningRelatedChange)
                                  tmpImage->b(ir, jr) = Z;
                                  ble[ir][jr] = Y / 32768.f;
                              }
@@ -4870,7 +4729,7 @@ index 664029a5e..45f75b0ca 100644
                          double epsilmax = 0.0001;
                          double epsilmin = 0.00001;
                          double aepsil = (epsilmax - epsilmin) / 100.f;
-@@ -1645,11 +1646,11 @@ void ImProcCoordinator::updatePreviewImage(int todo, bool panningRelatedChange)
+@@ -1653,11 +1654,11 @@ void ImProcCoordinator::updatePreviewImage(int todo, bool panningRelatedChange)
                                  Color::XYZ2Lab(X, Y, Z, L, a, b);
                                  nprevl->L[ir][jr] =  L;
                              }
@@ -4884,7 +4743,7 @@ index 664029a5e..45f75b0ca 100644
                  }
  
                  if ((WaveParams.ushamethod == "sharp" || WaveParams.ushamethod == "clari")  && WaveParams.expclari && WaveParams.CLmethod != "all") {
-@@ -1658,7 +1659,7 @@ void ImProcCoordinator::updatePreviewImage(int todo, bool panningRelatedChange)
+@@ -1666,7 +1667,7 @@ void ImProcCoordinator::updatePreviewImage(int todo, bool panningRelatedChange)
                      float mL0;
                      float mC0;
                      float background = 0.f;
@@ -4893,7 +4752,7 @@ index 664029a5e..45f75b0ca 100644
  
  
  
-@@ -1700,8 +1701,8 @@ void ImProcCoordinator::updatePreviewImage(int todo, bool panningRelatedChange)
+@@ -1708,8 +1709,8 @@ void ImProcCoordinator::updatePreviewImage(int todo, bool panningRelatedChange)
  
                      delete unshar;
                      unshar    = NULL;
@@ -4904,7 +4763,7 @@ index 664029a5e..45f75b0ca 100644
  /*
                      if (WaveParams.softrad > 0.f) {
                          array2D<float> ble(pW, pH);
-@@ -1746,7 +1747,7 @@ void ImProcCoordinator::updatePreviewImage(int todo, bool panningRelatedChange)
+@@ -1754,7 +1755,7 @@ void ImProcCoordinator::updatePreviewImage(int todo, bool panningRelatedChange)
  
  
                  }
@@ -4913,7 +4772,7 @@ index 664029a5e..45f75b0ca 100644
              }
  
              ipf.softLight(nprevl, params->softlight);
-@@ -1792,7 +1793,7 @@ void ImProcCoordinator::updatePreviewImage(int todo, bool panningRelatedChange)
+@@ -1800,7 +1801,7 @@ void ImProcCoordinator::updatePreviewImage(int todo, bool panningRelatedChange)
                              nprevl->b[x][y] = 0.f;
                          }
                  }
@@ -4922,7 +4781,7 @@ index 664029a5e..45f75b0ca 100644
                  tmpImage1.reset();
  
                  if (prim == 12) {//pass red gre blue xy in function of area dats Ciexy
-@@ -1902,20 +1903,10 @@ void ImProcCoordinator::updatePreviewImage(int todo, bool panningRelatedChange)
+@@ -1910,20 +1911,10 @@ void ImProcCoordinator::updatePreviewImage(int todo, bool panningRelatedChange)
                                                      customColCurve1, customColCurve2, customColCurve3, 1);
  
                  const FramesMetaData* metaData = imgsrc->getMetaData();
@@ -4947,7 +4806,7 @@ index 664029a5e..45f75b0ca 100644
                  double adap;
  
                  if (fnum < 0.3f || fiso < 5.f || fspeed < 0.00001f) { //if no exif data or wrong
-@@ -1981,7 +1972,7 @@ void ImProcCoordinator::updatePreviewImage(int todo, bool panningRelatedChange)
+@@ -1989,7 +1980,7 @@ void ImProcCoordinator::updatePreviewImage(int todo, bool panningRelatedChange)
  				} else if (params->colorappearance.wbmodel == "free") {
  					wmodel = 2;//force white balance in symmetric
  				}
@@ -4956,7 +4815,7 @@ index 664029a5e..45f75b0ca 100644
  				if(params->colorappearance.catmethod == "symg" && wmodel == 2) {
  					tempsym = params->wb.temperature;//force white balance in symmetric
  				} else {
-@@ -2000,13 +1991,13 @@ void ImProcCoordinator::updatePreviewImage(int todo, bool panningRelatedChange)
+@@ -2008,13 +1999,13 @@ void ImProcCoordinator::updatePreviewImage(int todo, bool panningRelatedChange)
  					} else if (params->colorappearance.illum == "i75") {
  						tempsym = 7504.;
  					} else if (params->colorappearance.illum == "ifree") {
@@ -4972,7 +4831,7 @@ index 664029a5e..45f75b0ca 100644
              } else {
                  // CIECAM is disabled, we free up its image buffer to save some space
                  if (ncie) {
-@@ -2471,7 +2462,7 @@ bool ImProcCoordinator::getAutoWB(double& temp, double& green, double equal, Sta
+@@ -2479,7 +2470,7 @@ bool ImProcCoordinator::getAutoWB(double& temp, double& green, double equal, Sta
  // Issue 2500            MyMutex::MyLock lock(minit);  // Also used in crop window
              double rm, gm, bm;
              params->wb.method = "autold";//same result as before multiple Auto WB
@@ -4981,7 +4840,7 @@ index 664029a5e..45f75b0ca 100644
             // imgsrc->getAutoWBMultipliers(rm, gm, bm);
              double tempitc = 5000.;
              double greenitc = 1.;
-@@ -2725,7 +2716,7 @@ void ImProcCoordinator::saveInputICCReference(const Glib::ustring& fname, bool a
+@@ -2733,7 +2724,7 @@ void ImProcCoordinator::saveInputICCReference(const Glib::ustring& fname, bool a
          im = tempImage;
      }
  
@@ -4991,10 +4850,10 @@ index 664029a5e..45f75b0ca 100644
      im->saveTIFF(fname, 16, false, true);
      delete im;
 diff --git a/rtengine/improcfun.cc b/rtengine/improcfun.cc
-index c3e11c076..f1adbe043 100644
+index 3f9a426cf..9d0360f6e 100644
 --- a/rtengine/improcfun.cc
 +++ b/rtengine/improcfun.cc
-@@ -5578,18 +5578,18 @@ void ImProcFunctions::getAutoExp(const LUTu &histogram, int histcompr, double cl
+@@ -5634,18 +5634,18 @@ void ImProcFunctions::getAutoExp(const LUTu &histogram, int histcompr, double cl
  double ImProcFunctions::getAutoDistor(const Glib::ustring &fname, int thumb_size)
  {
      if (!fname.empty()) {
@@ -5046,10 +4905,10 @@ index 0c1bd4f6b..04faa98a8 100644
      Color::cleanup ();
      RawImageSource::cleanup ();
 diff --git a/rtengine/iplocallab.cc b/rtengine/iplocallab.cc
-index b9e82cc5d..eaa5e857e 100644
+index e58c38faa..92ab36531 100644
 --- a/rtengine/iplocallab.cc
 +++ b/rtengine/iplocallab.cc
-@@ -2235,20 +2235,11 @@ void ImProcFunctions::getAutoLogloc(int sp, ImageSource *imgsrc, float *sourceg,
+@@ -2237,20 +2237,11 @@ void ImProcFunctions::getAutoLogloc(int sp, ImageSource *imgsrc, float *sourceg,
          //calculate La - Absolute luminance shooting
  
          const FramesMetaData* metaData = imgsrc->getMetaData();
@@ -5876,7 +5735,7 @@ index afaf0cbca..e131211ce 100644
              if (tpp) {
                  data = tpp->getImage8Data();
 diff --git a/rtengine/procparams.cc b/rtengine/procparams.cc
-index 8b1dbaefd..f6831a6bf 100644
+index a421be9b3..3c4af07d6 100644
 --- a/rtengine/procparams.cc
 +++ b/rtengine/procparams.cc
 @@ -232,6 +232,17 @@ void getFromKeyfile(
@@ -5934,7 +5793,7 @@ index 8b1dbaefd..f6831a6bf 100644
                      && other.method == "Camera"
                  )
              || (
-@@ -2469,25 +2492,25 @@ WaveletParams::WaveletParams() :
+@@ -2493,25 +2516,25 @@ WaveletParams::WaveletParams() :
      },
      blcurve{
          static_cast<double>(FCT_MinMaxCPoints),
@@ -5972,7 +5831,7 @@ index 8b1dbaefd..f6831a6bf 100644
          0.35
  */
      },
-@@ -5778,21 +5801,6 @@ Glib::ustring RAWParams::getFlatFieldBlurTypeString(FlatFieldBlurType type)
+@@ -5804,21 +5827,6 @@ Glib::ustring RAWParams::getFlatFieldBlurTypeString(FlatFieldBlurType type)
  }
  
  
@@ -5994,7 +5853,7 @@ index 8b1dbaefd..f6831a6bf 100644
  FilmNegativeParams::FilmNegativeParams() :
      enabled(false),
      redRatio(1.36),
-@@ -5845,6 +5853,96 @@ bool FilmNegativeParams::operator !=(const FilmNegativeParams& other) const
+@@ -5871,6 +5879,96 @@ bool FilmNegativeParams::operator !=(const FilmNegativeParams& other) const
      return !(*this == other);
  }
  
@@ -6091,7 +5950,7 @@ index 8b1dbaefd..f6831a6bf 100644
  ProcParams::ProcParams()
  {
      setDefaults();
-@@ -5943,8 +6041,8 @@ void ProcParams::setDefaults()
+@@ -5971,8 +6069,8 @@ void ProcParams::setDefaults()
      raw = {};
  
      metadata = {};
@@ -6102,7 +5961,7 @@ index 8b1dbaefd..f6831a6bf 100644
  
      // -1 means that there's no pp3 data with rank yet. In this case, the
      // embedded Rating metadata should take precedence. -1 should never be
-@@ -5971,7 +6069,9 @@ int ProcParams::save(const Glib::ustring& fname, const Glib::ustring& fname2, bo
+@@ -5999,7 +6097,9 @@ int ProcParams::save(const Glib::ustring& fname, const Glib::ustring& fname2, bo
          keyFile.set_string("Version", "AppVersion", RTVERSION);
          keyFile.set_integer("Version", "Version", PPVERSION);
  
@@ -6113,7 +5972,7 @@ index 8b1dbaefd..f6831a6bf 100644
          saveToKeyfile(!pedited || pedited->general.colorlabel, "General", "ColorLabel", colorlabel, keyFile);
          saveToKeyfile(!pedited || pedited->general.intrash, "General", "InTrash", inTrash, keyFile);
  
-@@ -6274,9 +6374,9 @@ int ProcParams::save(const Glib::ustring& fname, const Glib::ustring& fname2, bo
+@@ -6302,9 +6402,9 @@ int ProcParams::save(const Glib::ustring& fname, const Glib::ustring& fname2, bo
  
  // Dehaze
          saveToKeyfile(!pedited || pedited->dehaze.enabled, "Dehaze", "Enabled", dehaze.enabled, keyFile);
@@ -6126,7 +5985,7 @@ index 8b1dbaefd..f6831a6bf 100644
          saveToKeyfile(!pedited || pedited->dehaze.depth, "Dehaze", "Saturation", dehaze.saturation, keyFile);
  
  // Directional pyramid denoising
-@@ -7637,6 +7737,7 @@ int ProcParams::save(const Glib::ustring& fname, const Glib::ustring& fname2, bo
+@@ -7674,6 +7774,7 @@ int ProcParams::save(const Glib::ustring& fname, const Glib::ustring& fname2, bo
  
  // MetaData
          saveToKeyfile(!pedited || pedited->metadata.mode, "MetaData", "Mode", metadata.mode, keyFile);
@@ -6134,7 +5993,7 @@ index 8b1dbaefd..f6831a6bf 100644
  
  // Film negative
          saveToKeyfile(!pedited || pedited->filmNegative.enabled, "Film Negative", "Enabled", filmNegative.enabled, keyFile);
-@@ -7650,7 +7751,7 @@ int ProcParams::save(const Glib::ustring& fname, const Glib::ustring& fname2, bo
+@@ -7687,7 +7788,7 @@ int ProcParams::save(const Glib::ustring& fname, const Glib::ustring& fname2, bo
              saveToKeyfile(!pedited || pedited->filmNegative.refInput, "Film Negative", "GreenBase", filmNegative.refInput.g, keyFile);
              saveToKeyfile(!pedited || pedited->filmNegative.refInput, "Film Negative", "BlueBase", filmNegative.refInput.b, keyFile);
          }
@@ -6143,7 +6002,7 @@ index 8b1dbaefd..f6831a6bf 100644
          saveToKeyfile(!pedited || pedited->filmNegative.colorSpace, "Film Negative", "ColorSpace", toUnderlying(filmNegative.colorSpace), keyFile);
          saveToKeyfile(!pedited || pedited->filmNegative.refInput, "Film Negative", "RefInput", filmNegative.refInput, keyFile);
          saveToKeyfile(!pedited || pedited->filmNegative.refOutput, "Film Negative", "RefOutput", filmNegative.refOutput, keyFile);
-@@ -7664,16 +7765,30 @@ int ProcParams::save(const Glib::ustring& fname, const Glib::ustring& fname2, bo
+@@ -7701,16 +7802,30 @@ int ProcParams::save(const Glib::ustring& fname, const Glib::ustring& fname2, bo
  
  // EXIF change list
          if (!pedited || pedited->exif) {
@@ -6179,7 +6038,7 @@ index 8b1dbaefd..f6831a6bf 100644
              }
          }
  
-@@ -8210,7 +8325,7 @@ int ProcParams::load(const Glib::ustring& fname, ParamsEdited* pedited)
+@@ -8247,7 +8362,7 @@ int ProcParams::load(const Glib::ustring& fname, ParamsEdited* pedited)
                      pedited->colorappearance.complexmethod = true;
                  }
              }
@@ -6188,7 +6047,7 @@ index 8b1dbaefd..f6831a6bf 100644
              if (keyFile.has_key("Color appearance", "ModelCat")) {
                  assignFromKeyfile(keyFile, "Color appearance", "ModelCat", pedited, colorappearance.modelmethod, pedited->colorappearance.modelmethod);
              } else if (colorappearance.enabled) {
-@@ -8220,7 +8335,7 @@ int ProcParams::load(const Glib::ustring& fname, ParamsEdited* pedited)
+@@ -8257,7 +8372,7 @@ int ProcParams::load(const Glib::ustring& fname, ParamsEdited* pedited)
                  }
              }
              assignFromKeyfile(keyFile, "Color appearance", "CatCat", pedited, colorappearance.catmethod, pedited->colorappearance.catmethod);
@@ -6197,7 +6056,7 @@ index 8b1dbaefd..f6831a6bf 100644
              assignFromKeyfile(keyFile, "Color appearance", "Surround", pedited, colorappearance.surround, pedited->colorappearance.surround);
              assignFromKeyfile(keyFile, "Color appearance", "Surrsrc", pedited, colorappearance.surrsrc, pedited->colorappearance.surrsrc);
              assignFromKeyfile(keyFile, "Color appearance", "AdaptLum", pedited, colorappearance.adaplum, pedited->colorappearance.adaplum);
-@@ -10088,7 +10203,7 @@ int ProcParams::load(const Glib::ustring& fname, ParamsEdited* pedited)
+@@ -10135,7 +10250,7 @@ int ProcParams::load(const Glib::ustring& fname, ParamsEdited* pedited)
                  assignFromKeyfile(keyFile, "Dehaze", "Saturation", pedited, dehaze.saturation, pedited->dehaze.saturation);
              }
          }
@@ -6206,7 +6065,7 @@ index 8b1dbaefd..f6831a6bf 100644
          if (keyFile.has_group("Film Simulation")) {
              assignFromKeyfile(keyFile, "Film Simulation", "Enabled", pedited, filmSimulation.enabled, pedited->filmSimulation.enabled);
  			assignFromKeyfile(keyFile, "Film Simulation", "ClutFilename", pedited, filmSimulation.clutFilename, pedited->filmSimulation.clutFilename);
-@@ -10520,20 +10635,25 @@ int ProcParams::load(const Glib::ustring& fname, ParamsEdited* pedited)
+@@ -10567,20 +10682,25 @@ int ProcParams::load(const Glib::ustring& fname, ParamsEdited* pedited)
          }
  
          if (keyFile.has_group("MetaData")) {
@@ -6236,7 +6095,7 @@ index 8b1dbaefd..f6831a6bf 100644
                  }
              }
          }
-@@ -10553,16 +10673,22 @@ int ProcParams::load(const Glib::ustring& fname, ParamsEdited* pedited)
+@@ -10600,16 +10720,22 @@ int ProcParams::load(const Glib::ustring& fname, ParamsEdited* pedited)
          if (keyFile.has_group("IPTC")) {
              for (const auto& key : keyFile.get_keys("IPTC")) {
                  // does this key already exist?
@@ -6262,7 +6121,7 @@ index 8b1dbaefd..f6831a6bf 100644
                  }
  
                  if (pedited) {
-@@ -10641,8 +10767,6 @@ bool ProcParams::operator ==(const ProcParams& other) const
+@@ -10689,8 +10815,6 @@ bool ProcParams::operator ==(const ProcParams& other) const
          && rgbCurves == other.rgbCurves
          && colorToning == other.colorToning
          && metadata == other.metadata
@@ -6272,10 +6131,10 @@ index 8b1dbaefd..f6831a6bf 100644
          && filmNegative == other.filmNegative;
  }
 diff --git a/rtengine/procparams.h b/rtengine/procparams.h
-index 48b68f598..22ec54856 100644
+index 6be2be54c..b58632a8e 100644
 --- a/rtengine/procparams.h
 +++ b/rtengine/procparams.h
-@@ -1974,31 +1974,22 @@ struct ColorManagementParams {
+@@ -1992,31 +1992,22 @@ struct ColorManagementParams {
      bool operator !=(const ColorManagementParams& other) const;
  };
  
@@ -6317,7 +6176,7 @@ index 48b68f598..22ec54856 100644
  
      const_iterator begin() const
      {
-@@ -2015,6 +2006,16 @@ public:
+@@ -2033,6 +2024,16 @@ public:
          pairs.clear();
      }
  
@@ -6334,7 +6193,7 @@ index 48b68f598..22ec54856 100644
      Glib::ustring& operator[](const Glib::ustring& key)
      {
          return pairs[key];
-@@ -2026,7 +2027,7 @@ public:
+@@ -2044,7 +2045,7 @@ public:
      }
  
  private:
@@ -6343,7 +6202,7 @@ index 48b68f598..22ec54856 100644
  };
  
  /**
-@@ -2058,6 +2059,11 @@ public:
+@@ -2076,6 +2077,11 @@ public:
          return pairs.empty();
      }
  
@@ -6355,7 +6214,7 @@ index 48b68f598..22ec54856 100644
      void clear()
      {
          pairs.clear();
-@@ -2077,6 +2083,29 @@ private:
+@@ -2095,6 +2101,29 @@ private:
      std::map<Glib::ustring, std::vector<Glib::ustring>> pairs;
  };
  
@@ -6385,7 +6244,7 @@ index 48b68f598..22ec54856 100644
  struct WaveletParams {
      std::vector<double> ccwcurve;
      std::vector<double> wavdenoise;
-@@ -2594,8 +2623,8 @@ public:
+@@ -2613,8 +2642,8 @@ public:
      int                     ppVersion;       ///< Version of the PP file from which the parameters have been read
  
      MetaDataParams          metadata;        ///< Metadata parameters
@@ -6548,7 +6407,7 @@ index 894bc6bd2..000000000
 -
 -}
 diff --git a/rtengine/rtengine.h b/rtengine/rtengine.h
-index f86950457..f7a998a71 100644
+index 1d7994ace..adeb8db95 100644
 --- a/rtengine/rtengine.h
 +++ b/rtengine/rtengine.h
 @@ -1,4 +1,5 @@
@@ -6700,7 +6559,7 @@ index f86950457..f7a998a71 100644
  };
  
  class AutoChromaListener
-@@ -623,7 +598,7 @@ public:
+@@ -635,7 +610,7 @@ public:
      virtual void        getCamWB    (double& temp, double& green, StandardObserver observer) = 0;
      virtual void        getSpotWB  (int x, int y, int rectSize, double& temp, double& green) = 0;
      virtual bool        getFilmNegativeSpot(int x, int y, int spotSize, procparams::FilmNegativeParams::RGB &refInput, procparams::FilmNegativeParams::RGB &refOutput) = 0;
@@ -6984,7 +6843,7 @@ index c920a355d..30704b947 100644
        * @return a pointer to the new Settings instance. */
      static Settings* create();
 diff --git a/rtengine/simpleprocess.cc b/rtengine/simpleprocess.cc
-index 78dd84042..dc4f057d0 100644
+index 96cd68d43..cc9756919 100644
 --- a/rtengine/simpleprocess.cc
 +++ b/rtengine/simpleprocess.cc
 @@ -32,6 +32,7 @@
@@ -7044,8 +6903,8 @@ index 78dd84042..dc4f057d0 100644
                  if (params.locallab.spots.at(sp).spotMethod == "exc") {
                      ipf.calc_ref(sp, reservView.get(), reservView.get(), 0, 0, fw, fh, 1, huerefblu, chromarefblu, lumarefblu, huere, chromare, lumare, sobelre, avge, locwavCurveden, locwavdenutili);
                  } else {
-@@ -1177,8 +1178,8 @@ private:
-                 float Tmax;
+@@ -1185,8 +1186,8 @@ private:
+                 float Lnresi46 = 0.f;
  
                  // No Locallab mask is shown in exported picture
 -                ipf.Lab_Local(2, sp, shbuffer, labView, labView, reservView.get(), savenormtmView.get(), savenormretiView.get(), lastorigView.get(), fw, fh, 0, 0, fw, fh,  1, locRETgainCurve, locRETtransCurve, 
@@ -7055,7 +6914,7 @@ index 78dd84042..dc4f057d0 100644
                          cllocalcurve, localclutili,
                          lclocalcurve, locallcutili,
                          loclhCurve, lochhCurve, locchCurve,
-@@ -1195,12 +1196,12 @@ private:
+@@ -1203,12 +1204,12 @@ private:
                          lmaskloglocalcurve, localmasklogutili,
                          lmasklocal_curve, localmask_utili,
                          lmaskcielocalcurve, localmaskcieutili,
@@ -7074,7 +6933,7 @@ index 78dd84042..dc4f057d0 100644
                          locccmasCurve, lcmasutili, locllmasCurve, llmasutili, lochhmasCurve, lhmasutili, lochhhmasCurve, lhhmasutili, locccmasexpCurve, lcmasexputili, locllmasexpCurve, llmasexputili, lochhmasexpCurve, lhmasexputili,
                          locccmasSHCurve, lcmasSHutili, locllmasSHCurve, llmasSHutili, lochhmasSHCurve, lhmasSHutili,
                          locccmasvibCurve, lcmasvibutili, locllmasvibCurve, llmasvibutili, lochhmasvibCurve, lhmasvibutili,
-@@ -1467,8 +1468,8 @@ private:
+@@ -1476,8 +1477,8 @@ private:
              bool proedge = WaveParams.expedge;
              bool profin = WaveParams.expfinal;
              bool proton = WaveParams.exptoning;
@@ -7085,7 +6944,7 @@ index 78dd84042..dc4f057d0 100644
  /*
              if(WaveParams.showmask) {
                  WaveParams.showmask = false;
-@@ -1495,7 +1496,7 @@ private:
+@@ -1504,7 +1505,7 @@ private:
                  WaveParams.expedge = false;
                  WaveParams.expfinal = false;
                  WaveParams.exptoning = false;
@@ -7094,7 +6953,7 @@ index 78dd84042..dc4f057d0 100644
              }
  
              ipf.ip_wavelet(labView, labView, 2, WaveParams, wavCLVCurve, wavdenoise, wavdenoiseh, wavblcurve, waOpacityCurveRG, waOpacityCurveSH, waOpacityCurveBY, waOpacityCurveW,  waOpacityCurveWL, wavclCurve, 1);
-@@ -1507,7 +1508,7 @@ private:
+@@ -1516,7 +1517,7 @@ private:
                  WaveParams.expfinal = profin;
                  WaveParams.exptoning = proton;
                  WaveParams.expnoise = pronois;
@@ -7103,7 +6962,7 @@ index 78dd84042..dc4f057d0 100644
                  if (WaveParams.softrad > 0.f) {
                      array2D<float> ble(fw, fh);
                      array2D<float> guid(fw, fh);
-@@ -1562,7 +1563,7 @@ private:
+@@ -1571,7 +1572,7 @@ private:
                          }
                  delete tmpImage;
                  }
@@ -7112,7 +6971,7 @@ index 78dd84042..dc4f057d0 100644
              }
  
              if ((WaveParams.ushamethod == "sharp" || WaveParams.ushamethod == "clari") && WaveParams.expclari && WaveParams.CLmethod != "all") {
-@@ -1652,7 +1653,7 @@ private:
+@@ -1661,7 +1662,7 @@ private:
                      labView->b[x][y] = 0.f;
                  }
              }
@@ -7121,7 +6980,7 @@ index 78dd84042..dc4f057d0 100644
          }
  
          //Colorappearance and tone-mapping associated
-@@ -1679,18 +1680,11 @@ private:
+@@ -1688,18 +1689,11 @@ private:
  
          if (params.colorappearance.enabled) {
              double adap;
@@ -7144,7 +7003,7 @@ index 78dd84042..dc4f057d0 100644
  
              if (fnum < 0.3f || fiso < 5.f || fspeed < 0.00001f) {
                  adap = 2000.;
-@@ -1823,21 +1817,22 @@ private:
+@@ -1832,21 +1826,22 @@ private:
              readyImg = tempImage;
          }
  
@@ -7181,7 +7040,7 @@ index 78dd84042..dc4f057d0 100644
          }
  
  
-@@ -1859,11 +1854,11 @@ private:
+@@ -1868,11 +1863,11 @@ private:
                  }
  
                  ProfileContent pc = ICCStore::getInstance()->getContent(params.icm.outputProfile);
@@ -22184,10 +22043,10 @@ index e6e3bb35b..000000000
 -};
 -}
 diff --git a/rtgui/CMakeLists.txt b/rtgui/CMakeLists.txt
-index 7f5c2dfe3..cb5126631 100644
+index bd08160ae..fb4acbe42 100644
 --- a/rtgui/CMakeLists.txt
 +++ b/rtgui/CMakeLists.txt
-@@ -198,7 +198,7 @@ if(WIN32)
+@@ -199,7 +199,7 @@ if(WIN32)
          ${RSVG_INCLUDE_DIRS}
          ${TIFF_INCLUDE_DIRS}
          )
@@ -25487,10 +25346,10 @@ index e89fcd647..34948828d 100644
  
      } catch (Glib::KeyFileError &e) {
 diff --git a/rtgui/paramsedited.cc b/rtgui/paramsedited.cc
-index 20450fa24..6dc6ccaf4 100644
+index adf462d84..1322af493 100644
 --- a/rtgui/paramsedited.cc
 +++ b/rtgui/paramsedited.cc
-@@ -714,6 +714,7 @@ void ParamsEdited::set(bool v)
+@@ -719,6 +719,7 @@ void ParamsEdited::set(bool v)
      dehaze.depth = v;
      dehaze.saturation = v;
      metadata.mode = v;
@@ -25498,7 +25357,7 @@ index 20450fa24..6dc6ccaf4 100644
      filmNegative.enabled = v;
      filmNegative.redRatio = v;
      filmNegative.greenExp = v;
-@@ -2128,6 +2129,7 @@ void ParamsEdited::initFrom(const std::vector<rtengine::procparams::ProcParams>&
+@@ -2141,6 +2142,7 @@ void ParamsEdited::initFrom(const std::vector<rtengine::procparams::ProcParams>&
          dehaze.depth = dehaze.depth && p.dehaze.depth == other.dehaze.depth;
          dehaze.saturation = dehaze.saturation && p.dehaze.saturation == other.dehaze.saturation;
          metadata.mode = metadata.mode && p.metadata.mode == other.metadata.mode;
@@ -25506,7 +25365,7 @@ index 20450fa24..6dc6ccaf4 100644
          filmNegative.enabled = filmNegative.enabled && p.filmNegative.enabled == other.filmNegative.enabled;
          filmNegative.redRatio = filmNegative.redRatio && p.filmNegative.redRatio == other.filmNegative.redRatio;
          filmNegative.greenExp = filmNegative.greenExp && p.filmNegative.greenExp == other.filmNegative.greenExp;
-@@ -7382,6 +7384,10 @@ void ParamsEdited::combine(rtengine::procparams::ProcParams& toEdit, const rteng
+@@ -7430,6 +7432,10 @@ void ParamsEdited::combine(rtengine::procparams::ProcParams& toEdit, const rteng
          toEdit.metadata.mode = mods.metadata.mode;
      }
  
@@ -25517,7 +25376,7 @@ index 20450fa24..6dc6ccaf4 100644
      if (filmNegative.enabled) {
          toEdit.filmNegative.enabled = mods.filmNegative.enabled;
      }
-@@ -7419,15 +7425,15 @@ void ParamsEdited::combine(rtengine::procparams::ProcParams& toEdit, const rteng
+@@ -7467,15 +7473,15 @@ void ParamsEdited::combine(rtengine::procparams::ProcParams& toEdit, const rteng
  
      // Exif changes are added to the existing ones
      if (exif) {
@@ -25538,10 +25397,10 @@ index 20450fa24..6dc6ccaf4 100644
      }
  }
 diff --git a/rtgui/paramsedited.h b/rtgui/paramsedited.h
-index d85bec701..4df838194 100644
+index 3c8a70b74..006c86b32 100644
 --- a/rtgui/paramsedited.h
 +++ b/rtgui/paramsedited.h
-@@ -1522,6 +1522,7 @@ struct RAWParamsEdited {
+@@ -1532,6 +1532,7 @@ struct RAWParamsEdited {
  
  struct MetaDataParamsEdited {
      bool mode;
@@ -25607,10 +25466,10 @@ index 482dfb82f..8ac1533b7 100644
  Glib::ustring getExtension (const Glib::ustring& filename);
 +Glib::ustring fname_to_utf8(const std::string& fname);
 diff --git a/rtgui/preferences.cc b/rtgui/preferences.cc
-index 1ae01da2d..34fd69da8 100644
+index c9737704e..a11d46cd3 100644
 --- a/rtgui/preferences.cc
 +++ b/rtgui/preferences.cc
-@@ -547,7 +547,7 @@ Gtk::Widget* Preferences::getImageProcessingPanel ()
+@@ -553,7 +553,7 @@ Gtk::Widget* Preferences::getImageProcessingPanel ()
      iprofiles->set_size_request(50, -1);
      setExpandAlignProperties(iprofiles, true, false, Gtk::ALIGN_FILL, Gtk::ALIGN_FILL);
      ipconn = iprofiles->signal_changed().connect(sigc::mem_fun(*this, &Preferences::forImageComboChanged));
@@ -25619,7 +25478,7 @@ index 1ae01da2d..34fd69da8 100644
      Gtk::Grid* defpt = Gtk::manage(new Gtk::Grid());
      defpt->set_row_spacing(2);
      defpt->attach(*drlab, 0, 0, 1, 1);
-@@ -555,7 +555,7 @@ Gtk::Widget* Preferences::getImageProcessingPanel ()
+@@ -561,7 +561,7 @@ Gtk::Widget* Preferences::getImageProcessingPanel ()
      defpt->attach(*drimg, 0, 1, 1, 1);
      defpt->attach(*iprofiles, 1, 1, 1, 1);
      vbpp->pack_start(*defpt, Gtk::PACK_SHRINK, 4);
@@ -25628,7 +25487,7 @@ index 1ae01da2d..34fd69da8 100644
      useBundledProfiles = Gtk::manage(new Gtk::CheckButton(M("PREFERENCES_USEBUNDLEDPROFILES")));
      bpconn = useBundledProfiles->signal_clicked().connect(sigc::mem_fun(*this, &Preferences::bundledProfilesChanged));
      vbpp->pack_start(*useBundledProfiles, Gtk::PACK_SHRINK, 4);
-@@ -601,9 +601,36 @@ Gtk::Widget* Preferences::getImageProcessingPanel ()
+@@ -607,9 +607,36 @@ Gtk::Widget* Preferences::getImageProcessingPanel ()
      fdp->add(*vbdp);
      vbImageProcessing->pack_start (*fdp, Gtk::PACK_SHRINK, 4);
  
@@ -25668,7 +25527,7 @@ index 1ae01da2d..34fd69da8 100644
      // Directories
      Gtk::Frame* cdf = Gtk::manage(new Gtk::Frame(M("PREFERENCES_DIRECTORIES")));
      Gtk::Grid* dirgrid = Gtk::manage(new Gtk::Grid());
-@@ -1162,7 +1189,7 @@ Gtk::Widget* Preferences::getGeneralPanel()
+@@ -1168,7 +1195,7 @@ Gtk::Widget* Preferences::getGeneralPanel()
      setExpandAlignProperties(pseudoHiDPI, false, false, Gtk::ALIGN_START, Gtk::ALIGN_BASELINE);
  
      Gtk::Separator *vSep = Gtk::manage(new Gtk::Separator(Gtk::ORIENTATION_VERTICAL));
@@ -25677,7 +25536,7 @@ index 1ae01da2d..34fd69da8 100644
  
      appearanceGrid->attach(*themeLbl,           0, 0, 1, 1);
      appearanceGrid->attach(*themeCBT,           1, 0, 1, 1);
-@@ -1919,6 +1946,9 @@ void Preferences::storePreferences()
+@@ -1925,6 +1952,9 @@ void Preferences::storePreferences()
      moptions.cropAutoFit = cropAutoFitCB->get_active();
  
      toolLocationPreference->updateOptions();
@@ -25687,7 +25546,7 @@ index 1ae01da2d..34fd69da8 100644
  }
  
  void Preferences::fillPreferences()
-@@ -2096,7 +2126,7 @@ void Preferences::fillPreferences()
+@@ -2102,7 +2132,7 @@ void Preferences::fillPreferences()
      }
  
      curveBBoxPosC->set_active(moptions.curvebboxpos);
@@ -25696,7 +25555,7 @@ index 1ae01da2d..34fd69da8 100644
      inspectorWindowCB->set_active(moptions.inspectorWindow);
      zoomOnScrollCB->set_active(moptions.zoomOnScroll);
  
-@@ -2167,6 +2197,9 @@ void Preferences::fillPreferences()
+@@ -2173,6 +2203,9 @@ void Preferences::fillPreferences()
      txtSndLngEditProcDone->set_text(moptions.sndLngEditProcDone);
      spbSndLngEditProcDoneSecs->set_value(moptions.sndLngEditProcDoneSecs);
  #endif
@@ -25760,7 +25619,7 @@ index ad2c28aaa..175c732a2 100644
  #include "mycurve.h"
  #include "rtscalable.h"
 diff --git a/rtgui/thumbnail.cc b/rtgui/thumbnail.cc
-index dd7995feb..a2941aaa5 100644
+index 96a8bf849..207b412bf 100644
 --- a/rtgui/thumbnail.cc
 +++ b/rtgui/thumbnail.cc
 @@ -34,16 +34,78 @@
@@ -25991,7 +25850,7 @@ index dd7995feb..a2941aaa5 100644
  {
      MyMutex::MyLock lock(mutex);
  
-@@ -803,9 +856,14 @@ ThFileType Thumbnail::getType () const
+@@ -804,9 +857,14 @@ ThFileType Thumbnail::getType () const
      return (ThFileType) cfs.format;
  }
  
@@ -26008,7 +25867,7 @@ index dd7995feb..a2941aaa5 100644
  
      if (!idata) {
          return 0;
-@@ -866,7 +924,8 @@ int Thumbnail::infoFromImage (const Glib::ustring& fname, std::unique_ptr<rtengi
+@@ -867,7 +925,8 @@ int Thumbnail::infoFromImage (const Glib::ustring& fname, std::unique_ptr<rtengi
          cfs.filetype = "";
      }
  
@@ -26018,7 +25877,7 @@ index dd7995feb..a2941aaa5 100644
      return deg;
  }
  
-@@ -986,6 +1045,10 @@ void Thumbnail::updateCache (bool updatePParams, bool updateCacheImageData)
+@@ -987,6 +1046,10 @@ void Thumbnail::updateCache (bool updatePParams, bool updateCacheImageData)
      if (updateCacheImageData) {
          cfs.save (getCacheFileName ("data", ".txt"));
      }
@@ -26029,7 +25888,7 @@ index dd7995feb..a2941aaa5 100644
  }
  
  Thumbnail::~Thumbnail ()
-@@ -1164,6 +1227,33 @@ void Thumbnail::getCamWB(double& temp, double& green, rtengine::StandardObserver
+@@ -1165,6 +1228,33 @@ void Thumbnail::getCamWB(double& temp, double& green, rtengine::StandardObserver
      }
  }
  
@@ -26092,10 +25951,10 @@ index 4d0355747..9ead1e5e8 100644
      const rtengine::procparams::ProcParams& getProcParams ();
      const rtengine::procparams::ProcParams& getProcParamsU ();  // Unprotected version
 diff --git a/rtgui/toolpanelcoord.cc b/rtgui/toolpanelcoord.cc
-index 92bf3d7a5..4863732f9 100644
+index e9b0ce5cc..77ac26d57 100644
 --- a/rtgui/toolpanelcoord.cc
 +++ b/rtgui/toolpanelcoord.cc
-@@ -1175,8 +1175,8 @@ void ToolPanelCoordinator::profileChange(
+@@ -1181,8 +1181,8 @@ void ToolPanelCoordinator::profileChange(
  
      // Reset IPTC values when switching procparams from the History
      if (event == rtengine::EvHistoryBrowsed) {
@@ -26106,7 +25965,7 @@ index 92bf3d7a5..4863732f9 100644
      }
  
      // And apply the partial profile nparams to mergedParams
-@@ -1900,6 +1900,12 @@ bool ToolPanelCoordinator::getFilmNegativeSpot(rtengine::Coord spot, int spotSiz
+@@ -1906,6 +1906,12 @@ bool ToolPanelCoordinator::getFilmNegativeSpot(rtengine::Coord spot, int spotSiz
      return ipc && ipc->getFilmNegativeSpot(spot.x, spot.y, spotSize, refInput, refOutput);
  }
  
@@ -26120,10 +25979,10 @@ index 92bf3d7a5..4863732f9 100644
  {
      switch (tool) {
 diff --git a/rtgui/toolpanelcoord.h b/rtgui/toolpanelcoord.h
-index 7542343eb..b7e1d104e 100644
+index 95350c5e8..762ea4a1e 100644
 --- a/rtgui/toolpanelcoord.h
 +++ b/rtgui/toolpanelcoord.h
-@@ -458,6 +458,8 @@ public:
+@@ -461,6 +461,8 @@ public:
  
      void setEditProvider(EditDataProvider *provider);
  
