@@ -10,7 +10,7 @@ media-fonts/ubuntu-fonts 20230528: Ubuntu Font Family
 media-gfx/rawtherapee 9999: A powerful cross-platform raw image processing program
 media-sound/ocenaudio 3.11.22: Easy, fast and powerful audio editor
 media-sound/tenacity 1.3_beta3_p1: Free crossplatform audio editor
-net-im/teams-for-linux 1.1.2: Microsoft Teams client for Linux. Binary precompiled version.
+net-im/teams-for-linux 1.1.6: Microsoft Teams client for Linux. Binary precompiled version.
 net-print/brlaser 6_p20200420: Brother laser printer driver
 www-apps/forgejo 1.19.3_p0: A painless self-hosted Git service. Gitea soft-fork drop-in replacement
 x11-themes/smplayer-themes 20.11.0: Icon themes for smplayer

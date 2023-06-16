@@ -4,7 +4,7 @@ This is my personal overlay
 
 Stuf I need, stuff I test…
 
-The preferred way to sync this repository is using rsync (either manual or layman install). The rsync version has the advantage to be cleanned from distfiles and specific files not needed by portage, and it comes with portage metadata. It’s updated every 30 minutes from git, so it’s perfectly fine considering my own commit rate.
+The preferred way to sync this repository is using rsync (either manual or layman install). The rsync version has the advantage to be cleanned from distfiles and specific files not needed by portage, and it comes with portage metadata. It’s updated every hour from git, so it’s perfectly fine considering my own commit rate.
 
 ## Install
 
