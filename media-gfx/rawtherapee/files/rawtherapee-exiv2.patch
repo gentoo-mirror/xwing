@@ -3736,7 +3736,7 @@ index 752fafab3..08f55bd62 100644
 -
  }
 diff --git a/rtengine/imageio.cc b/rtengine/imageio.cc
-index ad230bb7d..1c8e9016d 100644
+index 31c97aeb8..1c8e9016d 100644
 --- a/rtengine/imageio.cc
 +++ b/rtengine/imageio.cc
 @@ -19,6 +19,7 @@
@@ -4011,15 +4011,6 @@ index ad230bb7d..1c8e9016d 100644
  int ImageIO::savePNG  (const Glib::ustring &fname, int bps) const
  {
      if (getWidth() < 1 || getHeight() < 1) {
-@@ -1033,7 +873,7 @@ int ImageIO::savePNG  (const Glib::ustring &fname, int bps) const
- #if defined(PNG_SKIP_sRGB_CHECK_PROFILE) && defined(PNG_SET_OPTION_SUPPORTED)
-     png_set_option(png, PNG_SKIP_sRGB_CHECK_PROFILE, PNG_OPTION_ON);
- #endif
--    
-+
-     png_infop info = png_create_info_struct(png);
- 
-     if (!info) {
 @@ -1067,39 +907,15 @@ int ImageIO::savePNG  (const Glib::ustring &fname, int bps) const
      png_set_IHDR(png, info, width, height, bps, PNG_COLOR_TYPE_RGB,
                   PNG_INTERLACE_NONE, PNG_COMPRESSION_TYPE_DEFAULT, PNG_FILTER_TYPE_BASE);
@@ -4034,9 +4025,8 @@ index ad230bb7d..1c8e9016d 100644
 +        png_const_bytep profdata = reinterpret_cast<png_const_bytep>(profileData.data());
  #endif
 -        png_set_iCCP(png, info, const_cast<png_charp>("icc"), 0, profdata, profileLength);
-+        png_set_iCCP(png, info, "icc", 0, profdata, profileData.size());
-     }
- 
+-    }
+-
 -    {
 -        // buffer for the exif and iptc
 -        unsigned int bufferSize;
@@ -4058,8 +4048,9 @@ index ad230bb7d..1c8e9016d 100644
 -            PNGwriteRawProfile(png, info, "exif", buffer, size);
 -            delete[] buffer;
 -        }
--    }
--
++        png_set_iCCP(png, info, "icc", 0, profdata, profileData.size());
+     }
+ 
 -
      int rowlen = width * 3 * bps / 8;
      unsigned char *row = new unsigned char [rowlen];
@@ -4076,29 +4067,38 @@ index ad230bb7d..1c8e9016d 100644
      if (pl) {
          pl->setProgressStr ("PROGRESSBAR_READY");
          pl->setProgress (1.0);
-@@ -1232,52 +1053,9 @@ int ImageIO::saveJPEG (const Glib::ustring &fname, int quality, int subSamp) con
+@@ -1232,61 +1053,9 @@ int ImageIO::saveJPEG (const Glib::ustring &fname, int quality, int subSamp) con
  
      jpeg_start_compress(&cinfo, TRUE);
  
--    // buffer for exif and iptc markers
--    unsigned char* buffer = new unsigned char[165535]; //FIXME: no buffer size check so it can be overflowed in createJPEGMarker() for large tags, and then software will crash
--    unsigned int size;
+-    // buffer for exif marker
+-    unsigned char* exifBuffer = nullptr;
+-    unsigned int exifBufferSize = 0;
 -
 -    // assemble and write exif marker
 -    if (exifRoot) {
--        int size = rtexif::ExifManager::createJPEGMarker (exifRoot, *exifChange, cinfo.image_width, cinfo.image_height, buffer);
+-        rtexif::ExifManager::createJPEGMarker (exifRoot, *exifChange, cinfo.image_width, cinfo.image_height, exifBuffer, exifBufferSize);
 -
--        if (size > 0 && size < 65530) {
--            jpeg_write_marker(&cinfo, JPEG_APP0 + 1, buffer, size);
+-        if (exifBufferSize > 0 && exifBufferSize < 65530) {
+-            jpeg_write_marker(&cinfo, JPEG_APP0 + 1, exifBuffer, exifBufferSize);
 -        }
+-
 -    }
+-
+-    if (exifBuffer != nullptr) {
+-        delete [] exifBuffer;
+-    }
+-
+-    // buffer for iptc marker
+-    unsigned char* iptcBuffer = new unsigned char[65535];
 -
 -    // assemble and write iptc marker
 -    if (iptc) {
 -        unsigned char* iptcdata;
+-        unsigned int iptcSize;
 -        bool error = false;
 -
--        if (iptc_data_save (iptc, &iptcdata, &size)) {
+-        if (iptc_data_save (iptc, &iptcdata, &iptcSize)) {
 -            if (iptcdata) {
 -                iptc_data_free_buf (iptc, iptcdata);
 -            }
@@ -4108,7 +4108,7 @@ index ad230bb7d..1c8e9016d 100644
 -
 -        int bytes = 0;
 -
--        if (!error && (bytes = iptc_jpeg_ps3_save_iptc (nullptr, 0, iptcdata, size, buffer, 65532)) < 0) {
+-        if (!error && (bytes = iptc_jpeg_ps3_save_iptc (nullptr, 0, iptcdata, iptcSize, iptcBuffer, 65532)) < 0) {
 -            error = true;
 -        }
 -
@@ -4117,11 +4117,11 @@ index ad230bb7d..1c8e9016d 100644
 -        }
 -
 -        if (!error) {
--            jpeg_write_marker(&cinfo, JPEG_APP0 + 13, buffer, bytes);
+-            jpeg_write_marker(&cinfo, JPEG_APP0 + 13, iptcBuffer, bytes);
 -        }
 -    }
 -
--    delete [] buffer;
+-    delete [] iptcBuffer;
 -
      // write icc profile to the output
 -    if (profileData) {
@@ -4131,7 +4131,7 @@ index ad230bb7d..1c8e9016d 100644
      }
  
      // write image data
-@@ -1326,6 +1104,11 @@ int ImageIO::saveJPEG (const Glib::ustring &fname, int quality, int subSamp) con
+@@ -1335,6 +1104,11 @@ int ImageIO::saveJPEG (const Glib::ustring &fname, int quality, int subSamp) con
  
      fclose (file);
  
@@ -4143,7 +4143,7 @@ index ad230bb7d..1c8e9016d 100644
      if (pl) {
          pl->setProgressStr ("PROGRESSBAR_READY");
          pl->setProgress (1.0);
-@@ -1334,6 +1117,7 @@ int ImageIO::saveJPEG (const Glib::ustring &fname, int quality, int subSamp) con
+@@ -1343,6 +1117,7 @@ int ImageIO::saveJPEG (const Glib::ustring &fname, int quality, int subSamp) con
      return IMIO_SUCCESS;
  }
  
@@ -4151,7 +4151,7 @@ index ad230bb7d..1c8e9016d 100644
  int ImageIO::saveTIFF (
      const Glib::ustring &fname,
      int bps,
-@@ -1359,15 +1143,6 @@ int ImageIO::saveTIFF (
+@@ -1368,15 +1143,6 @@ int ImageIO::saveTIFF (
  
      std::string mode = "w";
  
@@ -4167,7 +4167,7 @@ index ad230bb7d..1c8e9016d 100644
      if (big) {
          mode += '8';
      }
-@@ -1379,7 +1154,7 @@ int ImageIO::saveTIFF (
+@@ -1388,7 +1154,7 @@ int ImageIO::saveTIFF (
      TIFF* out = TIFFFdOpen (osfileno, fname.c_str(), mode.c_str());
  #else
      TIFF* out = TIFFOpen(fname.c_str(), mode.c_str());
@@ -4176,7 +4176,7 @@ index ad230bb7d..1c8e9016d 100644
  #endif
  
      if (!out) {
-@@ -1391,109 +1166,7 @@ int ImageIO::saveTIFF (
+@@ -1400,109 +1166,7 @@ int ImageIO::saveTIFF (
          pl->setProgress (0.0);
      }
  
@@ -4287,7 +4287,7 @@ index ad230bb7d..1c8e9016d 100644
  
      TIFFSetField (out, TIFFTAG_SOFTWARE, "RawTherapee " RTVERSION);
      TIFFSetField (out, TIFFTAG_IMAGEWIDTH, width);
-@@ -1507,24 +1180,36 @@ int ImageIO::saveTIFF (
+@@ -1516,24 +1180,36 @@ int ImageIO::saveTIFF (
      TIFFSetField (out, TIFFTAG_COMPRESSION, uncompressed ? COMPRESSION_NONE : COMPRESSION_ADOBE_DEFLATE);
      TIFFSetField (out, TIFFTAG_SAMPLEFORMAT, (bps == 16 || bps == 32) && isFloat ? SAMPLEFORMAT_IEEEFP : SAMPLEFORMAT_UINT);
  
@@ -4312,12 +4312,12 @@ index ad230bb7d..1c8e9016d 100644
 +        auto it = exif.findKey(Exiv2::ExifKey("Exif.Image.XResolution"));
 +        if (it != exif.end()) {
 +            x_res = it->toFloat();
-+        }
+         }
+-    }();
 +        it = exif.findKey(Exiv2::ExifKey("Exif.Image.YResolution"));
 +        if (it != exif.end()) {
 +            y_res = it->toFloat();
-         }
--    }();
++        }
 +        it = exif.findKey(Exiv2::ExifKey("Exif.Image.ResolutionUnit"));
 +        if (it != exif.end()) {
 +            res_unit = to_long(it);
@@ -4337,7 +4337,7 @@ index ad230bb7d..1c8e9016d 100644
      }
  
      for (int row = 0; row < height; row++) {
-@@ -1559,43 +1244,15 @@ int ImageIO::saveTIFF (
+@@ -1568,43 +1244,15 @@ int ImageIO::saveTIFF (
          writeOk = false;
      }
  
@@ -4385,7 +4385,7 @@ index ad230bb7d..1c8e9016d 100644
      if (pl) {
          pl->setProgressStr ("PROGRESSBAR_READY");
          pl->setProgress (1.0);
-@@ -1722,3 +1379,57 @@ void ImageIO::deleteLoadedProfileData( )
+@@ -1731,3 +1379,57 @@ void ImageIO::deleteLoadedProfileData( )
  
      loadedProfileData = nullptr;
  }
@@ -14277,10 +14277,10 @@ index bf17941f8..000000000
 -
 diff --git a/rtexif/rtexif.cc b/rtexif/rtexif.cc
 deleted file mode 100644
-index a7125fb9a..000000000
+index 68a290eb6..000000000
 --- a/rtexif/rtexif.cc
 +++ /dev/null
-@@ -1,3553 +0,0 @@
+@@ -1,3557 +0,0 @@
 -/*
 - *  This file is part of RawTherapee.
 - *
@@ -15492,6 +15492,10 @@ index a7125fb9a..000000000
 -            goto defsubdirs;
 -        }
 -    } else {
+-        // In some circumstances, `value` may have been allocated, so
+-        // delete it to prevent a leak.  See issue
+-        // https://github.com/Beep6581/RawTherapee/issues/6735
+-        delete [] value;
 -        // read value
 -        value = new unsigned char [valuesize + 1];
 -        auto readSize = fread (value, 1, valuesize, f);
@@ -17526,23 +17530,16 @@ index a7125fb9a..000000000
 -
 -
 -
--int ExifManager::createJPEGMarker (const TagDirectory* root, const rtengine::procparams::ExifPairs& changeList, int W, int H, unsigned char* buffer)
+-void ExifManager::createJPEGMarker (const TagDirectory* root, const rtengine::procparams::ExifPairs& changeList, int W, int H, unsigned char *&buffer, unsigned &bufferSize)
 -{
 -
 -    // write tiff header
--    int offs = 6;
--    memcpy (buffer, "Exif\0\0", 6);
+-    int offs = 6; // "Exif\0\0"
 -    ByteOrder order = INTEL;
 -
 -    if (root) {
 -        order = root->getOrder ();
 -    }
--
--    sset2 ((unsigned short)order, buffer + offs, order);
--    offs += 2;
--    sset2 (42, buffer + offs, order);
--    offs += 2;
--    sset4 (8, buffer + offs, order);
 -
 -    TagDirectory* cl;
 -
@@ -17605,11 +17602,18 @@ index a7125fb9a..000000000
 -    }
 -
 -    cl->sort ();
--    int size = cl->write (8, buffer + 6);
+-    bufferSize = cl->calculateSize() + 8 + 6;
+-    buffer = new unsigned char[bufferSize]; // this has to be deleted in caller
+-    memcpy (buffer, "Exif\0\0", 6);
+-    sset2 ((unsigned short)order, buffer + offs, order);
+-    offs += 2;
+-    sset2 (42, buffer + offs, order);
+-    offs += 2;
+-    sset4 (8, buffer + offs, order);
+-
+-    cl->write (8, buffer + 6);
 -
 -    delete cl;
--
--    return size + 6;
 -}
 -
 -int ExifManager::createPNGMarker(const TagDirectory* root, const rtengine::procparams::ExifPairs &changeList, int W, int H, int bps, const char* iptcdata, int iptclen, unsigned char *&buffer, unsigned &bufferSize)
@@ -17836,7 +17840,7 @@ index a7125fb9a..000000000
 -}
 diff --git a/rtexif/rtexif.h b/rtexif/rtexif.h
 deleted file mode 100644
-index 7b2f8ad23..000000000
+index 0b44bc47a..000000000
 --- a/rtexif/rtexif.h
 +++ /dev/null
 @@ -1,706 +0,0 @@
@@ -18221,7 +18225,7 @@ index 7b2f8ad23..000000000
 -    /// @param forthis The byte order will be taken from the given directory.
 -    /// @return The ownership of the return tags is passed to the caller.
 -    static std::vector<Tag*> getDefaultTIFFTags (TagDirectory* forthis);
--    static int    createJPEGMarker (const TagDirectory* root, const rtengine::procparams::ExifPairs& changeList, int W, int H, unsigned char* buffer);
+-    static void   createJPEGMarker (const TagDirectory* root, const rtengine::procparams::ExifPairs& changeList, int W, int H, unsigned char *&buffer, unsigned &bufferSize);
 -    static int    createTIFFHeader (const TagDirectory* root, const rtengine::procparams::ExifPairs& changeList, int W, int H, int bps, const char* profiledata, int profilelen, const char* iptcdata, int iptclen, unsigned char *&buffer, unsigned &bufferSize);
 -    static int createPNGMarker(const TagDirectory *root, const rtengine::procparams::ExifPairs &changeList, int W, int H, int bps, const char *iptcdata, int iptclen, unsigned char *&buffer, unsigned &bufferSize);
 -};
