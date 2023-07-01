@@ -4850,7 +4850,7 @@ index 3a3529131..a4b30bad8 100644
      im->saveTIFF(fname, 16, false, true);
      delete im;
 diff --git a/rtengine/improcfun.cc b/rtengine/improcfun.cc
-index 3f9a426cf..9d0360f6e 100644
+index 8a0e699d6..a0472b1fd 100644
 --- a/rtengine/improcfun.cc
 +++ b/rtengine/improcfun.cc
 @@ -5634,18 +5634,18 @@ void ImProcFunctions::getAutoExp(const LUTu &histogram, int histcompr, double cl
@@ -4905,7 +4905,7 @@ index 0c1bd4f6b..04faa98a8 100644
      Color::cleanup ();
      RawImageSource::cleanup ();
 diff --git a/rtengine/iplocallab.cc b/rtengine/iplocallab.cc
-index e58c38faa..92ab36531 100644
+index 6db6b7627..6689e2d7c 100644
 --- a/rtengine/iplocallab.cc
 +++ b/rtengine/iplocallab.cc
 @@ -2237,20 +2237,11 @@ void ImProcFunctions::getAutoLogloc(int sp, ImageSource *imgsrc, float *sourceg,
