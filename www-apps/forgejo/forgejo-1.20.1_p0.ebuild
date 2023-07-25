@@ -31,6 +31,8 @@ DEPEND="
 RDEPEND="${DEPEND}
 	dev-vcs/git
 	!www-apps/gitea"
+BDEPEND="${DEPEND}
+	net-libs/nodejs"
 
 DOCS=(
 	custom/conf/app.example.ini CONTRIBUTING.md README.md
@@ -84,8 +86,6 @@ src_compile() {
 		TAGS="${gitea_tags[*]}"
 		# 1.20.1 has some parallelism issue, workaround for now
 		MAKEOPTS="${MAKEOPTS} -j1"
-		# enable source map, missing assets in prod build: https://codeberg.org/forgejo/forgejo/commit/c09f747b516f52b16f3d699e5f115789600a432a
-		ENABLE_SOURCEMAP=true
 	)
 
 	GOFLAGS=""
@@ -93,7 +93,7 @@ src_compile() {
 		GOFLAGS+="-buildmode=pie"
 	fi
 
-	env "${makeenv[@]}" emake EXTRA_GOFLAGS="${GOFLAGS}" backend
+	env "${makeenv[@]}" emake EXTRA_GOFLAGS="${GOFLAGS}" build
 }
 
 src_install() {
