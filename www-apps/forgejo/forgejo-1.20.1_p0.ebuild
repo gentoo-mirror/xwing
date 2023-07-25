@@ -31,8 +31,6 @@ DEPEND="
 RDEPEND="${DEPEND}
 	dev-vcs/git
 	!www-apps/gitea"
-BDEPEND="${DEPEND}
-	net-libs/nodejs"
 
 DOCS=(
 	custom/conf/app.example.ini CONTRIBUTING.md README.md
@@ -54,7 +52,6 @@ src_prepare() {
 		-e "s#^MODE = console#MODE = file#"
 		-e "s#^LEVEL = Trace#LEVEL = Info#"
 		-e "s#^LOG_SQL = true#LOG_SQL = false#"
-		-e "s#^DISABLE_ROUTER_LOG = false#DISABLE_ROUTER_LOG = true#"
 	)
 
 	sed -i "${sedcmds[@]}" custom/conf/app.example.ini || die
@@ -93,7 +90,7 @@ src_compile() {
 		GOFLAGS+="-buildmode=pie"
 	fi
 
-	env "${makeenv[@]}" emake EXTRA_GOFLAGS="${GOFLAGS}" build
+	env "${makeenv[@]}" emake EXTRA_GOFLAGS="${GOFLAGS}" backend
 }
 
 src_install() {
