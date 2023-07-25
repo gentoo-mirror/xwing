@@ -83,9 +83,7 @@ src_compile() {
 		LDFLAGS="-extldflags \"${LDFLAGS}\" ${gitea_settings[*]}"
 		TAGS="${gitea_tags[*]}"
 		# 1.20.1 has some parallelism issue, workaround for now
-		MAKEOPTS="${MAKEOPTS} -j1"
-		# enable source map, missing assets in prod build: https://codeberg.org/forgejo/forgejo/commit/c09f747b516f52b16f3d699e5f115789600a432a
-		ENABLE_SOURCEMAP=true
+		MAKEOPTS=-j1
 	)
 
 	GOFLAGS=""
