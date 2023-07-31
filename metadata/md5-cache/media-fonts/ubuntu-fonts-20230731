@@ -9,6 +9,6 @@ KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~sparc ~x86
 LICENSE=UbuntuFontLicense-1.0
 RESTRICT=binchecks strip
 SLOT=0
-SRC_URI=https://gentoo.xwing.info/distfiles/ubuntu-fonts-20230528.tar.xz
+SRC_URI=https://gentoo.xwing.info/distfiles/ubuntu-fonts-20230731.tar.xz
 _eclasses_=font	aa113a3df9cd0a9693a1c1ee7c34a6eb
 _md5_=9a44f189c950f5e7c30eec1bd5c73168
