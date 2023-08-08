@@ -68,8 +68,6 @@ DOCS=( LICENSE.txt README.md )
 PATCHES=(
 	"${FILESDIR}"/${PN}-cursors-header.patch
 	"${FILESDIR}"/${PN}-install-nyquist.patch
-	"${FILESDIR}"/${PN}-gcc13.patch
-	"${FILESDIR}"/${PN}-drop-files.patch
 )
 
 src_configure() {
