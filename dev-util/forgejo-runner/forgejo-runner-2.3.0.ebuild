@@ -3,12 +3,12 @@
 
 EAPI=8
 
-inherit go-module systemd git-r3
+inherit go-module systemd
 
 DESCRIPTION="Forgejo actions runner"
 HOMEPAGE="https://code.forgejo.org/forgejo/runner"
-EGIT_REPO_URI="https://code.forgejo.org/forgejo/runner.git"
-EGIT_COMMIT="v${PV}"
+SRC_URI="https://code.forgejo.org/forgejo/runner/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/runner"
 
 LICENSE="MIT"
 SLOT="0"
@@ -21,11 +21,6 @@ DEPEND="
 	app-containers/docker
 "
 RDEPEND="${DEPEND}"
-
-src_unpack() {
-	git-r3_src_unpack
-	go-module_live_vendor
-}
 
 src_compile() {
 	LDFLAGS="-extldflags \"${LDFLAGS}\""

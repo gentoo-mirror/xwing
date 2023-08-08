@@ -1,5 +1,5 @@
 app-office/grisbi 2.0.5: Grisbi is a personal accounting application for Linux
-dev-util/forgejo-runner 1.6.0: Forgejo actions runner
+dev-util/forgejo-runner 2.3.0: Forgejo actions runner
 media-fonts/croscorefonts 20220630: Open licensed fonts metrically compatible with MS corefonts
 media-fonts/eb-garamond 20210929: Claude Garamont's humanist typeface from the mid-16th century
 media-fonts/ibm-plex 6.3.0: The package of IBM's typeface

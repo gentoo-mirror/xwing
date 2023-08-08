@@ -1,0 +1,16 @@
+BDEPEND=>=dev-lang/go-1.18 app-arch/unzip virtual/pkgconfig
+DEFINED_PHASES=compile install postinst unpack
+DEPEND=acct-group/gitlab-runner acct-user/gitlab-runner app-containers/docker
+DESCRIPTION=Forgejo actions runner
+EAPI=8
+HOMEPAGE=https://code.forgejo.org/forgejo/runner
+INHERIT=go-module systemd
+IUSE=pie
+KEYWORDS=~amd64
+LICENSE=MIT
+RDEPEND=acct-group/gitlab-runner acct-user/gitlab-runner app-containers/docker
+RESTRICT=strip
+SLOT=0
+SRC_URI=https://code.forgejo.org/forgejo/runner/archive/v2.3.0.tar.gz -> forgejo-runner-2.3.0.tar.gz
+_eclasses_=multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	toolchain-funcs	0c8a0b0d318eb5d5180d114bd3f6592b	multilib	c19072c3cd7ac5cb21de013f7e9832e0	go-module	8624eede24936fd7666e5298e5332f22	systemd	5f4bb0758df2e483babf68cd517078ca
+_md5_=dac17b6e5f32cc713775d60d1413df33
