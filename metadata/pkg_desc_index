@@ -1,6 +1,5 @@
 app-office/grisbi 2.0.5: Grisbi is a personal accounting application for Linux
 dev-util/forgejo-runner 2.3.0: Forgejo actions runner
-media-fonts/croscorefonts 20220630: Open licensed fonts metrically compatible with MS corefonts
 media-fonts/eb-garamond 20210929: Claude Garamont's humanist typeface from the mid-16th century
 media-fonts/ibm-plex 6.3.0: The package of IBM's typeface
 media-fonts/liberation-sans-narrow 1.07.6: A Arial Narrow replacement TrueType font set, courtesy of Red Hat
@@ -12,5 +11,5 @@ media-sound/ocenaudio 3.12.5: Easy, fast and powerful audio editor
 media-sound/tenacity 1.3.1: Free crossplatform audio editor
 net-im/teams-for-linux 1.3.2: Unofficial Microsoft Teams client for Linux. Binary precompiled version.
 net-print/brlaser 6_p20200420: Brother laser printer driver
-www-apps/forgejo 1.20.2_p0: A painless self-hosted Git service. Gitea soft-fork drop-in replacement
+www-apps/forgejo 1.20.3_p0: A painless self-hosted Git service. Gitea soft-fork drop-in replacement
 x11-themes/smplayer-themes 20.11.0: Icon themes for smplayer
