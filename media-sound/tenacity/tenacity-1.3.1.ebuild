@@ -23,13 +23,14 @@ S="${WORKDIR}/${PN}"
 LICENSE="GPL-2 CC-BY-3.0 CC-BY-4.0 Nyquist BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="ffmpeg +flac id3tag +ladspa +lv2 mad +midi ogg +vorbis sbsms soundtouch twolame +vst2 vamp"
+IUSE="ffmpeg +flac id3tag +ladspa +lv2 mad matroska +midi ogg +vorbis sbsms soundtouch twolame +vst2 vamp"
 
 # vst2 dep on GTK+3[X]: https://github.com/tenacityteam/tenacity/issues/614
 RDEPEND="dev-db/sqlite:3
 	dev-libs/expat
 	dev-libs/glib:2
 	media-libs/libsndfile
+	media-libs/portaudio
 	media-libs/soxr
 	media-sound/lame
 	sys-libs/zlib:=
@@ -45,6 +46,7 @@ RDEPEND="dev-db/sqlite:3
 		media-libs/suil
 	)
 	mad? ( media-libs/libmad )
+	matroska? ( media-libs/libmatroska )
 	midi? (
 		media-libs/portmidi:=
 		media-libs/portsmf:=
@@ -78,6 +80,7 @@ src_configure() {
 		-DAUDACITY_BUILD_LEVEL=2
 		-DMIDI=$(usex midi)
 		-DID3TAG=$(usex id3tag)
+		-DMATROSKA=$(usex matroska)
 		-DMP3_DECODING=$(usex mad)
 		-DMP2=$(usex twolame)
 		-DOGG=$(usex ogg)
