@@ -12,5 +12,5 @@ RDEPEND=acct-group/gitlab-runner acct-user/gitlab-runner app-containers/docker
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://code.forgejo.org/forgejo/runner/archive/v2.3.0.tar.gz -> forgejo-runner-2.3.0.tar.gz
-_eclasses_=multiprocessing	30ead54fa2e2b5f9cd4e612ffc34d0fe	toolchain-funcs	70ec42843fec87d20fd94c67e77cdbff	multilib	c19072c3cd7ac5cb21de013f7e9832e0	go-module	8624eede24936fd7666e5298e5332f22	systemd	c8b03e8df84486aa991d4396686e8942
+_eclasses_=multiprocessing	30ead54fa2e2b5f9cd4e612ffc34d0fe	toolchain-funcs	edeef89edaf21d30225d31702ab117ac	multilib	c19072c3cd7ac5cb21de013f7e9832e0	go-module	8624eede24936fd7666e5298e5332f22	systemd	c8b03e8df84486aa991d4396686e8942
 _md5_=dac17b6e5f32cc713775d60d1413df33
