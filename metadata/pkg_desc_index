@@ -3,7 +3,6 @@ dev-util/forgejo-runner 3.2.0: Forgejo actions runner
 media-fonts/eb-garamond 20210929: Claude Garamont's humanist typeface from the mid-16th century
 media-fonts/ibm-plex 6.3.0: The package of IBM's typeface
 media-fonts/liberation-sans-narrow 1.07.6: A Arial Narrow replacement TrueType font set, courtesy of Red Hat
-media-fonts/noto-emoji-stripped 20230310: Google Noto Emoji fonts, minimal package
 media-fonts/noto-stripped 20231215: Google's Noto font, only basic variants (Sans, Serif, Mono)
 media-fonts/ubuntu-fonts 20231216: Ubuntu Font Family
 media-gfx/rawtherapee 9999: A powerful cross-platform raw image processing program
