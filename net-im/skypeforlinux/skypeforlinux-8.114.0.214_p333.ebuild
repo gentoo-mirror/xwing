@@ -9,7 +9,11 @@ DESCRIPTION="Skype extracted from snap package without using snap crap."
 HOMEPAGE="https://snapcraft.io/skype"
 # fetch snap dl url from:
 # curl -H 'Snap-Device-Series: 16' http://api.snapcraft.io/v2/snaps/info/skype
-SRC_URI="https://api.snapcraft.io/api/v1/snaps/download/QRDEfjn4WJYnm0FzDKwqqRZZI77awQEV_330.snap -> ${P}.snap"
+#         "url": "https://api.snapcraft.io/api/v1/snaps/download/QRDEfjn4WJYnm0FzDKwqqRZZI77awQEV_333.snap"
+#      },
+#      "revision": 333, => patch level (_p)
+#      "version": "8.114.0.214" => version
+SRC_URI="https://api.snapcraft.io/api/v1/snaps/download/QRDEfjn4WJYnm0FzDKwqqRZZI77awQEV_${PV/#*_p/}.snap -> ${P}.snap"
 
 S="${WORKDIR}/squashfs-root/usr/share/${PN}/"
 
