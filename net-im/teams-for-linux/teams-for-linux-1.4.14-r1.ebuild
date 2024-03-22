@@ -5,25 +5,17 @@ EAPI=8
 
 inherit desktop xdg multilib-build
 
-DESCRIPTION="Skype extracted from snap package without using snap crap."
-HOMEPAGE="https://snapcraft.io/skype"
-# fetch snap dl url from:
-# curl -H 'Snap-Device-Series: 16' http://api.snapcraft.io/v2/snaps/info/skype
-#         "url": "https://api.snapcraft.io/api/v1/snaps/download/QRDEfjn4WJYnm0FzDKwqqRZZI77awQEV_333.snap"
-#      },
-#      "revision": 333, => patch level (_p)
-#      "version": "8.114.0.214" => version
-SRC_URI="https://api.snapcraft.io/api/v1/snaps/download/QRDEfjn4WJYnm0FzDKwqqRZZI77awQEV_${PV/#*_p/}.snap -> ${P}.snap"
-
-S="${WORKDIR}/squashfs-root/usr/share/${PN}/"
+DESCRIPTION="Unofficial Microsoft Teams client for Linux. Binary precompiled version."
+HOMEPAGE="https://github.com/IsmaelMartinez/teams-for-linux"
+SRC_URI="https://github.com/IsmaelMartinez/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="-* ~amd64"
+IUSE="system-ffmpeg"
 
 QA_PREBUILT="*"
 
-BDEPEND="sys-fs/squashfs-tools[lzo]"
 DEPEND="
 	app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
 	dev-libs/nspr[${MULTILIB_USEDEP}]
@@ -35,15 +27,18 @@ DEPEND="
 	x11-libs/gtk+:3[${MULTILIB_USEDEP}]
 	x11-libs/libX11[${MULTILIB_USEDEP}]
 	x11-libs/pango[${MULTILIB_USEDEP}]
+	system-ffmpeg? ( >=media-video/ffmpeg-6[chromium] )
 "
-
-src_unpack() {
-	unsquashfs "${DISTDIR}"/${P}.snap
-}
 
 src_install() {
 	dodir /opt/${PN}
-	cp -a . "${ED}"/opt/${PN} || die
+	cp -a . "${ED}/opt/${PN}" || die
+
+	if use system-ffmpeg; then
+		rm "${ED}/opt/${PN}/libffmpeg.so" || die
+		dosym "../../usr/$(get_libdir)/chromium/libffmpeg.so" "opt/${PN}/libffmpeg.so" || die
+		elog "Using system ffmpeg. This is experimental and may lead to crashes."
+	fi
 
 	# install wrapper reading /etc/chromium/* for CHROME_FLAGS
 	exeinto /opt/${PN}
@@ -51,12 +46,12 @@ src_install() {
 
 	# remove chrome-sandbox binary, users should use kernel namespaces
 	# https://bugs.gentoo.org/692692#c18
-	rm "${ED}"/opt/${PN}/chrome-sandbox || die
+	rm "${ED}/opt/${PN}/chrome-sandbox" || die
 
 	dosym ../../opt/${PN}/${PN}.sh /usr/bin/${PN}
 
 	newicon -s scalable "${FILESDIR}/${PN}.svg" ${PN}.svg
-	make_desktop_entry "${EPREFIX}"/opt/${PN}/${PN}.sh "Skype" \
+	make_desktop_entry "${EPREFIX}"/opt/${PN}/${PN}.sh "Teams for Linux" \
 		${PN} "Network;Chat;InstantMessaging;" \
-		"MimeType=x-scheme-handler/skype;"
+		"MimeType=x-scheme-handler/msteams;"
 }
