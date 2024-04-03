@@ -96,6 +96,8 @@ src_configure() {
 	local mycmakeargs=(
 		# Tell the CMake-based build system it's building a release.
 		-DAUDACITY_BUILD_LEVEL=2
+		# disable precompiled headers: https://bugs.gentoo.org/921731
+		-DPCH=OFF
 		-DMIDI=$(usex midi)
 		-DID3TAG=$(usex id3tag)
 		-DMATROSKA=$(usex matroska)
