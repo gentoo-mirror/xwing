@@ -9,7 +9,7 @@ HOMEPAGE="https://design.ubuntu.com/font
 	https://github.com/canonical/Ubuntu-fonts
 	https://github.com/canonical/UbuntuMono-fonts"
 
-SRC_URI="https://gentoo.xwing.info/distfiles/${P}.tar.xz"
+SRC_URI="https://gentoo.xwing.info/distfiles/${P}.tar.zst"
 
 LICENSE="UbuntuFontLicense-1.0"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit font
 DESCRIPTION="Google's Noto font, only basic variants (Sans, Serif, Mono)"
 HOMEPAGE="https://notofonts.github.io/ https://github.com/notofonts/notofonts.github.io"
 
-SRC_URI="https://gentoo.xwing.info/distfiles/${P}.tar.xz"
+SRC_URI="https://gentoo.xwing.info/distfiles/${P}.tar.zst"
 
 LICENSE="OFL-1.1"
 SLOT="0"
