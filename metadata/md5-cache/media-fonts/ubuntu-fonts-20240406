@@ -1,14 +1,14 @@
-BDEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
-DEFINED_PHASES=install postinst postrm setup
+BDEPEND=app-arch/zstd X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
+DEFINED_PHASES=install postinst postrm setup unpack
 DESCRIPTION=Ubuntu Font Family
 EAPI=8
 HOMEPAGE=https://design.ubuntu.com/font https://github.com/canonical/Ubuntu-fonts https://github.com/canonical/UbuntuMono-fonts
-INHERIT=font
+INHERIT=font unpacker
 IUSE=X
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~sparc ~x86
 LICENSE=UbuntuFontLicense-1.0
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=https://gentoo.xwing.info/distfiles/ubuntu-fonts-20240406.tar.zst
-_eclasses_=font	aa113a3df9cd0a9693a1c1ee7c34a6eb
-_md5_=388c557a0b41cc424ed6cdbbc276cf67
+_eclasses_=font	aa113a3df9cd0a9693a1c1ee7c34a6eb	multiprocessing	30ead54fa2e2b5f9cd4e612ffc34d0fe	toolchain-funcs	e56c7649b804f051623c8bc1a1c44084	multilib	c19072c3cd7ac5cb21de013f7e9832e0	unpacker	7b40f3faa3e2e12f5cf6d36d0fbfcd09
+_md5_=8f854dc49661bf76d717a46522fe3c41

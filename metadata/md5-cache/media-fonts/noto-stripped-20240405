@@ -1,14 +1,14 @@
-BDEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
-DEFINED_PHASES=install postinst postrm setup
+BDEPEND=app-arch/zstd X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
+DEFINED_PHASES=install postinst postrm setup unpack
 DESCRIPTION=Google's Noto font, only basic variants (Sans, Serif, Mono)
 EAPI=7
 HOMEPAGE=https://notofonts.github.io/ https://github.com/notofonts/notofonts.github.io
-INHERIT=font
+INHERIT=font unpacker
 IUSE=X
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~sparc ~x86
 LICENSE=OFL-1.1
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=https://gentoo.xwing.info/distfiles/noto-stripped-20240405.tar.zst
-_eclasses_=font	aa113a3df9cd0a9693a1c1ee7c34a6eb
-_md5_=44a38ac3749dda51ef66ea4d08240abc
+_eclasses_=font	aa113a3df9cd0a9693a1c1ee7c34a6eb	multiprocessing	30ead54fa2e2b5f9cd4e612ffc34d0fe	toolchain-funcs	e56c7649b804f051623c8bc1a1c44084	multilib	c19072c3cd7ac5cb21de013f7e9832e0	unpacker	7b40f3faa3e2e12f5cf6d36d0fbfcd09
+_md5_=7b4ecd9a71a27e1532ee3485aabe88a7
