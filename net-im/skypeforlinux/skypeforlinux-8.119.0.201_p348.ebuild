@@ -27,6 +27,7 @@ QA_PREBUILT="*"
 BDEPEND="sys-fs/squashfs-tools[lzo]"
 DEPEND="
 	app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
+	dev-libs/libappindicator
 	dev-libs/nspr[${MULTILIB_USEDEP}]
 	dev-libs/nss[${MULTILIB_USEDEP}]
 	media-libs/alsa-lib[${MULTILIB_USEDEP}]
