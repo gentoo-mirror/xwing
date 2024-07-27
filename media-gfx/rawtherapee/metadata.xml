@@ -6,6 +6,7 @@
 		<name>Guillaume Castagnino</name>
 	</maintainer>
 	<use>
+		<flag name="system-libraw">Use system libraw version rather than bundled one. The bundled one may be more recent as Rawtherapee bundle not only releases but also snapshots. They may be patched too.</flag>
 		<flag name="lto">Enable LTO during build</flag>
 	</use>
 </pkgmetadata>

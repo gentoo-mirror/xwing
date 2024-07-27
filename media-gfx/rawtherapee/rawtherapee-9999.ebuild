@@ -13,7 +13,7 @@ EGIT_BRANCH="dev"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="lto openmp tcmalloc"
+IUSE="lto openmp system-libraw tcmalloc"
 
 RDEPEND="
 	dev-cpp/atkmm:0
@@ -36,6 +36,7 @@ RDEPEND="
 	sci-libs/fftw:3.0=
 	sys-libs/zlib
 	x11-libs/gtk+:3
+	system-libraw? ( media-libs/libraw )
 	tcmalloc? ( dev-util/google-perftools )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
@@ -65,6 +66,7 @@ src_configure() {
 		-DWITH_SYSTEM_KLT="off"
 		-DENABLE_TCMALLOC=$(usex tcmalloc)
 		-DWITH_LTO=$(usex lto)
+		-DWITH_SYSTEM_LIBRAW=$(usex system-libraw)
 	)
 
 	# lots of speed improvement, rawtherapee devs advice to use it.
