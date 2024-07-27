@@ -5,7 +5,7 @@ EAPI=8
 
 WX_GTK_VER="3.2-gtk3"
 
-inherit cmake wxwidgets xdg
+inherit cmake flag-o-matic wxwidgets xdg
 
 DESCRIPTION="Free crossplatform audio editor"
 HOMEPAGE="https://tenacityaudio.org/"
@@ -92,6 +92,7 @@ src_unpack() {
 
 src_configure() {
 	setup-wxwidgets
+	filter-lto
 
 	local mycmakeargs=(
 		# Tell the CMake-based build system it's building a release.
