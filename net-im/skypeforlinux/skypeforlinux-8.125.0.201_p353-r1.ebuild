@@ -27,7 +27,7 @@ QA_PREBUILT="*"
 BDEPEND="sys-fs/squashfs-tools[lzo]"
 DEPEND="
 	app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
-	dev-libs/libappindicator
+	dev-libs/libayatana-appindicator
 	dev-libs/nspr[${MULTILIB_USEDEP}]
 	dev-libs/nss[${MULTILIB_USEDEP}]
 	media-libs/alsa-lib[${MULTILIB_USEDEP}]
@@ -63,6 +63,9 @@ src_install() {
 		rm "${ED}/opt/${PN}/vk_swiftshader_icd.json" || die
 		elog "Using system mesa. This is experimental and may lead to crashes."
 	fi
+
+	# hack into ayatana-appindicator symlink
+	dosym "../../usr/$(get_libdir)/libayatana-appindicator3.so" "opt/${PN}/libappindicator3.so" || die
 
 	# install wrapper reading /etc/chromium/* for CHROME_FLAGS
 	exeinto /opt/${PN}
