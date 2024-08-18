@@ -13,7 +13,7 @@ EGIT_BRANCH="dev"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="lto openmp system-libraw tcmalloc"
+IUSE="jpegxl lto openmp system-libraw tcmalloc"
 
 RDEPEND="
 	dev-cpp/atkmm:0
@@ -36,6 +36,7 @@ RDEPEND="
 	sci-libs/fftw:3.0=
 	sys-libs/zlib
 	x11-libs/gtk+:3
+	jpegxl? ( media-libs/libjxl )
 	system-libraw? ( media-libs/libraw )
 	tcmalloc? ( dev-util/google-perftools )"
 DEPEND="${RDEPEND}"
@@ -64,9 +65,10 @@ src_configure() {
 		-DLICENCEDIR=/usr/share/${PN}
 		-DCACHE_NAME_SUFFIX=""
 		-DWITH_SYSTEM_KLT="off"
-		-DENABLE_TCMALLOC=$(usex tcmalloc)
+		-DWITH_JXL=$(usex jpegxl)
 		-DWITH_LTO=$(usex lto)
 		-DWITH_SYSTEM_LIBRAW=$(usex system-libraw)
+		-DENABLE_TCMALLOC=$(usex tcmalloc)
 	)
 
 	# lots of speed improvement, rawtherapee devs advice to use it.
