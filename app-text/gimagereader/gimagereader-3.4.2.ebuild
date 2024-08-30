@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake xdg-utils
 
 DESCRIPTION="A Gtk/Qt front-end to tesseract-ocr"
 HOMEPAGE="https://github.com/manisandro/gImageReader"
@@ -12,46 +12,44 @@ SRC_URI="https://github.com/manisandro/gImageReader/releases/download/v${PV}/${P
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="scanner qt6 gtk"
-
-REQUIRED_USE="^^ ( qt6 gtk )"
+IUSE="scanner"
 
 DEPEND="
 	app-text/djvu
 	app-text/enchant:2
 	app-text/podofo
+	app-text/poppler[qt6]
 	app-text/tesseract
-	dev-util/intltool
 	dev-libs/libxml2
 	dev-libs/libzip
-	virtual/jpeg
-	gtk? (
-		app-text/poppler
-		dev-cpp/cairomm:0
-		dev-cpp/gtkmm
-		dev-cpp/gtksourceviewmm
-		dev-cpp/libxmlpp:2.6
-		dev-cpp/pangomm:1.4
-		dev-libs/json-glib
-		dev-python/pygobject
-	)
-	qt6? (
-		app-text/poppler[qt6]
-		dev-libs/quazip[qt6]
-		dev-qt/qtbase:6[concurrent,cups,dbus,network,widgets,xml]
-		dev-qt/qtspell
-	)
+	dev-libs/quazip[qt6]
+	dev-qt/qtbase:6[concurrent,cups,dbus,network,widgets,xml]
+	dev-qt/qtspell
+	media-libs/libjpeg-turbo
+"
+RDEPEND="${DEPEND}
 	scanner? ( media-gfx/sane-backends )
 "
-# missing dep for gtk
-#		dev-cpp/gtkspellmm
-RDEPEND="${DEPEND}"
-BDEPEND=""
+BDEPEND="${DEPEND}
+	dev-util/intltool
+"
 
 src_configure() {
 	local mycmakeargs=(
-		-DINTERFACE_TYPE=$(usex qt6 qt6 $(usex gtk))
+		-DINTERFACE_TYPE=qt6
 	)
 
 	cmake_src_configure
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
+	xdg_mimeinfo_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
+	xdg_mimeinfo_database_update
 }

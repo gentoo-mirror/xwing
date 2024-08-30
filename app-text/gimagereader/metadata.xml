@@ -8,6 +8,4 @@
   <upstream>
     <remote-id type="github">manisandro/qtspell</remote-id>
   </upstream>
-  <use>
-  </use>
 </pkgmetadata>

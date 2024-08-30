@@ -1,16 +1,15 @@
-BDEPEND=app-alternatives/ninja >=dev-build/cmake-3.20.5
-DEFINED_PHASES=compile configure install prepare test
-DEPEND=app-text/djvu app-text/enchant:2 app-text/podofo app-text/tesseract dev-util/intltool dev-libs/libxml2 dev-libs/libzip virtual/jpeg gtk? ( app-text/poppler dev-cpp/cairomm:0 dev-cpp/gtkmm dev-cpp/gtksourceviewmm dev-cpp/libxmlpp:2.6 dev-cpp/pangomm:1.4 dev-libs/json-glib dev-python/pygobject ) qt6? ( app-text/poppler[qt6] dev-libs/quazip[qt6] dev-qt/qtbase:6[concurrent,cups,dbus,network,widgets,xml] dev-qt/qtspell ) scanner? ( media-gfx/sane-backends )
+BDEPEND=app-text/djvu app-text/enchant:2 app-text/podofo app-text/poppler[qt6] app-text/tesseract dev-libs/libxml2 dev-libs/libzip dev-libs/quazip[qt6] dev-qt/qtbase:6[concurrent,cups,dbus,network,widgets,xml] dev-qt/qtspell media-libs/libjpeg-turbo dev-util/intltool app-alternatives/ninja >=dev-build/cmake-3.20.5
+DEFINED_PHASES=compile configure install postinst postrm prepare test
+DEPEND=app-text/djvu app-text/enchant:2 app-text/podofo app-text/poppler[qt6] app-text/tesseract dev-libs/libxml2 dev-libs/libzip dev-libs/quazip[qt6] dev-qt/qtbase:6[concurrent,cups,dbus,network,widgets,xml] dev-qt/qtspell media-libs/libjpeg-turbo
 DESCRIPTION=A Gtk/Qt front-end to tesseract-ocr
 EAPI=8
 HOMEPAGE=https://github.com/manisandro/gImageReader
-INHERIT=cmake
-IUSE=scanner qt6 gtk
+INHERIT=cmake xdg-utils
+IUSE=scanner
 KEYWORDS=~amd64
 LICENSE=GPL-3
-RDEPEND=app-text/djvu app-text/enchant:2 app-text/podofo app-text/tesseract dev-util/intltool dev-libs/libxml2 dev-libs/libzip virtual/jpeg gtk? ( app-text/poppler dev-cpp/cairomm:0 dev-cpp/gtkmm dev-cpp/gtksourceviewmm dev-cpp/libxmlpp:2.6 dev-cpp/pangomm:1.4 dev-libs/json-glib dev-python/pygobject ) qt6? ( app-text/poppler[qt6] dev-libs/quazip[qt6] dev-qt/qtbase:6[concurrent,cups,dbus,network,widgets,xml] dev-qt/qtspell ) scanner? ( media-gfx/sane-backends )
-REQUIRED_USE=^^ ( qt6 gtk )
+RDEPEND=app-text/djvu app-text/enchant:2 app-text/podofo app-text/poppler[qt6] app-text/tesseract dev-libs/libxml2 dev-libs/libzip dev-libs/quazip[qt6] dev-qt/qtbase:6[concurrent,cups,dbus,network,widgets,xml] dev-qt/qtspell media-libs/libjpeg-turbo scanner? ( media-gfx/sane-backends )
 SLOT=0
 SRC_URI=https://github.com/manisandro/gImageReader/releases/download/v3.4.2/gimagereader-3.4.2.tar.xz
 _eclasses_=toolchain-funcs	333970c740aa7b1a92e4fcdc52f612bd	multilib	c19072c3cd7ac5cb21de013f7e9832e0	flag-o-matic	e503ea5acc20410237ba33ec3f7c857d	multiprocessing	30ead54fa2e2b5f9cd4e612ffc34d0fe	ninja-utils	2df4e452cea39a9ec8fb543ce059f8d6	xdg-utils	baea6080dd821f5562d715887954c9d3	cmake	10a50dfaf728b802fcfd37f8d0da9056
-_md5_=f4f300cd78680f7bf829a66b54ea8657
+_md5_=3c61125b446d4b21a6efc8aea91dcf56
