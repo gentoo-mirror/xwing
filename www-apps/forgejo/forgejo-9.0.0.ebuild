@@ -15,7 +15,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
-IUSE="+acct gogit pam sqlite pie"
+IUSE="+acct pam sqlite pie"
 
 DEPEND="
 	acct? (
@@ -23,9 +23,9 @@ DEPEND="
 		acct-user/git[gitea] )
 	pam? ( sys-libs/pam )"
 RDEPEND="${DEPEND}
-	!gogit? ( dev-vcs/git )
+	dev-vcs/git
 	!www-apps/gitea"
-BDEPEND=">=dev-lang/go-1.22:="
+BDEPEND=">=dev-lang/go-1.23.2:="
 
 DOCS=(
 	custom/conf/app.example.ini CONTRIBUTING.md README.md
@@ -55,7 +55,6 @@ src_compile() {
 	# The space-separated list of the -tags flag is deprecated, please
 	# always use the comma-separated list in the future.
 	gitea_tags="bindata"
-	gitea_tags+="$(usex gogit ',gogit' '')"
 	gitea_tags+="$(usex pam ',pam' '')"
 	gitea_tags+="$(usex sqlite ',sqlite,sqlite_unlock_notify' '')"
 	
