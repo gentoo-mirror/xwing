@@ -17,19 +17,34 @@ SRC_URI="
 LICENSE="OFL-1.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="otf +ttf"
+
+REQUIRED_USE="^^ ( otf ttf )"
 
 BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}"
 FONT_S="${S}"
-FONT_SUFFIX="ttf"
+FONT_SUFFIX=""
 
 src_prepare() {
 	default
-	mv ${PN}-sans/fonts/complete/ttf/*.ttf . || die
-	mv ${PN}-sans-condensed/fonts/complete/ttf/*.ttf . || die
-	mv ${PN}-serif/fonts/complete/ttf/*.ttf . || die
-	mv ${PN}-mono/fonts/complete/ttf/*.ttf . || die
-	mv ${PN}-math/fonts/complete/ttf/*.ttf . || die
+
+	if use otf; then
+		FONT_SUFFIX+="otf"
+		mv ${PN}-sans/fonts/complete/otf/*.otf . || die
+		mv ${PN}-sans-condensed/fonts/complete/otf/*.otf . || die
+		mv ${PN}-serif/fonts/complete/otf/*.otf . || die
+		mv ${PN}-mono/fonts/complete/otf/*.otf . || die
+		mv ${PN}-math/fonts/complete/otf/*.otf . || die
+	fi
+
+	if use ttf; then
+		FONT_SUFFIX+="ttf"
+		mv ${PN}-sans/fonts/complete/ttf/*.ttf . || die
+		mv ${PN}-sans-condensed/fonts/complete/ttf/*.ttf . || die
+		mv ${PN}-serif/fonts/complete/ttf/*.ttf . || die
+		mv ${PN}-mono/fonts/complete/ttf/*.ttf . || die
+		mv ${PN}-math/fonts/complete/ttf/*.ttf . || die
+	fi
 }
