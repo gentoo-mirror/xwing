@@ -4,7 +4,6 @@
 
 app-office/grisbi:goffice - enable goffice graphic support
 dev-db/valkey:tcmalloc - Use tcmalloc from dev-util/google-perftools for allocations.
-media-gfx/rawtherapee:clang - Use Clang compiler instead of GCC
 media-gfx/rawtherapee:lto - Enable LTO during build
 media-gfx/rawtherapee:system-libraw - Use system libraw version rather than bundled one. The bundled one may be more recent as Rawtherapee bundle not only releases but also snapshots. They may be patched too.
 www-apps/forgejo:acct - User and group management via acct-*/git packages

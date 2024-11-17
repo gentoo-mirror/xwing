@@ -13,7 +13,7 @@ EGIT_BRANCH="dev"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="clang jpegxl lto openmp system-libraw tcmalloc"
+IUSE="jpegxl lto openmp system-libraw tcmalloc"
 
 RDEPEND="
 	dev-cpp/atkmm:0
@@ -43,27 +43,7 @@ RDEPEND="
 	system-libraw? ( media-libs/libraw )
 	tcmalloc? ( dev-util/google-perftools )"
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig
-	clang? (
-		|| (
-			(	sys-devel/clang:19
-				sys-devel/llvm:19
-				=sys-devel/lld-19*	)
-			(	sys-devel/clang:18
-				sys-devel/llvm:18
-				=sys-devel/lld-18*	)
-			(	sys-devel/clang:17
-				sys-devel/llvm:17
-				=sys-devel/lld-17*	)
-			(	sys-devel/clang:16
-				sys-devel/llvm:16
-				=sys-devel/lld-16*	)
-			(	sys-devel/clang:15
-				sys-devel/llvm:15
-				=sys-devel/lld-15*	)
-		)
-	)
-"
+BDEPEND="virtual/pkgconfig"
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
@@ -81,25 +61,6 @@ src_configure() {
 	replace-flags -Ofast -O3
 	# In case we add an ebuild for klt we can (i)use that one,
 	# see http://cecas.clemson.edu/~stb/klt/
-
-	if use clang ; then
-		# Force clang
-		einfo "Enforcing the use of clang due to USE=clang ..."
-		AR=llvm-ar
-		CC=${CHOST}-clang
-		CXX=${CHOST}-clang++
-		NM=llvm-nm
-		RANLIB=llvm-ranlib
-		LDFLAGS+=" -fuse-ld=lld"
-	else
-		# Force gcc
-		einfo "Enforcing the use of gcc due to USE=-clang ..."
-		AR=gcc-ar
-		CC=${CHOST}-gcc
-		CXX=${CHOST}-g++
-		NM=gcc-nm
-		RANLIB=gcc-ranlib
-	fi
 
 	local mycmakeargs=(
 		-DOPTION_OMP=$(usex openmp)
