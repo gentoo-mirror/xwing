@@ -5,7 +5,7 @@ dev-db/valkey 8.0.1: A persistent caching system, key-value, and data structures
 media-fonts/eb-garamond 20210929: Claude Garamont's humanist typeface from the mid-16th century
 media-fonts/ibm-plex 1.1.0: The package of IBM's typeface
 media-fonts/liberation-sans-narrow 1.07.6: A Arial Narrow replacement TrueType font set, courtesy of Red Hat
-media-fonts/noto-stripped 20241112: Google's Noto font, only basic variants (Sans, Serif, Mono)
+media-fonts/noto-stripped 20241216: Google's Noto font, only basic variants (Sans, Serif, Mono)
 media-fonts/ubuntu-fonts 20240529: Ubuntu Font Family
 media-gfx/rawtherapee 9999: A powerful cross-platform raw image processing program
 media-plugins/mpv-mpris 1.1_p20231026: MPRIS integration for mpv
