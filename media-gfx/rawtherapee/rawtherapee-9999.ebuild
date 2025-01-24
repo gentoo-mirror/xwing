@@ -7,7 +7,7 @@ inherit cmake flag-o-matic toolchain-funcs xdg-utils git-r3
 
 DESCRIPTION="A powerful cross-platform raw image processing program"
 HOMEPAGE="https://www.rawtherapee.com/"
-EGIT_REPO_URI="https://github.com/Beep6581/RawTherapee.git"
+EGIT_REPO_URI="https://github.com/RawTherapee/RawTherapee.git"
 EGIT_BRANCH="dev"
 
 LICENSE="GPL-3"
