@@ -1,14 +1,13 @@
 DEFINED_PHASES=install postinst postrm preinst unpack
-DEPEND=app-accessibility/at-spi2-core:2 dev-libs/nspr dev-libs/nss media-libs/alsa-lib media-libs/freetype:2 media-gfx/graphite2 net-print/cups x11-libs/gtk+:3 x11-libs/libX11 x11-libs/pango system-ffmpeg? ( >=media-video/ffmpeg-6[chromium] ) system-mesa? ( media-libs/mesa[vulkan] )
+DEPEND=app-accessibility/at-spi2-core:2 dev-libs/nspr dev-libs/nss media-libs/alsa-lib media-libs/freetype:2 media-gfx/graphite2 net-print/cups x11-libs/gtk+:3 x11-libs/libX11 x11-libs/pango
 DESCRIPTION=Wire for desktop
 EAPI=8
 HOMEPAGE=https://wire.com
 IDEPEND=dev-util/desktop-file-utils x11-misc/shared-mime-info
 INHERIT=desktop xdg unpacker
-IUSE=system-ffmpeg system-mesa
 KEYWORDS=-* ~amd64
 LICENSE=GPL-3
 SLOT=0
 SRC_URI=https://github.com/wireapp/wire-desktop/releases/download/linux/3.39.3653/Wire-3.39.3653_amd64.deb
 _eclasses_=desktop	3a72ffe0d8e1dd73af3a1c8c15a59fed	xdg-utils	42869b3c8d86a70ef3cf75165a395e09	xdg	3ef49a87c52c8b77c476351195dfe575	multiprocessing	1e32df7deee68372153dca65f4a7c21f	toolchain-funcs	14648d8795f7779e11e1bc7cf08b7536	multilib	b2a329026f2e404e9e371097dda47f96	unpacker	fb4b84181244b3b9990fa0bf40232dd2
-_md5_=798cb3a5810b962e64d140ef3631c3e4
+_md5_=71b134dcc7913bc635acea6b0775c827

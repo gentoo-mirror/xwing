@@ -13,7 +13,6 @@ SRC_URI="https://github.com/wireapp/${PN}/releases/download/linux/${PV}/${OPTNAM
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE="system-ffmpeg system-mesa"
 
 QA_PREBUILT="*"
 
@@ -28,38 +27,29 @@ DEPEND="
 	x11-libs/gtk+:3
 	x11-libs/libX11
 	x11-libs/pango
-	system-ffmpeg? ( >=media-video/ffmpeg-6[chromium] )
-	system-mesa? ( media-libs/mesa[vulkan] )
 "
 S="${WORKDIR}"
-QA_PREBUILT="opt/${OPTNAME}/*"
+QA_PREBUILT="opt/${OPTNAME}/chrome-sandbox
+	opt/${OPTNAME}/chrome_crashpad_handler
+	opt/${OPTNAME}/libEGL.so
+	opt/${OPTNAME}/libffmpeg.so
+	opt/${OPTNAME}/libGLESv2.so
+	opt/${OPTNAME}/libvk_swiftshader.so
+	opt/${OPTNAME}/libvulkan.so.1
+	opt/${OPTNAME}/${PN}"
 
 src_install() {
-	dodir /opt/${OPTNAME}
-	cp -a opt/${OPTNAME} "${ED}/opt/" || die
-
-	if use system-ffmpeg; then
-		rm "${ED}/opt/${OPTNAME}/libffmpeg.so" || die
-		dosym "../../usr/$(get_libdir)/chromium/libffmpeg.so" "opt/${OPTNAME}/libffmpeg.so" || die
-		elog "Using system ffmpeg. This is experimental and may lead to crashes."
-	fi
-
-	if use system-mesa; then
-		rm "${ED}/opt/${OPTNAME}/libEGL.so" || die
-		rm "${ED}/opt/${OPTNAME}/libGLESv2.so" || die
-		rm "${ED}/opt/${OPTNAME}/libvulkan.so.1" || die
-		rm "${ED}/opt/${OPTNAME}/libvk_swiftshader.so" || die
-		rm "${ED}/opt/${OPTNAME}/vk_swiftshader_icd.json" || die
-		elog "Using system mesa. This is experimental and may lead to crashes."
-	fi
+	insinto /
+	doins -r opt
+	local f
+	for f in ${QA_PREBUILT}; do
+		fperms +x "/${f}"
+	done
+	fperms u+s /opt/${OPTNAME}/chrome-sandbox
 
 	# install wrapper reading /etc/chromium/* for CHROME_FLAGS
 	exeinto /opt/${OPTNAME}
 	doexe "${FILESDIR}/${PN}.sh"
-
-	# remove chrome-sandbox binary, users should use kernel namespaces
-	# https://bugs.gentoo.org/692692#c18
-	rm "${ED}/opt/${OPTNAME}/chrome-sandbox" || die
 
 	dosym ../../opt/${OPTNAME}/${PN}.sh /usr/bin/${PN}
 
