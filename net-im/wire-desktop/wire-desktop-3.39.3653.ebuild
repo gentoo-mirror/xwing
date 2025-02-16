@@ -9,12 +9,20 @@ OPTNAME="Wire"
 DESCRIPTION="Wire for desktop"
 HOMEPAGE="https://wire.com"
 SRC_URI="https://github.com/wireapp/${PN}/releases/download/linux/${PV}/${OPTNAME}-${PV}_amd64.deb"
+S="${WORKDIR}"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="-* ~amd64"
 
-QA_PREBUILT="*"
+QA_PREBUILT="opt/${OPTNAME}/chrome-sandbox
+	opt/${OPTNAME}/chrome_crashpad_handler
+	opt/${OPTNAME}/libEGL.so
+	opt/${OPTNAME}/libffmpeg.so
+	opt/${OPTNAME}/libGLESv2.so
+	opt/${OPTNAME}/libvk_swiftshader.so
+	opt/${OPTNAME}/libvulkan.so.1
+	opt/${OPTNAME}/${PN}"
 
 DEPEND="
 	app-accessibility/at-spi2-core:2
@@ -28,15 +36,6 @@ DEPEND="
 	x11-libs/libX11
 	x11-libs/pango
 "
-S="${WORKDIR}"
-QA_PREBUILT="opt/${OPTNAME}/chrome-sandbox
-	opt/${OPTNAME}/chrome_crashpad_handler
-	opt/${OPTNAME}/libEGL.so
-	opt/${OPTNAME}/libffmpeg.so
-	opt/${OPTNAME}/libGLESv2.so
-	opt/${OPTNAME}/libvk_swiftshader.so
-	opt/${OPTNAME}/libvulkan.so.1
-	opt/${OPTNAME}/${PN}"
 
 src_install() {
 	insinto /

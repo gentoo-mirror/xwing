@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit desktop xdg multilib-build
+inherit desktop xdg
 
 DESCRIPTION="Unofficial Microsoft Teams client for Linux. Binary precompiled version."
 HOMEPAGE="https://github.com/IsmaelMartinez/teams-for-linux"
@@ -12,51 +12,41 @@ SRC_URI="https://github.com/IsmaelMartinez/${PN}/releases/download/v${PV}/${P}.t
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE="system-ffmpeg system-mesa"
 
-QA_PREBUILT="*"
+QA_PREBUILT="opt/${PN}/chrome-sandbox
+	opt/${PN}/chrome_crashpad_handler
+	opt/${PN}/libEGL.so
+	opt/${PN}/libffmpeg.so
+	opt/${PN}/libGLESv2.so
+	opt/${PN}/libvk_swiftshader.so
+	opt/${PN}/libvulkan.so.1
+	opt/${PN}/${PN}"
 
 DEPEND="
-	app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
-	dev-libs/nspr[${MULTILIB_USEDEP}]
-	dev-libs/nss[${MULTILIB_USEDEP}]
-	media-libs/alsa-lib[${MULTILIB_USEDEP}]
-	media-libs/freetype:2[${MULTILIB_USEDEP}]
-	media-gfx/graphite2[${MULTILIB_USEDEP}]
-	net-print/cups[${MULTILIB_USEDEP}]
-	x11-libs/gtk+:3[${MULTILIB_USEDEP}]
-	x11-libs/libX11[${MULTILIB_USEDEP}]
-	x11-libs/pango[${MULTILIB_USEDEP}]
-	system-ffmpeg? ( >=media-video/ffmpeg-6[chromium] )
-	system-mesa? ( media-libs/mesa[vulkan] )
+	app-accessibility/at-spi2-core:2
+	dev-libs/nspr
+	dev-libs/nss
+	media-libs/alsa-lib
+	media-libs/freetype:2
+	media-gfx/graphite2
+	net-print/cups
+	x11-libs/gtk+:3
+	x11-libs/libX11
+	x11-libs/pango
 "
 
 src_install() {
-	dodir /opt/${PN}
-	cp -a . "${ED}/opt/${PN}" || die
-
-	if use system-ffmpeg; then
-		rm "${ED}/opt/${PN}/libffmpeg.so" || die
-		dosym "../../usr/$(get_libdir)/chromium/libffmpeg.so" "opt/${PN}/libffmpeg.so" || die
-		elog "Using system ffmpeg. This is experimental and may lead to crashes."
-	fi
-
-	if use system-mesa; then
-		rm "${ED}/opt/${PN}/libEGL.so" || die
-		rm "${ED}/opt/${PN}/libGLESv2.so" || die
-		rm "${ED}/opt/${PN}/libvulkan.so.1" || die
-		rm "${ED}/opt/${PN}/libvk_swiftshader.so" || die
-		rm "${ED}/opt/${PN}/vk_swiftshader_icd.json" || die
-		elog "Using system mesa. This is experimental and may lead to crashes."
-	fi
+	insinto /opt/${PN}
+	doins -r .
+	local f
+	for f in ${QA_PREBUILT}; do
+		fperms +x "/${f}"
+	done
+	fperms u+s /opt/${PN}/chrome-sandbox
 
 	# install wrapper reading /etc/chromium/* for CHROME_FLAGS
 	exeinto /opt/${PN}
 	doexe "${FILESDIR}/${PN}.sh"
-
-	# remove chrome-sandbox binary, users should use kernel namespaces
-	# https://bugs.gentoo.org/692692#c18
-	rm "${ED}/opt/${PN}/chrome-sandbox" || die
 
 	dosym ../../opt/${PN}/${PN}.sh /usr/bin/${PN}
 
