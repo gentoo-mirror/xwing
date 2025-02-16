@@ -11,6 +11,5 @@ media-gfx/rawtherapee 9999: A powerful cross-platform raw image processing progr
 media-plugins/mpv-mpris 1.1_p20231026: MPRIS integration for mpv
 net-im/skypeforlinux 8.136.0.203_p382: Skype extracted from snap package without using snap crap.
 net-im/teams-for-linux 1.12.7: Unofficial Microsoft Teams client for Linux. Binary precompiled version.
-net-im/wire-desktop 3.39.3653: Wire for desktop
 www-apps/forgejo 10.0.1: A painless self-hosted Git service. Gitea fork drop-in replacement
 x11-themes/smplayer-themes 20.11.0: Icon themes for smplayer
