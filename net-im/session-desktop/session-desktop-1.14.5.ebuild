@@ -50,7 +50,7 @@ src_install() {
 	exeinto /opt/${OPTNAME}
 	doexe "${FILESDIR}/${PN}.sh"
 
-	dosym ../../opt/${PN}/${PN}.sh /usr/bin/${PN}
+	dosym ../../opt/${OPTNAME}/${PN}.sh /usr/bin/${PN}
 
 	sed -si -e "s/^Exec=.*$/Exec=\/usr\/bin\/${PN} %U/" usr/share/applications/${PN}.desktop
 	domenu usr/share/applications/${PN}.desktop
