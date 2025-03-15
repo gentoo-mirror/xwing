@@ -12,4 +12,3 @@ media-plugins/mpv-mpris 1.1_p20231026: MPRIS integration for mpv
 net-im/skypeforlinux 8.138.0.203_p386: Skype extracted from snap package without using snap crap.
 net-im/teams-for-linux 1.13.0: Unofficial Microsoft Teams client for Linux. Binary precompiled version.
 www-apps/forgejo 10.0.1: A painless self-hosted Git service. Gitea fork drop-in replacement
-x11-themes/smplayer-themes 20.11.0: Icon themes for smplayer
