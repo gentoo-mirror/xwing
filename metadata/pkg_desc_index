@@ -9,6 +9,6 @@ media-fonts/noto-stripped 20241216: Google's Noto font, only basic variants (San
 media-fonts/ubuntu-fonts 20240529: Ubuntu Font Family
 media-gfx/rawtherapee 9999: A powerful cross-platform raw image processing program
 media-plugins/mpv-mpris 1.1_p20231026: MPRIS integration for mpv
-net-im/skypeforlinux 8.138.0.209_p390: Skype extracted from snap package without using snap crap.
-net-im/teams-for-linux 1.13.1: Unofficial Microsoft Teams client for Linux. Binary precompiled version.
+net-im/skypeforlinux 8.138.0.213_p392: Skype extracted from snap package without using snap crap.
+net-im/teams-for-linux 1.13.2: Unofficial Microsoft Teams client for Linux. Binary precompiled version.
 www-apps/forgejo 10.0.3: A painless self-hosted Git service. Gitea fork drop-in replacement
