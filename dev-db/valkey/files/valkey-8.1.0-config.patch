@@ -2,7 +2,7 @@ diff --git a/valkey.conf b/valkey.conf
 index 465d56f..ef56037 100644
 --- a/valkey.conf
 +++ b/valkey.conf
-@@ -276,7 +276,7 @@ daemonize no
+@@ -385,7 +385,7 @@ daemonize no
  #
  # Note that on modern Linux systems "/run/valkey.pid" is more conforming
  # and should be used instead.
@@ -11,30 +11,30 @@ index 465d56f..ef56037 100644
  
  # Specify the server verbosity level.
  # This can be one of:
-@@ -289,7 +289,7 @@ loglevel notice
+@@ -416,7 +416,7 @@ loglevel notice
  # Specify the log file name. Also the empty string can be used to force
- # valkey to log on the standard output. Note that if you use standard
+ # the server to log on the standard output. Note that if you use standard
  # output for logging but daemonize, logs will be sent to /dev/null
 -logfile ""
 +logfile /var/log/valkey/valkey.log
  
  # To enable logging to the system logger, just set 'syslog-enabled' to yes,
  # and optionally update the other syslog parameters to suit your needs.
-@@ -441,7 +441,7 @@ rdb-del-sync-files no
- # The Append Only File will also be created inside this directory.
- #
- # Note that you must specify a directory here, not a file name.
+@@ -606,7 +606,7 @@ rdb-del-sync-files no
+ # Note that modifying 'dir' during runtime may have unexpected behavior,
+ # for example when a child process is running, related file operations may
+ # have unexpected effects.
 -dir ./
 +dir /var/lib/valkey/
  
  ################################# REPLICATION #################################
  
-@@ -967,7 +967,7 @@ acllog-max-len 128
+@@ -1248,7 +1248,7 @@ acllog-max-len 128
  # limit for maxmemory so that there is some free RAM on the system for replica
  # output buffers (but this is not needed if the policy is 'noeviction').
  #
 -# maxmemory <bytes>
 +maxmemory 64MB
  
- # MAXMEMORY POLICY: how valkey will select what to remove when maxmemory
+ # MAXMEMORY POLICY: how the server will select what to remove when maxmemory
  # is reached. You can select one from the following behaviors:

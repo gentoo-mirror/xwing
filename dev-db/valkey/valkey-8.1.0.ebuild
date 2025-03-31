@@ -22,7 +22,6 @@ IUSE="+jemalloc selinux ssl systemd tcmalloc test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	jemalloc? ( >=dev-libs/jemalloc-5.1:=[stats] )
 	ssl? ( dev-libs/openssl:0= )
 	systemd? ( sys-apps/systemd:= )
 	tcmalloc? ( dev-util/google-perftools )
@@ -47,8 +46,7 @@ BDEPEND="
 REQUIRED_USE="?? ( jemalloc tcmalloc )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-8.0.0-config.patch
-	"${FILESDIR}"/${PN}-8.0.0-system-jemalloc.patch
+	"${FILESDIR}"/${PN}-8.1.0-config.patch
 	"${FILESDIR}"/${PN}-8.0.0-ppc-atomic.patch
 	"${FILESDIR}"/${PN}-sentinel-8.0.0-config.patch
 	"${FILESDIR}"/${PN}-8.0.0-no-which.patch

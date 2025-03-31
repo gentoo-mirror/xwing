@@ -9,7 +9,7 @@ index b7b3604f0..a1d7bfea9 100644
  # /var/run/valkey-sentinel.pid by default. You can specify a custom pid file
  # location here.
 -pidfile /var/run/valkey-sentinel.pid
-+pidfile /run/valkey-sentinel.pid
++pidfile /run/valkey/valkey-sentinel.pid
  
  # Specify the server verbosity level.
  # This can be one of:
