@@ -10,5 +10,5 @@ media-fonts/ubuntu-fonts 20240529: Ubuntu Font Family
 media-gfx/rawtherapee 9999: A powerful cross-platform raw image processing program
 media-plugins/mpv-mpris 1.1_p20231026: MPRIS integration for mpv
 media-sound/rsgain 3.6: A simple, but powerful ReplayGain 2.0 tagging utility
-net-im/teams-for-linux 2.0.12: Unofficial Microsoft Teams client for Linux. Binary precompiled version.
+net-im/teams-for-linux 2.0.13: Unofficial Microsoft Teams client for Linux. Binary precompiled version.
 www-apps/forgejo 11.0.1: A painless self-hosted Git service. Gitea fork drop-in replacement
