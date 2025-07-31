@@ -1,0 +1,20 @@
+--- a/cmake/Dependencies.cmake	2025-07-31 06:43:24.320214054 +0200
++++ b/cmake/Dependencies.cmake	2025-07-31 06:58:03.955216176 +0200
+@@ -7,7 +7,6 @@
+ # Use a macro as functions/find_package()/pkg_check_modules() do not set
+ # variables in the top-level CMakeLists scope.
+ macro(rt_setup_dependencies)
+-    rt_fetch_content()
+ 
+     find_package(ATOMIC)
+     if(ENABLE_TCMALLOC)
+--- a/rtengine/CMakeLists.txt	2025-07-31 06:57:26.075253968 +0200
++++ b/rtengine/CMakeLists.txt	2025-07-31 06:57:32.465615449 +0200
+@@ -191,7 +191,6 @@
+ 
+ target_link_libraries(rtengine
+     PUBLIC
+-        fmt::fmt
+         JPEG::JPEG
+         PkgConfig::CAIROMM
+         PkgConfig::EXIV2
