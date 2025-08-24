@@ -46,7 +46,6 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES="
-	${FILESDIR}/rawtherapee-meyers.patch
 	${FILESDIR}/rawtherapee-no-fmt.patch
 "
 
