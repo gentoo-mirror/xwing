@@ -11,7 +11,7 @@ SRC_URI="https://github.com/IsmaelMartinez/${PN}/releases/download/v${PV}/${P}.t
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="-*"
+KEYWORDS="-* ~amd64"
 
 QA_PREBUILT="opt/${PN}/chrome-sandbox
 	opt/${PN}/chrome_crashpad_handler
