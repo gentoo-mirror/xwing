@@ -14,4 +14,4 @@ RESTRICT=!test? ( test )
 SLOT=0/9.0
 SRC_URI=https://github.com/valkey-io/valkey/archive/refs/tags/9.0.0.tar.gz -> valkey-9.0.0.tar.gz
 _eclasses_=gnuconfig	ddeb9f8caff1b5f71a09c75b7534df79	toolchain-funcs	98d9f464d912ae6b7316fb8a3721f5db	libtool	c81bd096be5f4c82f4e8f156ef112402	autotools	955b29ccd82c1df4755e5f37748d2fa6	edo	a5e294016aa84979fcb2459749eb80b2	multiprocessing	1e32df7deee68372153dca65f4a7c21f	systemd	a964c0cbe818b5729da1dbfcee5be861	tmpfiles	9a9814db5a3fbd4f1e921c05297e7735
-_md5_=6f26ba1c9c3d388a48a8c44b5f1f5323
+_md5_=bd18301fc9bbbe89ff29d783fe19a5e7
